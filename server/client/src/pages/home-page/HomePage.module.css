@@ -1,0 +1,78 @@
+.home-wrapper {
+  display: grid;
+  gap: 1em;
+  grid-template-columns: repeat(6, 1fr);
+  grid-template-areas: 
+    'view view stats stats new new'
+    '. products products cat cat .';
+  text-align: center;
+}
+
+.home-wrapper > a  {
+  border: 1px solid;
+  transition: background-color 500ms, border-color 500ms, border-width 500ms;
+}
+
+.home-wrapper > a > div {
+  aspect-ratio: 1;
+  padding: .5em;
+}
+
+.home-wrapper > *:nth-child(1) {
+  grid-area: view;
+  background-color: #D5F8D4;
+  border-color: #82B366;
+}
+
+.home-wrapper > *:nth-child(1):hover {
+  background-color: #7fdf7a;
+  border-color: #5a9637;
+}
+
+.home-wrapper > *:nth-child(2) {
+  grid-area: stats;
+  background-color: #E1D5E7;
+  border-color: #9673A6;
+}
+
+.home-wrapper > *:nth-child(2):hover {
+  background-color: #bd80db;
+  border-color: #643f75;
+}
+
+.home-wrapper > *:nth-child(3) {
+  grid-area: new;
+  background-color: #fad6b0;
+  border-color: #D79B00;
+}
+
+.home-wrapper > *:nth-child(3):hover {
+  background-color: #f7b46d;
+  border-color: #8a6302;
+}
+
+.home-wrapper > *:nth-child(4) {
+  grid-area: products;
+  background-color: #f7bebb;
+  border-color: #B85450;
+}
+
+.home-wrapper > *:nth-child(4):hover {
+  background-color: #f77d77;
+  border-color: #803a38;
+}
+
+.home-wrapper > *:nth-child(5) {
+  grid-area: cat;
+  background-color: #73B0FF;
+  border-color: #145BFF;
+}
+
+.home-wrapper > *:nth-child(5):hover {
+  background-color: #2280fc;
+  border-color: #0f42bb;
+}
+
+.home-wrapper > *:hover {
+  border-width: 10px;
+}

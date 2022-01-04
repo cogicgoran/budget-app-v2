@@ -1,0 +1,12 @@
+.page-title {
+  padding: .8em 0;
+  margin-bottom: 1em;
+  border-radius: 8px;
+  font-size: .8em;
+  text-align: center;
+  background-color:lightblue;
+}
+
+.page-title h1{
+  margin: 0;
+}

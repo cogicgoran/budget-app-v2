@@ -1,0 +1,22 @@
+.receipt-wrapper {
+  text-align: center;
+}
+
+.receipt-wrapper input {
+  background-color: white;
+}
+
+.receipt-date-wrapper {
+  display: flex;
+  justify-content: center;
+  gap: .2em;
+}
+
+.receipt-date-wrapper input{
+  text-align: center;
+  width: 4em;
+}
+
+.receipt-date-wrapper input:nth-of-type(4){
+  margin-left: 2em;
+}

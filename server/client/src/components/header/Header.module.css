@@ -1,0 +1,11 @@
+.header {
+  padding: 2em 0;
+  margin-bottom: 1em;
+  border-radius: 8px;
+  background-color:lightblue;
+}
+
+.header__title {
+  text-align: center;
+  margin: 0;
+}

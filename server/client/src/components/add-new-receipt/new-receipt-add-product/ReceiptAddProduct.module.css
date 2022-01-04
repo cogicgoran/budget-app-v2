@@ -1,0 +1,36 @@
+.new-product {
+  margin-top: 2em;
+}
+
+.new-product__add-button {
+  border-radius: 4px;
+  text-align: center;
+  cursor: pointer;
+  transition: background-color 300ms;
+}
+
+.new-product__add-button:hover {
+  background-color: orange;
+}
+
+.new-product__add-button button{
+  cursor: pointer;
+  background-color: transparent;
+}
+
+.new-product-inputs {
+  width: 100%;
+  gap: .5em;
+  display: flex;
+}
+
+.new-product-inputs > *{
+  width: 100%;
+}
+
+.new-product-inputs input {
+  background-color: white;
+  width: 100%;
+}
+
+

@@ -1,0 +1,12 @@
+CREATE DATABASE IF NOT EXISTS budget_app_test;
+USE budget_app_test;
+
+DROP TABLE IF EXISTS receipts;
+
+CREATE TABLE IF NOT EXISTS receipts(
+	id INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    shop_name VARCHAR(30) NOT NULL, 
+    shop_address VARCHAR(60) NOT NULL,
+    receipt_date DATETIME NOT NULL,
+	articles TEXT NOT NULL
+);
