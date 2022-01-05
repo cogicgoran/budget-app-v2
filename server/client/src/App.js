@@ -10,6 +10,7 @@ import ViewReceipt from 'pages/view-receipts/view-receipt/ViewReceipt';
 import Statistics from 'pages/statistics/Statistics';
 import Products from 'pages/products/Products';
 import Categories from 'pages/categories/Categories';
+import Currencies from 'pages/currencies/Currencies';
 
 function App() {
   const [receipts, setReceipts] = useState([]);
@@ -39,6 +40,7 @@ function App() {
           <Route path={PATHS.STATISTICS} element={<Statistics />} />
           <Route path={PATHS.PRODUCTS} element={<Products />} />
           <Route path={PATHS.CATEGORIES} element={<Categories />} />
+          <Route path={PATHS.CURRENCIES} element={<Currencies />} />
           <Route path='*' element={<Navigate replace to={PATHS.HOME} />}/>
         </Routes>
       </Router>

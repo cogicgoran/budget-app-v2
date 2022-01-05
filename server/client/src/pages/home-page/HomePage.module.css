@@ -1,16 +1,21 @@
 .home-wrapper {
   display: grid;
-  gap: 1em;
   grid-template-columns: repeat(6, 1fr);
   grid-template-areas: 
     'view view stats stats new new'
-    '. products products cat cat .';
+    'products products cat cat currency currency';
   text-align: center;
 }
 
 .home-wrapper > a  {
   border: 1px solid;
-  transition: background-color 500ms, border-color 500ms, border-width 500ms;
+  margin: 1em;
+  transition: background-color 500ms, border-color 500ms, border-width 500ms, margin 500ms;
+}
+
+.home-wrapper > a:hover  {
+  margin: 0;
+  border-width: .4em;
 }
 
 .home-wrapper > a > div {
@@ -73,6 +78,13 @@
   border-color: #0f42bb;
 }
 
-.home-wrapper > *:hover {
-  border-width: 10px;
+.home-wrapper > *:nth-child(6) {
+  grid-area: currency;
+  background-color: #86d3b5;
+  border-color: #588876;
+}
+
+.home-wrapper > *:nth-child(6):hover {
+  background-color: #439777;
+  border-color: #3a5a4e;
 }

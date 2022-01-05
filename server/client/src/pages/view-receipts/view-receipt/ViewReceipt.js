@@ -24,7 +24,7 @@ function ViewReceipt(props) {
   }
 
   useEffect(async function() {
-    const response = await fetch(`http://localhost:8000/receipts/${ReceiptId}`,{
+    const response = await fetch(`http://localhost:8000/api/receipts/${ReceiptId}`,{
       method:"GET",
       headers: {
         'Content-Type': 'application/json',

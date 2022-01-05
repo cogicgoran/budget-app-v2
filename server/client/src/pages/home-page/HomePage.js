@@ -11,6 +11,7 @@ function HomePage() {
       <HomeBox pathTo={PATHS.NEW_RECEIPTS}>Add New Receipt</HomeBox>
       <HomeBox pathTo={PATHS.PRODUCTS}>View Products</HomeBox>
       <HomeBox pathTo={PATHS.CATEGORIES}>Categories</HomeBox>
+      <HomeBox pathTo={PATHS.CURRENCIES}>Currencies</HomeBox>
     </div>
   );
 };

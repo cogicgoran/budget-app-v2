@@ -22,7 +22,7 @@ function getReceiptById(res, receiptId) {
 
 function insertReceipt(res, body, jsonString) {
   dbConn.query(
-    'INSERT INTO receipts ( shop_name, shop_address, receipt_date, articles ) VALUES (?, ?, ?, ?)',
+    'INSERT INTO receipts ( shop_name, shop_address, receipt_date, articles ) VALUES (?, ?, ?, ?);',
     [body.info.name, body.info.address, body.date, jsonString],
     function(err, results, fields) {
       if(err){

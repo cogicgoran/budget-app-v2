@@ -1,10 +1,3 @@
-.view-receipts-table-container {
-  padding: .4em;
-  margin-bottom: 1em;
-  border-radius: 8px;
-  background-color:rgb(94, 155, 224);
-}
-
 .view-receipts-table {
   width: 100%;
   text-align: left;

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import styles from './AddNewReceipt.module.css';
 
 import PageTitle from 'components/helper/PageTitle';
+import MainCard from 'components/UI/MainCard';
 import ReceiptInfo from 'components/add-new-receipt/new-receipt-info/ReceiptInfo';
 import ReceiptProductList from 'components/add-new-receipt/new-receipt-product-list/ReceiptProductList';
 import ReceiptAddProduct from 'components/add-new-receipt/new-receipt-add-product/ReceiptAddProduct';
@@ -59,7 +60,7 @@ function AddNewReceipt(props) {
           receipt: articles
         });
 
-        fetch('http://localhost:8000/receipts',{
+        fetch('http://localhost:8000/api/receipts',{
           method:'POST',
           headers: {
             'Content-Type': "application/json",
@@ -73,7 +74,7 @@ function AddNewReceipt(props) {
           receipt: articles
         });
 
-        fetch('http://localhost:8000/receipts',{
+        fetch('http://localhost:8000/api/receipts',{
           method:'PUT',
           headers: {
             'Content-Type': "application/json",
@@ -106,15 +107,17 @@ function AddNewReceipt(props) {
   return (
     <div>
       {!props.isUpdating ? <PageTitle title="New Receipt"/> : <PageTitle title="Edit Receipt"/>}
-      <form className={styles['new-receipt-content-wrapper']} onSubmit={submitHandler}>
-        <ReceiptInfo value={receiptInfo} onChangeValue={setReceiptInfo}/>
-        <ReceiptProductList onEditInit={editArticle} editIndex={isEditing.article?.id} onRemoveArticle={removeArticleAtIndex} articleList={articles} />
-        <ReceiptAddProduct onAddArticle={addArticleHandler} edit={isEditing}/>
-        <div className={styles['new-receipt-actions']}>
-          <button type='submit'>{!props.isUpdating ? "Add" : "Update"} Receipt</button>
-          <button type='button'>Clear Receipt</button>
-        </div>
-      </form>
+      <MainCard>
+        <form className={styles['new-receipt-content-wrapper']} onSubmit={submitHandler}>
+          <ReceiptInfo value={receiptInfo} onChangeValue={setReceiptInfo}/>
+          <ReceiptProductList onEditInit={editArticle} editIndex={isEditing.article?.id} onRemoveArticle={removeArticleAtIndex} articleList={articles} />
+          <ReceiptAddProduct onAddArticle={addArticleHandler} edit={isEditing}/>
+          <div className={styles['new-receipt-actions']}>
+            <button type='submit'>{!props.isUpdating ? "Add" : "Update"} Receipt</button>
+            <button type='button'>Clear Receipt</button>
+          </div>
+        </form>
+      </MainCard>
     </div>
   );
 };

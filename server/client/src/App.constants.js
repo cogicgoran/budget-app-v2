@@ -5,4 +5,5 @@ export const PATHS = {
   STATISTICS: '/statistics',
   PRODUCTS: '/products',
   CATEGORIES: '/categories',
+  CURRENCIES: '/currencies',
 }

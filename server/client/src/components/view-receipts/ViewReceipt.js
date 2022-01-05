@@ -5,7 +5,6 @@ import { PATHS } from 'App.constants';
 function ViewReceipt(props) {
   const navigate = useNavigate();
 
-  new Date('2021-02-06T22:15:00.000Z').toLocaleString("en-GB",{day:"numeric", month:"short", year: "numeric"});
   return (
     <tr>
       <td>{props.id}</td>
