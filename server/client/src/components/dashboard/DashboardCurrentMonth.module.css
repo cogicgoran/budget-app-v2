@@ -1,0 +1,11 @@
+.dashboard-current-month {
+    display: flex;
+    gap: 1em;
+    padding: 2em;
+    background-color: lightblue;
+}
+
+.dashboard-current-month__header {
+    text-align: right;
+    font-size: 1em;
+}

@@ -11,6 +11,7 @@ import Statistics from 'pages/statistics/Statistics';
 import Products from 'pages/products/Products';
 import Categories from 'pages/categories/Categories';
 import Currencies from 'pages/currencies/Currencies';
+import Dashboard from 'pages/dashboard/Dashboard';
 
 function App() {
   const [receipts, setReceipts] = useState([]);
@@ -41,6 +42,7 @@ function App() {
           <Route path={PATHS.PRODUCTS} element={<Products />} />
           <Route path={PATHS.CATEGORIES} element={<Categories />} />
           <Route path={PATHS.CURRENCIES} element={<Currencies />} />
+          <Route path={PATHS.DASHBOARD} element={<Dashboard />} />
           <Route path='*' element={<Navigate replace to={PATHS.HOME} />}/>
         </Routes>
       </Router>

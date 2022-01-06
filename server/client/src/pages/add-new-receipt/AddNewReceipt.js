@@ -55,7 +55,7 @@ function AddNewReceipt(props) {
     if (isReceiptInfoValid(receiptInfo) && articles.length > 0) {
       
       if (!props.isUpdating) {
-        var jsonBody = JSON.stringify({
+        let jsonBody = JSON.stringify({
           info:receiptInfo,
           receipt: articles
         });
@@ -68,7 +68,7 @@ function AddNewReceipt(props) {
           body: jsonBody
         });
       } else {
-        var jsonBody = JSON.stringify({
+        let jsonBody = JSON.stringify({
           id:props.info.id,
           info:receiptInfo,
           receipt: articles
@@ -92,7 +92,7 @@ function AddNewReceipt(props) {
 
   function editArticle(article) {
     setIsEditing(prevState => {
-      if (prevState.isEditing && prevState.article.id == article.id) return DEFAULT_IS_EDITING; 
+      if (prevState.isEditing && prevState.article.id === article.id) return DEFAULT_IS_EDITING; 
       return {isEditing:true, article}
     });
   };
@@ -102,7 +102,7 @@ function AddNewReceipt(props) {
       setArticles(props.articles);
       setReceiptInfo(props.info);
     };
-  },[props.isUpdating]);
+  },[props.isUpdating, props.articles, props.info]);
 
   return (
     <div>

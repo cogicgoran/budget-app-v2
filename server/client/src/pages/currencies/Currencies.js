@@ -16,17 +16,20 @@ function Currencies() {
     setCurrencyValue(e.target.value);
   };
 
-  useEffect(async () => {
-    const response = await fetch('http://localhost:8000/api/currencies',{
-      method:'GET',
-      headers: {
-        'Content-Type': "application/json",
-      }
-    });
-    const data = await response.json();
-    console.log(data);
-    setCurrencyList(data);
+  useEffect(() => {
+    async function fetchData () {
+      const response = await fetch('http://localhost:8000/api/currencies',{
+        method:'GET',
+        headers: {
+          'Content-Type': "application/json",
+        }
+      });
+      const data = await response.json();
+      console.log(data);
+      setCurrencyList(data);
+    };
 
+    fetchData();
   },[]);
   
   async function submitHandler(e) {
@@ -43,7 +46,7 @@ function Currencies() {
         body: jsonBody
       });
 
-      if (response.status == 200) {
+      if (response.status === 200) {
         navigate(PATHS.HOME);
       }
       console.log(response);
@@ -59,7 +62,7 @@ function Currencies() {
       <PageTitle title="Currencies"/>
       <MainCard>
         <div >
-          {currencyList.length != 0 
+          {currencyList.length !== 0 
           ? currencyList.map(currency => {
             return <span>{currency.code}</span>
           }) 

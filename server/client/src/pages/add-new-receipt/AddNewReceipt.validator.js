@@ -1,5 +1,5 @@
 export function isReceiptInfoValid(info) {
-  const {name, address, 'date-day': dateDay, 'date-month':dateMonth, 'date-year':dateYear,
+  const {'date-day': dateDay, 'date-month':dateMonth, 'date-year':dateYear,
    'date-hour':dateHour, 'date-minute': dateMinute} = info;
   const string = [dateMonth, dateDay, dateYear].join("/") + " " + [dateHour,dateMinute].join(":");
   const date = new Date(string);
@@ -8,9 +8,3 @@ export function isReceiptInfoValid(info) {
   }
   return false;
 }
-
-// 'date-day':"",
-// 'date-month':"",
-// 'date-year':"",
-// 'date-hour':"",
-// 'date-minute':"",

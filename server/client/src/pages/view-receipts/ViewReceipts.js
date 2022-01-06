@@ -9,25 +9,26 @@ import styles from './ViewReceipts.module.css';
 function ViewReceipts() {
   const [receipts, setReceipts] = useState([]);
 
-  useEffect(async function fetchReceipts(){
-    const response = await fetch("http://localhost:8000/api/receipts",{
-      method:"GET",
-      headers: {
-        'Content-Type': 'application/json'
-      }
-    });
-    const data = await response.json();
-
-    setReceipts(data.results.map(result => {
-      return {
-        id: result.id,
-        shop_name: result.shop_name,
-        shop_address: result.shop_address,
-        receipt_date: result.receipt_date,
-        articles: JSON.parse(result.articles)
-      }
-    }));
-
+  useEffect(() => {
+    async function fetchReceipts(){
+      const response = await fetch("http://localhost:8000/api/receipts",{
+        method:"GET",
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      });
+      const data = await response.json();
+      setReceipts(data.results.map(result => {
+        return {
+          id: result.id,
+          shop_name: result.shop_name,
+          shop_address: result.shop_address,
+          receipt_date: result.receipt_date,
+          articles: JSON.parse(result.articles)
+        }
+      }));
+    };
+    fetchReceipts();
   },[]);
   
   return (

@@ -23,20 +23,23 @@ function ViewReceipt(props) {
     var articles = JSON.parse(receipt.articles);
   }
 
-  useEffect(async function() {
-    const response = await fetch(`http://localhost:8000/api/receipts/${ReceiptId}`,{
-      method:"GET",
-      headers: {
-        'Content-Type': 'application/json',
+  useEffect(() => {
+    async function fetchData() {
+      const response = await fetch(`http://localhost:8000/api/receipts/${ReceiptId}`,{
+        method:"GET",
+        headers: {
+          'Content-Type': 'application/json',
+        }
+      });
+      const data = await response.json();
+  
+      if (data?.result) {
+        setReceipt(data.result);
+        setIsReceiptSet(true);
       }
-    });
-    const data = await response.json();
-
-    if (data?.result) {
-      setReceipt(data.result);
-      setIsReceiptSet(true);
-    }
-  },[]);
+    };
+    fetchData();
+  },[ReceiptId]);
 
   return (
     <div>

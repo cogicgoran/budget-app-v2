@@ -29,7 +29,6 @@ a {
     color: inherit;
 }
 
-
 @media screen and (max-width:992px) {
     body {
         padding: 0 .5em;

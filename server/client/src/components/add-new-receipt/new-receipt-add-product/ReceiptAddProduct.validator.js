@@ -4,11 +4,11 @@ export function isValidArticle( article ) {
   const articlePrice = article.price.trim();
   const artNumber = Number(articlePrice);
 
-    if (articleName != "" 
+    if (articleName !== "" 
     && articleName.length > 2
-    && articleCategory != ""
+    && articleCategory !== ""
     && articleCategory.length > 0
-    && articlePrice != ""
+    && articlePrice !== ""
     && articlePrice.length > 0
     && articlePrice.length < 12
     && !Number.isNaN(artNumber)

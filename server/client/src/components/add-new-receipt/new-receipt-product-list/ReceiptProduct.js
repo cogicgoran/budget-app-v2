@@ -19,7 +19,7 @@ function ReceiptProduct(props) {
       <td>{props.name}</td>
       <td>{props.category}</td>
       <td>{props.price}</td>
-      <td onClick={editHandler}>{props.id == props.editIndex ? "S" : "E"}</td>
+      <td onClick={editHandler}>{props.id === props.editIndex ? "S" : "E"}</td>
       <td onClick={removeHandler}>X</td>
     </tr>
   );

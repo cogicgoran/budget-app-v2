@@ -26,8 +26,8 @@ export function getFilteredItems(array, filterValues) {
     const { date, month, year} = exactDate;
     const { lowerLimitDate, upperLimitDate } = dateRange;
 
-    if ( date == "" && month == "" && year == "" ) return rangeFilter;
-    if ( date != "") return dateFilter;
+    if ( date === "" && month === "" && year === "" ) return rangeFilter;
+    if ( date !== "") return dateFilter;
     return monthYearFilter;
 
     function rangeFilter(item) {
@@ -35,11 +35,11 @@ export function getFilteredItems(array, filterValues) {
     };
 
     function dateFilter(item) {
-      return new Date(item.date).toISOString().substring(0,10) == date;
+      return new Date(item.date).toISOString().substring(0,10) === date;
     };
 
     function monthYearFilter(item) {
-      return (!month || item.date.getMonth() == month) && (!year || item.date.getFullYear() == year);
+      return (!month || item.date.getMonth() == month) && (!year || item.date.getFullYear() === year);
     };
   }
 };

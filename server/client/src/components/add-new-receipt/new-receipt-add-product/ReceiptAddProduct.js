@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import styles from './ReceiptAddProduct.module.css';
 import { isValidArticle } from './ReceiptAddProduct.validator';
 
