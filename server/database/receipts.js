@@ -8,7 +8,17 @@ function getAllReceipts(res) {
         res.json({results});
     }
   });
-}
+};
+
+function getLatestReceipts(res) {
+  dbConn.query('SELECT * FROM receipts;', function(err, results, fields) {
+    if (err) {
+        res.status(500).json({error:"error"});
+    }else {
+        res.json(results);
+    }
+  });
+};
 
 function getReceiptById(res, receiptId) {
   dbConn.query('SELECT * FROM receipts WHERE id = ?;',[ receiptId ], function(err, results, fields) {
@@ -50,6 +60,7 @@ function updateReceipt(res, body, jsonString) {
 
 module.exports = {
   getAllReceipts,
+  getLatestReceipts,
   getReceiptById,
   insertReceipt,
   updateReceipt

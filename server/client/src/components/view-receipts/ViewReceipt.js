@@ -4,13 +4,14 @@ import { PATHS } from 'App.constants';
 
 function ViewReceipt(props) {
   const navigate = useNavigate();
+  console.log(props);
 
   return (
     <tr>
       <td>{props.id}</td>
-      <td>{props.name}</td>
-      <td>{props.address}</td>
-      <td>{new Date(props.date).toLocaleDateString("en-GB",{day:"numeric", month:"short", year: "numeric", hour: "numeric", minute: "numeric"})}</td>
+      <td>{props['shop_name']}</td>
+      <td>{props['shop_address']}</td>
+      <td>{new Date(props['receipt_date']).toLocaleDateString("en-GB",{day:"numeric" , month:"short", year: "numeric"})}</td>
       <td onClick={()=> navigate(PATHS.VIEW_RECEIPTS + "/" + props.id)}>P</td>
       <td>X</td>
     </tr>

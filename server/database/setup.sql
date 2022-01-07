@@ -26,8 +26,12 @@ CREATE TABLE IF NOT EXISTS receipts(
 	id INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
     shop_name VARCHAR(30) NOT NULL, 
     shop_address VARCHAR(60) NOT NULL,
-    receipt_date DATETIME NOT NULL,
-    total_price INT UNSIGNED NOT NULL
+    receipt_date TIMESTAMP NOT NULL,
+    most_spent_category SMALLINT UNSIGNED NOT NULL,
+    total_price INT UNSIGNED NOT NULL,
+    currency CHAR(3) NOT NULL,
+    FOREIGN KEY(most_spent_category) REFERENCES categories(id) ON UPDATE CASCADE ON DELETE CASCADE,
+    FOREIGN KEY(currency) REFERENCES currencies(code) ON UPDATE CASCADE ON DELETE CASCADE
 );
 
 CREATE TABLE IF NOT EXISTS articles(

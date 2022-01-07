@@ -1,0 +1,35 @@
+.dashboard__receipt {
+    display: grid;
+    align-items: center;
+    grid-template-columns: 1fr 2fr 7em 7em 150px;
+    column-gap: .2em;
+    padding: .2em .5em;
+    border: 2px solid white;
+    border-radius: 4px;
+    margin-bottom: 0.2em;
+}
+
+.dashboard__receipt > :nth-child(1) {
+    
+}
+
+.dashboard__receipt > :nth-child(2) {
+    
+}
+
+.dashboard__receipt > :nth-child(3) {
+    
+}
+
+.dashboard__receipt > :nth-child(4) {
+    text-align: right;
+}
+
+.dashboard__receipt > :nth-child(5) {
+    margin-left: 30px;
+}
+
+.dashboard__receipt-actions {
+    display: flex;
+    justify-content: space-evenly;
+}
