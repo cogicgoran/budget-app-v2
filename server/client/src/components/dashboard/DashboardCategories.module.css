@@ -1,10 +1,11 @@
 .dashboard-categories {
     padding: 0 2em;
     min-height: 100px;
-    background-color: #DCEFFF;
+    background-color: #F5FDFF;
 }
 
 .dashboard-categories h2 {
     margin: 0;
     font-size: 1em;
+    font-weight: normal;
 }

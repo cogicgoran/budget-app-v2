@@ -38,7 +38,7 @@ function DashboardRecentReceipts() {
 
     return (
         <div className={styles['dashboard-recent']}>
-            <h2>Recent Receipts</h2>
+            <h2>RECENT RECEIPTS</h2>
             <div>
                 {isLoading && !isDataSet && <p>Loading...</p> }
                 {!isLoading && isDataSet && dataResponse}

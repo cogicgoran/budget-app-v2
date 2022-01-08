@@ -5,7 +5,7 @@ function DashboardCurrentMonth() {
     return (
         <div className={styles['dashboard-current-month']}>
             <div className={styles['dashboard-current-month__header']}><span>CURRENT <br /> MONTH</span></div>
-            <div><span>0 <br /> RSD</span></div>
+            <div className={styles['dashboard-current-month__total']}><span>0 <br /> RSD</span></div>
         </div>
     )
 }
