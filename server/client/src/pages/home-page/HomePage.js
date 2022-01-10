@@ -8,10 +8,10 @@ function HomePage() {
     <div className={styles["home-wrapper"]}>
       <HomeBox pathTo={PATHS.DASHBOARD}>Dashboard</HomeBox>
       <HomeBox pathTo={PATHS.VIEW_RECEIPTS}>View Receipts</HomeBox>
-      <HomeBox pathTo={PATHS.STATISTICS}>Statistics</HomeBox>
       <HomeBox pathTo={PATHS.NEW_RECEIPTS}>Add New Receipt</HomeBox>
-      <HomeBox pathTo={PATHS.PRODUCTS}>View Products</HomeBox>
       <HomeBox pathTo={PATHS.CATEGORIES}>Categories</HomeBox>
+      <HomeBox pathTo={PATHS.STATISTICS}>Statistics</HomeBox>
+      <HomeBox pathTo={PATHS.PRODUCTS}>View Products</HomeBox>
       <HomeBox pathTo={PATHS.CURRENCIES}>Currencies</HomeBox>
     </div>
   );

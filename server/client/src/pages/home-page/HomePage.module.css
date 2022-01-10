@@ -2,8 +2,9 @@
   display: grid;
   grid-template-columns: repeat(6, 1fr);
   grid-template-areas: 
-    'view view stats stats new new'
-    'products products cat cat currency currency';
+    'view view dashboard dashboard new new'
+    'products products cat cat currency currency'
+    '. . stats stats . .';
   text-align: center;
 }
 
@@ -24,7 +25,7 @@
 }
 
 .home-wrapper > *:nth-child(1) {
-  grid-area: view;
+  grid-area: dashboard;
   background-color: #D5F8D4;
   border-color: #82B366;
 }
@@ -35,7 +36,7 @@
 }
 
 .home-wrapper > *:nth-child(2) {
-  grid-area: stats;
+  grid-area: view;
   background-color: #E1D5E7;
   border-color: #9673A6;
 }
@@ -57,7 +58,7 @@
 }
 
 .home-wrapper > *:nth-child(4) {
-  grid-area: products;
+  grid-area: cat;
   background-color: #f7bebb;
   border-color: #B85450;
 }
@@ -68,7 +69,7 @@
 }
 
 .home-wrapper > *:nth-child(5) {
-  grid-area: cat;
+  grid-area: stats;
   background-color: #73B0FF;
   border-color: #145BFF;
 }
@@ -79,7 +80,7 @@
 }
 
 .home-wrapper > *:nth-child(6) {
-  grid-area: currency;
+  grid-area: products;
   background-color: #86d3b5;
   border-color: #588876;
 }
@@ -87,4 +88,15 @@
 .home-wrapper > *:nth-child(6):hover {
   background-color: #439777;
   border-color: #3a5a4e;
+}
+
+.home-wrapper > *:nth-child(7) {
+  grid-area: currency;
+  background-color: #f0f797;
+  border-color: #cad682;
+}
+
+.home-wrapper > *:nth-child(7):hover {
+  background-color: #e6d11a;
+  border-color: #89920b;
 }

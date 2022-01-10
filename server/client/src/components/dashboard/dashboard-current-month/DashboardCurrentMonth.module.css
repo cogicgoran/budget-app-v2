@@ -1,7 +1,7 @@
 .dashboard-current-month {
     display: flex;
     gap: 1em;
-    padding: 2em;
+    padding: 3em;
 }
 
 .dashboard-current-month__header {

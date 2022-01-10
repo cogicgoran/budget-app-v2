@@ -49,7 +49,7 @@ export  function handleIncomingArticles(articles) {
 
   for (const key in receiptsObj) {
     if (Object.hasOwnProperty.call(receiptsObj, key)) {
-      receipts.push(receiptsObj[key])
+      receipts.push(receiptsObj[key]);
     }
   }
   return receipts;
