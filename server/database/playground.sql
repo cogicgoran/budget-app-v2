@@ -21,15 +21,19 @@ INSERT INTO receipts ( id, marketplace_id, receipt_date, total_price, currency )
 VALUES (3, 3, "2023-01-05 16:16:16", 888, "RSD");
 -- ------------------------------------
 INSERT INTO articles ( id, name, category_id, receipt_id, currency, unit_price, ammount, total_price ) 
-VALUES (1, "Banana", 5, 1, "RSD", 250, 1, 111);
+VALUES (1, "Banana", 5, 1, "RSD", 30, 1, 30);
 INSERT INTO articles ( id, name, category_id, receipt_id, currency, unit_price, ammount, total_price ) 
-VALUES (2, "Meda Igracka", 6, 1, "RSD", 2400, 1, 222);
+VALUES (2, "Meda Igracka", 6, 1, "RSD", 200, 1, 200);
 INSERT INTO articles ( id, name, category_id, receipt_id, currency, unit_price, ammount, total_price ) 
-VALUES (3, "Kafa", 1, 2, "RSD", 240, 1, 444);
+VALUES (3, "Kafa", 1, 2, "RSD", 440, 1, 444);
 INSERT INTO articles ( id, name, category_id, receipt_id, currency, unit_price, ammount, total_price ) 
-VALUES (4, "Vino Vranjanac", 1, 3, "RSD", 470, 1, 333);
+VALUES (4, "Vino Vranjanac", 1, 3, "RSD", 333, 1, 333);
 INSERT INTO articles ( id, name, category_id, receipt_id, currency, unit_price, ammount, total_price ) 
-VALUES (5, "Kafa", 1, 3, "RSD", 240, 1, 555);
+VALUES (5, "Kafa", 1, 3, "RSD", 555, 1, 555);
+INSERT INTO articles ( id, name, category_id, receipt_id, currency, unit_price, ammount, total_price ) 
+VALUES (6, "Testenina", 1, 1, "RSD", 100, 1, 100);
+INSERT INTO articles ( id, name, category_id, receipt_id, currency, unit_price, ammount, total_price ) 
+VALUES (7, "Zvaka", 4, 1, "RSD", 3, 1, 3);
 ------------------------------------
 --  get last 5
 SELECT r.id AS receipt_id, m.name AS shop_name, m.address AS shop_address, r.currency, r.receipt_date, r.total_price AS receipt_price, a.total_price AS articlePrice, c.name AS cat_name
@@ -38,3 +42,8 @@ INNER JOIN articles AS a ON r.id = a.receipt_id
 INNER JOIN marketplaces as m ON m.id = r.marketplace_id 
 INNER JOIN categories as c ON c.id = a.category_id
 WHERE adddate(receipt_date,90) > current_timestamp();
+
+-- get info for current month
+SELECT a.name, a.total_price, a.currency, c.name FROM (SELECT * FROM receipts WHERE month(receipt_date) = month(current_timestamp()) AND year(receipt_date) = year(current_timestamp())) AS r
+INNER JOIN articles AS a ON r.id = a.receipt_id
+INNER JOIN categories AS c on a.category_id = c.id;

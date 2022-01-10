@@ -25,12 +25,12 @@
     border-radius: 1em;
 }
 
-.dashboard-recent__controls button:nth-child(1) {
+.dashboard-recent__controls > *:nth-child(1) button {
     background-color: #1A4E5B;
     border: 1px solid #314354;
 }
 
-.dashboard-recent__controls button:nth-child(2) {
+.dashboard-recent__controls > *:nth-child(2) button {
     background-color: #60A917;
     border: 1px solid #2D7600;
 }

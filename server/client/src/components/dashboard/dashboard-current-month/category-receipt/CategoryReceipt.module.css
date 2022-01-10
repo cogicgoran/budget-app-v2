@@ -1,0 +1,28 @@
+.dashboard__current-month-category {
+  display: grid;
+  grid-template-columns: 5em 6em;
+  column-gap: .2em;
+  text-align: right;
+  align-items: center;
+  margin-bottom: .2em;
+}
+
+.dashboard__current-month-category:last-of-type{
+  margin-bottom: unset;
+}
+
+.dashboard__current-month-category span:nth-child(1) {
+  background-color: gray;
+  color: white;
+  padding: 0.2em 0.8em;
+  border-radius: 1em;
+}
+
+.dashboard__current-month-category span {
+  justify-self: right;
+  width: fit-content;
+}
+
+.dashboard__current-month-category span:nth-child(2) {
+  color: #660000;
+}

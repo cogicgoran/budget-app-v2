@@ -36,6 +36,18 @@ function getReceiptById(res, receiptId) {
   });
 }
 
+function getMonthReceipts(res) {
+  dbConn.query(`SELECT a.name, a.total_price, a.currency, c.name FROM (SELECT * FROM receipts WHERE month(receipt_date) = month(current_timestamp()) AND year(receipt_date) = year(current_timestamp())) AS r
+  INNER JOIN articles AS a ON r.id = a.receipt_id
+  INNER JOIN categories AS c on a.category_id = c.id;`, function(err, results, fields) {
+    if (err) {
+      res.json({error:"error"});
+    }else {
+      res.json(results);
+    }
+  });
+}
+
 function insertReceipt(res, body, jsonString) {
   dbConn.query(
     'INSERT INTO receipts ( shop_name, shop_address, receipt_date, articles ) VALUES (?, ?, ?, ?);',
@@ -68,6 +80,7 @@ module.exports = {
   getAllReceipts,
   getLatestReceipts,
   getReceiptById,
+  getMonthReceipts,
   insertReceipt,
   updateReceipt
 }

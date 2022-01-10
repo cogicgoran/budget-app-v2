@@ -5,7 +5,6 @@ export  function handleIncomingArticles(articles) {
     // Create object for each individual receipt with receipt info
     const property = String(article.receipt_id);
     if (!receiptsObj[property]) {
-      console.log(article);
         receiptsObj[property] = {};
         receiptsObj[property].receipt_id = article.receipt_id;
         receiptsObj[property].shop_name = article.shop_name;

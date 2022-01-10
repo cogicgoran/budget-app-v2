@@ -5,7 +5,7 @@ const bodyParser = require('body-parser');
 
 const validateReceipt = require("./middleware/validateReceipt");
 const validateCurrency = require("./middleware/validateCurrency");
-const { getAllReceipts, getLatestReceipts, getReceiptById, insertReceipt, updateReceipt } = require("./database/receipts");
+const { getAllReceipts, getLatestReceipts, getReceiptById, getMonthReceipts, insertReceipt, updateReceipt } = require("./database/receipts");
 const { getAllCurrencies, insertCurrency } = require("./database/currency");
 
 const app = express();
@@ -22,6 +22,10 @@ app.get('/api/receipts', function(req, res) {
 
 app.get('/api/receipts-latest', function(req, res) {
   getLatestReceipts(res);
+});
+
+app.get('/api/receipts-current-month', function(req, res) {
+  getMonthReceipts(res);
 });
 
 app.get('/api/receipts/:receiptId', function(req, res) {
