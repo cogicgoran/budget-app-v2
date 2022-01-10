@@ -4,8 +4,7 @@ import { PATHS } from 'App.constants';
 
 function ViewReceipt(props) {
   const navigate = useNavigate();
-  console.log(props);
-
+  
   return (
     <tr>
       <td>{props.id}</td>

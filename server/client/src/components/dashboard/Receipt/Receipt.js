@@ -1,22 +1,23 @@
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
 import { PATHS } from 'App.constants';
+import { Link } from 'react-router-dom';
 
 import styles from './Receipt.module.css';
 
+const weekday = ["Sun","Mon","Tue","Wed","Thu","Fri","Sat"];
+
 function Receipt(props) {
-  const navigate = useNavigate();
-  console.log(props);
+  const date = new Date(props['receipt_date']);
 
   return (
     <article className={styles['dashboard__receipt']}>
-      <div>{props['most_spent_category']}</div>
+      <div><span>{props['mostSpentCategory'].catName}</span></div>
       <div>{props['shop_name']}</div>
-      <div>{new Date(props['receipt_date']).toLocaleDateString("en-GB",{day:"numeric" , month:"short", year: "numeric"})}</div>
-      <div>{props['total_price']} {props['currency']}</div>
+      <div>{weekday[date.getDay()]}, {date.toLocaleDateString("en-GB",{day:"numeric" , month:"short", year: "numeric"})}</div>
+      <div>{props['receipt_price']} {props['currency']}</div>
       <div className={styles['dashboard__receipt-actions']}>
-        <div>eye</div>
-        <div onClick={()=> navigate(PATHS.VIEW_RECEIPTS + "/" + props.id)}>edit</div>
+        <Link to={PATHS.VIEW_RECEIPTS + "/" + props.receipt_id}><div>eye</div></Link>
+        <Link to={PATHS.VIEW_RECEIPTS + "/" + props.receipt_id}><div>edit</div></Link>
         <div>del</div>
       </div>
     </article>

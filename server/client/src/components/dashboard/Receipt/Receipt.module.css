@@ -1,16 +1,22 @@
 .dashboard__receipt {
     display: grid;
     align-items: center;
-    grid-template-columns: 1fr 2fr 7em 7em 150px;
+    grid-template-columns: 1fr 2fr 9em 8em 200px;
     column-gap: .2em;
-    padding: .2em .5em;
-    border: 2px solid white;
+    padding: .8em .8em;
+    border: 1px solid #90C3D0;
     border-radius: 4px;
-    margin-bottom: 0.2em;
+    margin-bottom: 0.4em;
+    font-size: .8em;
+    font-weight: 300;
 }
 
-.dashboard__receipt > :nth-child(1) {
-    
+.dashboard__receipt > :nth-child(1) span {
+    padding: 0.2em 1em;
+    border-radius: 1em;
+    font-size: .8em;
+    background-color: gray;
+    color: white;
 }
 
 .dashboard__receipt > :nth-child(2) {
@@ -22,11 +28,12 @@
 }
 
 .dashboard__receipt > :nth-child(4) {
+    color: #660000;
     text-align: right;
 }
 
 .dashboard__receipt > :nth-child(5) {
-    margin-left: 30px;
+    margin-left: 80px;
 }
 
 .dashboard__receipt-actions {

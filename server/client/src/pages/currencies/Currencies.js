@@ -25,7 +25,6 @@ function Currencies() {
         }
       });
       const data = await response.json();
-      console.log(data);
       setCurrencyList(data);
     };
 
@@ -49,7 +48,6 @@ function Currencies() {
       if (response.status === 200) {
         navigate(PATHS.HOME);
       }
-      console.log(response);
       const data = await response.json();
       console.log(data);
     } else {

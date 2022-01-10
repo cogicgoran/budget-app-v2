@@ -1,11 +1,37 @@
 .dashboard-recent {
-    padding: 0 2em;
     min-height: 300px;
+    padding: 0 .4em;
     background-color: #F5FDFF;
+    font-size: .8em;
 }
 
 .dashboard-recent h2 {
+    padding: 0 1em;
     margin: 0;
     font-size: 1em;
     font-weight: 300;
+}
+
+.dashboard-recent__controls {
+    margin-top: 1em;
+    text-align: center;
+    font-size: .6em;
+    color: white;
+}
+
+.dashboard-recent__controls button {
+    cursor: pointer;
+    padding: .4em 2em;
+    margin: 0 1em;
+    border-radius: 1em;
+}
+
+.dashboard-recent__controls button:nth-child(1) {
+    background-color: #1A4E5B;
+    border: 1px solid #314354;
+}
+
+.dashboard-recent__controls button:nth-child(2) {
+    background-color: #60A917;
+    border: 1px solid #2D7600;
 }

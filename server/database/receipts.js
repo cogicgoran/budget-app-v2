@@ -11,7 +11,13 @@ function getAllReceipts(res) {
 };
 
 function getLatestReceipts(res) {
-  dbConn.query('SELECT * FROM receipts;', function(err, results, fields) {
+  const sql = `SELECT r.id AS receipt_id, m.name AS shop_name, m.address AS shop_address, r.currency, r.receipt_date, r.total_price AS receipt_price, a.total_price AS articlePrice, c.name AS cat_name
+  FROM ( SELECT * FROM receipts ORDER BY receipt_date DESC LIMIT 0,5 ) AS r 
+ INNER JOIN articles AS a ON r.id = a.receipt_id 
+ INNER JOIN marketplaces as m ON m.id = r.marketplace_id 
+ INNER JOIN categories as c ON c.id = a.category_id
+ WHERE adddate(receipt_date,90) > current_timestamp();`
+  dbConn.query(sql, function(err, results, fields) {
     if (err) {
         res.status(500).json({error:"error"});
     }else {

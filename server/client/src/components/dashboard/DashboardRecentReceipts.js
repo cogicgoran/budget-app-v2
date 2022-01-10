@@ -1,5 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import styles from './DashboardRecentReceipts.module.css';
+import { handleIncomingArticles } from './DashboardRecentReceipts.functions';
+import { Link } from 'react-router-dom';
+import { PATHS } from 'App.constants';
 
 import Receipt from './Receipt/Receipt';
 
@@ -11,7 +14,7 @@ function DashboardRecentReceipts() {
     var dataResponse;
     if ( receipts.length > 0) {
         dataResponse = receipts.map(receipt => {
-            return <Receipt key={receipt.id} {...receipt} />
+            return <Receipt key={receipt.receipt_id} {...receipt} />
         });
     } else {
         dataResponse  = <p>There are no receipts in the past 90 days!</p>;
@@ -27,9 +30,9 @@ function DashboardRecentReceipts() {
                 'Content-Type': 'application/json'
               }
             });
-            console.log(response);
+            
             const data = await response.json();
-            setReceipts(data);
+            setReceipts(handleIncomingArticles(data));
             setIsDataSet(true);
             setIsLoading(false);
           };
@@ -42,6 +45,10 @@ function DashboardRecentReceipts() {
             <div>
                 {isLoading && !isDataSet && <p>Loading...</p> }
                 {!isLoading && isDataSet && dataResponse}
+                <div className={styles['dashboard-recent__controls']}>
+                    <Link to={PATHS.VIEW_RECEIPTS}><button type='button'>SEE MORE</button></Link>
+                    <Link to={PATHS.NEW_RECEIPTS}><button type='button'>ADD NEW</button></Link>
+                </div>
             </div>
         </div>
     );
