@@ -12,7 +12,6 @@ function ReceiptProductList(props) {
             <th>Category</th>
             <th>Price</th>
             <th></th>
-            <th></th>
           </tr>
         </thead>
         <tbody>
@@ -21,6 +20,7 @@ function ReceiptProductList(props) {
           })}
         </tbody>
       </table>
+      <span className={styles['new-receipt-total']}>500 {props.currency}</span>
     </div>
   );
 };

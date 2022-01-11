@@ -1,3 +1,39 @@
 .new-receipt-actions {
   text-align: center;
 }
+
+.new-receipt {
+  background-color: white;
+  color: #1A4E5B;
+}
+
+.new-receipt h3{
+  text-align: center;
+}
+
+.new-receipt input::placeholder {
+  font-style: italic;
+  color: #90C3D0;
+}
+
+.new-receipt input {
+  border: 1px solid #90C3D0;
+}
+
+.new-receipt__add-product {
+  margin-top: 1em;
+  padding: .3em 1em;
+  background-color: #B1DDF0;
+  border: 1px solid #10739E;
+  border-radius: 1em;
+  font-size: .6em;
+}
+
+.new-receipt-finish-btn {
+  padding: 0.3em 2.5em;
+  border: 1px solid #2D7600;
+  border-radius: 1em;
+  font-size: 0.6em;
+  color: white;
+  background-color: #60A917;
+}

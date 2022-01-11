@@ -1,11 +1,18 @@
 .new-receipt-table {
+  margin-top: 2em;
   width: 100%;
   text-align: left;
+  border-collapse: collapse;
 }
 
 .new-receipt-table th,
 .new-receipt-table td {
   padding: .2em;
+  border: 1px solid #90C3D0;
+}
+
+.new-receipt-table th {
+  text-align: center;
 }
 
 .new-receipt-table tr {
@@ -16,17 +23,6 @@
   background-color: lightblue;
 }
 
-.new-receipt-table td:first-of-type {
-  border-radius: 4px 0 0 4px;
-}
-
-.new-receipt-table td:last-of-type {
-  border-radius: 0 4px 4px 0;
-}
-
-.new-receipt-table td:nth-of-type(1) {
-}
-
 .new-receipt-table td:nth-of-type(2) {
   width: 25%;
 }
@@ -35,7 +31,13 @@
   width: 25%;
 }
 
-.new-receipt-table td:nth-of-type(4),
-.new-receipt-table td:nth-of-type(5) {
+.new-receipt-table td:nth-of-type(4) {
   width: 1em;
+}
+
+.new-receipt-total {
+  margin-top: 1em;
+  margin-bottom: -1em;
+  display: block;
+  text-align: right;
 }

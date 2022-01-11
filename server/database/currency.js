@@ -1,7 +1,7 @@
 const { dbConn } = require("./connection");
 
 function getAllCurrencies(res) {
-  dbConn.query("SELECT * FROM currencies",
+  dbConn.query("SELECT code FROM currencies",
   function(err, result, fields) {
     if(err) {
       return res.status(500).json({error:"Something went wrong"});

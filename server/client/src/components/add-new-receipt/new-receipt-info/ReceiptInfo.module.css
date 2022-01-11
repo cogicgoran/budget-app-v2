@@ -1,8 +1,15 @@
 .receipt-wrapper {
-  text-align: center;
+  text-align: left;
+  font-size: .8em;
+}
+
+.receipt-wrapper > div {
+  display: grid;
+  grid-template-columns: 9em 14em;
 }
 
 .receipt-wrapper input {
+  padding: .1em .2em;
   background-color: white;
 }
 
@@ -19,4 +26,8 @@
 
 .receipt-date-wrapper input:nth-of-type(4){
   margin-left: 2em;
+}
+
+.receipt-info-item {
+  margin-bottom: .2em;
 }

@@ -1,7 +1,12 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import styles from './ReceiptInfo.module.css';
+import { PATHS } from 'App.constants';
+import { Link } from 'react-router-dom';
 
 function ReceiptInfo(props) {
+  const [currencies, setCurrencies] = useState([]);
+  const [marketplaces, setMarketplaces] = useState([]);
+
   function changeHandler(e) {
     props.onChangeValue(prevState => {
       return {
@@ -11,30 +16,74 @@ function ReceiptInfo(props) {
     });
   };
 
+  var currencyDisplay;
+  if (currencies.length > 0) {
+    currencyDisplay = currencies.map(currency => {
+      return <option value={currency.code}>{currency.code}</option>
+    });
+  };
+
+  var marketplaceDisplay;
+  if (marketplaces.length > 0) {
+    marketplaceDisplay = marketplaces.map(marketplace => {
+      return <option value={marketplace.id}>{marketplace.name} {marketplace.address}</option>
+    });
+  };
+
+  useEffect(() => {
+    async function fetchCurrencies() {
+      const response = await fetch("http://localhost:8000/api/currencies",{
+        method:"GET",
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      });
+      const data = await response.json();
+
+      const response1 = await fetch("http://localhost:8000/api/marketplaces",{
+        method:"GET",
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      });
+
+      const data1 = await response1.json();
+
+      setCurrencies(data);
+      setMarketplaces(data1);
+    }
+    fetchCurrencies();
+  }, []);
+
   return (
     <div className={styles['receipt-wrapper']}>
-      <div>
-        <div><label htmlFor="shop-name">Shop Name</label></div>
-        <input type="text" name="name" id='shop-name' value={props.value.name} onChange={changeHandler}/>
+      {/* <div className={styles['receipt-info-item']}>
+        <label htmlFor="shop-name">Shop Name:</label>
+        <input type="text" name="name" id='shop-name' placeholder='Name...' value={props.value.name} onChange={changeHandler}/>
       </div>
 
-      <div>
-        <div><label htmlFor="shop-address">Shop Address</label></div>
-        <input type="text" name="address" id='shop-address' value={props.value.address} onChange={changeHandler}/>
+      <div className={styles['receipt-info-item']}>
+        <label htmlFor="shop-address">Shop Address:</label>
+        <input type="text" name="address" id='shop-address' placeholder='Address...' value={props.value.address} onChange={changeHandler}/>
+      </div> */}
+
+      <div className={styles['receipt-info-item']}>
+        <label htmlFor='marketplace'>Marketplace:</label>
+        
+        {marketplaces.length > 0 && <select name="marketplace" id="marketplace" value={props.value.marketplace} onChange={changeHandler}>{marketplaceDisplay}</select>}
+        {marketplaces.length === 0 && <span>There are no marketplaces found in the database. You can add one <Link to={PATHS.MARKETPLACES}><i>here</i></Link></span> }
       </div>
       
-      <div>
-        <div><label>Receipt Date</label></ div>
-        <div className={styles['receipt-date-wrapper']}>
-        <input required type="text" name="date-day" id='receipt-date-day' placeholder="DD" value={props.value['date-day']} onChange={changeHandler}/>
-        <input required type="text" name="date-month" id='receipt-date-month'  placeholder="MM" value={props.value['date-month']} onChange={changeHandler}/>
-        <input required type="text" name="date-year" id='receipt-date-year' placeholder="YYYY" value={props.value['date-year']} onChange={changeHandler}/>
-        <input type="text" name="date-hour" id='receipt-date-hour' placeholder="hh(24)" value={props.value['date-hour']} onChange={changeHandler}/>
-        <input type="text" name="date-minute" id='receipt-date-minute' placeholder="mm" value={props.value['date-minute']} onChange={changeHandler}/>
-        </div>
+      <div className={styles['receipt-info-item']}>
+        <label htmlFor='date'>Date:</label>
+        <input type="datetime-local" name='date' id='date' value={props.value.date} onChange={changeHandler}/>
       </div>
 
-      
+      <div className={styles['receipt-info-item']}>
+        <label htmlFor='currency'>Currency:</label>
+        {currencies.length > 0 && <select name="currency" id="currency" value={props.value.currency} onChange={changeHandler}>{currencyDisplay}</select>}
+        {currencies.length === 0 && <span>There are no currencies found in the database. You can add one <Link to={PATHS.CURRENCIES}><i>here</i></Link></span>  }
+      </div>
     </div>
   );
 };

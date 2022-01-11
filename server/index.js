@@ -7,6 +7,7 @@ const validateReceipt = require("./middleware/validateReceipt");
 const validateCurrency = require("./middleware/validateCurrency");
 const { getAllReceipts, getLatestReceipts, getReceiptById, getMonthReceipts, insertReceipt, updateReceipt } = require("./database/receipts");
 const { getAllCurrencies, insertCurrency } = require("./database/currency");
+const { getAllMarketplaces } = require("./database/marketplaces");
 
 const app = express();
 
@@ -45,6 +46,10 @@ app.put('/api/receipts', validateReceipt, function (req, res) {
 
 app.get('/api/currencies', function (req, res) {
   getAllCurrencies(res);
+});
+
+app.get('/api/marketplaces', function (req, res) {
+  getAllMarketplaces(res);
 });
 
 app.post('/api/currencies', validateCurrency, function (req, res) {

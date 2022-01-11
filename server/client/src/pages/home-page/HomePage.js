@@ -13,6 +13,7 @@ function HomePage() {
       <HomeBox pathTo={PATHS.STATISTICS}>Statistics</HomeBox>
       <HomeBox pathTo={PATHS.PRODUCTS}>View Products</HomeBox>
       <HomeBox pathTo={PATHS.CURRENCIES}>Currencies</HomeBox>
+      <HomeBox pathTo={PATHS.MARKETPLACES}>Marketplaces</HomeBox>
     </div>
   );
 };

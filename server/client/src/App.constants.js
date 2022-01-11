@@ -7,4 +7,5 @@ export const PATHS = {
   CATEGORIES: '/categories',
   CURRENCIES: '/currencies',
   DASHBOARD: '/dashboard',
+  MARKETPLACES: '/marketplaces',
 }

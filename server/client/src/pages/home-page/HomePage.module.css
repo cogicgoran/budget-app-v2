@@ -3,15 +3,15 @@
   grid-template-columns: repeat(6, 1fr);
   grid-template-areas: 
     'view view dashboard dashboard new new'
-    'products products cat cat currency currency'
-    '. . stats stats . .';
+    'products products . . currency currency'
+    'cat cat stats stats marketplace marketplace';
   text-align: center;
 }
 
 .home-wrapper > a  {
   border: 1px solid;
   margin: 1em;
-  transition: background-color 500ms, border-color 500ms, border-width 500ms, margin 500ms;
+  transition: background-color 300ms, border-color 300ms, border-width 300ms, margin 300ms;
 }
 
 .home-wrapper > a:hover  {
@@ -99,4 +99,15 @@
 .home-wrapper > *:nth-child(7):hover {
   background-color: #e6d11a;
   border-color: #89920b;
+}
+
+.home-wrapper > *:nth-child(8) {
+  grid-area: marketplace;
+  background-color: #f797cf;
+  border-color: #b95790;
+}
+
+.home-wrapper > *:nth-child(8):hover {
+  background-color: #b95790;
+  border-color: #8a3466;
 }
