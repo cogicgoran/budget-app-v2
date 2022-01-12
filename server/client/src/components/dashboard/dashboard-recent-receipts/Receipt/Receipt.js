@@ -2,7 +2,8 @@ import React from 'react';
 import { PATHS } from 'App.constants';
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faEye, faTrash, faEdit } from '@fortawesome/free-solid-svg-icons';
+import { faEye, faTrashAlt } from '@fortawesome/free-regular-svg-icons';
+import { faPenToSquare } from '@fortawesome/free-solid-svg-icons';
 
 import styles from './Receipt.module.css';
 
@@ -19,8 +20,8 @@ function Receipt(props) {
       <div>{props['receipt_price']} {props['currency']}</div>
       <div className={styles['dashboard__receipt-actions']}>
         <Link to={PATHS.VIEW_RECEIPTS + "/" + props.receipt_id}><FontAwesomeIcon className={styles['dashboard__receipt-icon']} icon={faEye}/></Link>
-        <Link to={PATHS.EDIT_RECEIPTS + "/" + props.receipt_id}><FontAwesomeIcon className={styles['dashboard__receipt-icon']} icon={faEdit}/></Link>
-        <div><FontAwesomeIcon className={styles['dashboard__receipt-icon']} icon={faTrash}/></div>
+        <Link to={PATHS.EDIT_RECEIPTS + "/" + props.receipt_id}><FontAwesomeIcon className={styles['dashboard__receipt-icon']} icon={faPenToSquare}/></Link>
+        <div><FontAwesomeIcon className={styles['dashboard__receipt-icon']} icon={faTrashAlt}/></div>
       </div>
     </article>
   );

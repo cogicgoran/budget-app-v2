@@ -3,7 +3,7 @@
     align-items: center;
     grid-template-columns: 10em 20em 9em 8em 1fr;
     column-gap: .2em;
-    padding: .4em .8em;
+    padding: .2em .8em;
     border: 1px solid #90C3D0;
     border-radius: 4px;
     margin-bottom: 0.4em;
@@ -18,14 +18,6 @@
     background-color: gray;
     border: 1px solid rgb(100, 93, 93);
     color: white;
-}
-
-.dashboard__receipt > :nth-child(2) {
-    
-}
-
-.dashboard__receipt > :nth-child(3) {
-    
 }
 
 .dashboard__receipt > :nth-child(4) {
@@ -45,4 +37,11 @@
 
 .dashboard__receipt-icon {
     font-size: 20px;
+    padding: .3em;
+    transition: background-color 200ms;
+    border-radius: 50%;
+}
+
+.dashboard__receipt-icon:hover {
+    background-color: #90C3D0;
 }
