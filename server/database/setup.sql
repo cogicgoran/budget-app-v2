@@ -38,7 +38,7 @@ CREATE TABLE IF NOT EXISTS articles(
     category_id SMALLINT UNSIGNED NOT NULL,
     receipt_id INT UNSIGNED NOT NULL,
     unit_price INT UNSIGNED NOT NULL,
-    ammount INT UNSIGNED NOT NULL DEFAULT 1,
+    amount INT UNSIGNED NOT NULL DEFAULT 1,
     total_price INT UNSIGNED,
     currency CHAR(3) NOT NULL,
     FOREIGN KEY (category_id) REFERENCES categories(id) ON UPDATE CASCADE ON DELETE CASCADE,

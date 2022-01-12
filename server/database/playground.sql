@@ -20,19 +20,19 @@ VALUES (2, 2, "2022-12-12 16:40:00", 444, "USD");
 INSERT INTO receipts ( id, marketplace_id, receipt_date, total_price, currency ) 
 VALUES (3, 3, "2023-01-05 16:16:16", 888, "RSD");
 -- ------------------------------------
-INSERT INTO articles ( id, name, category_id, receipt_id, currency, unit_price, ammount, total_price ) 
+INSERT INTO articles ( id, name, category_id, receipt_id, currency, unit_price, amount, total_price ) 
 VALUES (1, "Banana", 5, 1, "RSD", 30, 1, 30);
-INSERT INTO articles ( id, name, category_id, receipt_id, currency, unit_price, ammount, total_price ) 
+INSERT INTO articles ( id, name, category_id, receipt_id, currency, unit_price, amount, total_price ) 
 VALUES (2, "Meda Igracka", 6, 1, "RSD", 200, 1, 200);
-INSERT INTO articles ( id, name, category_id, receipt_id, currency, unit_price, ammount, total_price ) 
+INSERT INTO articles ( id, name, category_id, receipt_id, currency, unit_price, amount, total_price ) 
 VALUES (3, "Kafa", 1, 2, "RSD", 440, 1, 444);
-INSERT INTO articles ( id, name, category_id, receipt_id, currency, unit_price, ammount, total_price ) 
+INSERT INTO articles ( id, name, category_id, receipt_id, currency, unit_price, amount, total_price ) 
 VALUES (4, "Vino Vranjanac", 1, 3, "RSD", 333, 1, 333);
-INSERT INTO articles ( id, name, category_id, receipt_id, currency, unit_price, ammount, total_price ) 
+INSERT INTO articles ( id, name, category_id, receipt_id, currency, unit_price, amount, total_price ) 
 VALUES (5, "Kafa", 1, 3, "RSD", 555, 1, 555);
-INSERT INTO articles ( id, name, category_id, receipt_id, currency, unit_price, ammount, total_price ) 
+INSERT INTO articles ( id, name, category_id, receipt_id, currency, unit_price, amount, total_price ) 
 VALUES (6, "Testenina", 1, 1, "RSD", 100, 1, 100);
-INSERT INTO articles ( id, name, category_id, receipt_id, currency, unit_price, ammount, total_price ) 
+INSERT INTO articles ( id, name, category_id, receipt_id, currency, unit_price, amount, total_price ) 
 VALUES (7, "Zvaka", 4, 1, "RSD", 3, 1, 3);
 ------------------------------------
 --  get last 5

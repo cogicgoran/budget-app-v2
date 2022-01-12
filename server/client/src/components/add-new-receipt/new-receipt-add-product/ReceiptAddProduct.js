@@ -6,7 +6,7 @@ const NEW_ARTICLE_DEFAULT = {
   name:"",
   category:"",
   price:"",
-  ammount:""
+  amount:""
 };
 
 function ReceiptAddProduct(props) {
@@ -53,8 +53,8 @@ function ReceiptAddProduct(props) {
             <input type="text" id='product-price' name='price' value={article.price} placeholder='Unit price...' onChange={changeHandler}/>
           </div>
           <div className={styles['new-product-input']}>
-            <label htmlFor="product-ammount">Ammount:</label>
-            <input type="number" id='product-ammount' name='ammount' value={article.ammount} placeholder='Ammount...' onChange={changeHandler}/>
+            <label htmlFor="product-amount">Amount:</label>
+            <input type="number" id='product-amount' name='amount' value={article.amount} placeholder='Amount...' onChange={changeHandler}/>
           </div>
         </div>
 

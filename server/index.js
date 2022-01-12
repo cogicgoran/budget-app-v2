@@ -5,9 +5,10 @@ const bodyParser = require('body-parser');
 
 const validateReceipt = require("./middleware/validateReceipt");
 const validateCurrency = require("./middleware/validateCurrency");
+const validateMarketplace = require("./middleware/validateMarketplace");
 const { getAllReceipts, getLatestReceipts, getReceiptById, getMonthReceipts, insertReceipt, updateReceipt } = require("./database/receipts");
 const { getAllCurrencies, insertCurrency } = require("./database/currency");
-const { getAllMarketplaces } = require("./database/marketplaces");
+const { getAllMarketplaces, insertMarketplace } = require("./database/marketplaces");
 
 const app = express();
 
@@ -50,6 +51,11 @@ app.get('/api/currencies', function (req, res) {
 
 app.get('/api/marketplaces', function (req, res) {
   getAllMarketplaces(res);
+});
+
+app.post('/api/marketplaces', validateMarketplace, function (req, res) {
+  console.log("validated");
+  insertMarketplace(res,{name:req.body.name, address:req.body.address});
 });
 
 app.post('/api/currencies', validateCurrency, function (req, res) {
