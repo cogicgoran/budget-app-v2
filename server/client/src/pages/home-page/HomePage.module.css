@@ -11,12 +11,13 @@
 .home-wrapper > a  {
   border: 1px solid;
   margin: 1em;
-  transition: background-color 300ms, border-color 300ms, border-width 300ms, margin 300ms;
+  transition: background-color 300ms, border-color 300ms, border-width 300ms, margin 300ms, font-size 300ms;
 }
 
 .home-wrapper > a:hover  {
   margin: 0;
   border-width: .4em;
+  font-size: 1.4em;
 }
 
 .home-wrapper > a > div {

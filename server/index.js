@@ -54,7 +54,6 @@ app.get('/api/marketplaces', function (req, res) {
 });
 
 app.post('/api/marketplaces', validateMarketplace, function (req, res) {
-  console.log("validated");
   insertMarketplace(res,{name:req.body.name, address:req.body.address});
 });
 

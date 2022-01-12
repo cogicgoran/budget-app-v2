@@ -3,6 +3,8 @@ import styles from './DashboardRecentReceipts.module.css';
 import { handleIncomingArticles } from './DashboardRecentReceipts.functions';
 import { Link } from 'react-router-dom';
 import { PATHS } from 'App.constants';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faFileLines } from '@fortawesome/free-solid-svg-icons';
 
 import Receipt from './Receipt/Receipt';
 
@@ -17,7 +19,7 @@ function DashboardRecentReceipts() {
             return <Receipt key={receipt.receipt_id} {...receipt} />
         });
     } else {
-        dataResponse  = <p>There are no receipts in the past 90 days!</p>;
+        dataResponse  = <div className={styles['dashboard_no-recent_results']}><FontAwesomeIcon className={styles['dashboard_no-recent_results-icon']} icon={faFileLines} /><span>There are no receipts in the past 90 days</span> </div>;
     };
 
     useEffect(() => {
@@ -49,6 +51,7 @@ function DashboardRecentReceipts() {
                     <Link to={PATHS.VIEW_RECEIPTS}><button type='button'>SEE MORE</button></Link>
                     <Link to={PATHS.NEW_RECEIPTS}><button type='button'>ADD NEW</button></Link>
                 </div>
+                
             </div>
         </div>
     );

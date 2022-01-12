@@ -1,6 +1,6 @@
 .dashboard-recent {
     min-height: 300px;
-    padding: 0 .4em;
+    padding: .4em;
     background-color: #F5FDFF;
 }
 
@@ -12,7 +12,7 @@
 }
 
 .dashboard-recent__controls {
-    margin-top: 1em;
+    margin-top: 2em;
     text-align: center;
     font-size: .6em;
     color: white;
@@ -33,4 +33,18 @@
 .dashboard-recent__controls > *:nth-child(2) button {
     background-color: #60A917;
     border: 1px solid #2D7600;
+}
+
+.dashboard_no-recent_results {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    margin: 2em auto;
+    width: 200px;
+}
+
+.dashboard_no-recent_results-icon{
+    font-size: 100px;
+    color: #647687;
 }

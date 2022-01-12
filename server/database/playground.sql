@@ -47,3 +47,6 @@ WHERE adddate(receipt_date,90) > current_timestamp();
 SELECT a.name, a.total_price, a.currency, c.name FROM (SELECT * FROM receipts WHERE month(receipt_date) = month(current_timestamp()) AND year(receipt_date) = year(current_timestamp())) AS r
 INNER JOIN articles AS a ON r.id = a.receipt_id
 INNER JOIN categories AS c on a.category_id = c.id;
+
+
+SELECT * FROM marketplaces;

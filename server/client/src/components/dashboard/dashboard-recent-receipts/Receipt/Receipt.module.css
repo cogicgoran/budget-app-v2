@@ -3,7 +3,7 @@
     align-items: center;
     grid-template-columns: 1fr 2fr 9em 8em 200px;
     column-gap: .2em;
-    padding: .8em .8em;
+    padding: .4em .8em;
     border: 1px solid #90C3D0;
     border-radius: 4px;
     margin-bottom: 0.4em;
@@ -39,4 +39,9 @@
 .dashboard__receipt-actions {
     display: flex;
     justify-content: space-evenly;
+}
+
+.dashboard__receipt-icon {
+    font-size: 20px;
+    color: #1A4E5B;
 }

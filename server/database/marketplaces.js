@@ -15,7 +15,6 @@ function insertMarketplace(res, data) {
     if (err) {
       return res.json({error:"error"});
     }else {
-      console.log("inserted");
       return res.sendStatus(200);
     }
   });
