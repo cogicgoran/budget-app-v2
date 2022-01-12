@@ -51,5 +51,9 @@ export  function handleIncomingArticles(articles) {
       receipts.push(receiptsObj[key]);
     }
   }
+
+  receipts.sort((a,b) => {
+    return new Date(b.receipt_date) - new Date(a.receipt_date);
+  })
   return receipts;
 }

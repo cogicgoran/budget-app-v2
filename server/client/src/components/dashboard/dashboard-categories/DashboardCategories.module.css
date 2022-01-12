@@ -1,12 +1,14 @@
 .dashboard-categories {
     padding: .4em;
     min-height: 100px;
-    background-color: #F5FDFF;
+    background-color: white;
 }
 
 .dashboard-categories h2 {
-    padding: 0 1em;
     margin: 0;
+    margin-bottom: .5em;
+    padding: 0 1em;
     font-size: 1em;
-    font-weight: 300;
+    font-weight: 400;
+    color: #0A1F24;
 }

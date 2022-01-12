@@ -19,7 +19,7 @@ function Receipt(props) {
       <div>{props['receipt_price']} {props['currency']}</div>
       <div className={styles['dashboard__receipt-actions']}>
         <Link to={PATHS.VIEW_RECEIPTS + "/" + props.receipt_id}><FontAwesomeIcon className={styles['dashboard__receipt-icon']} icon={faEye}/></Link>
-        <Link to={PATHS.VIEW_RECEIPTS + "/" + props.receipt_id}><FontAwesomeIcon className={styles['dashboard__receipt-icon']} icon={faEdit}/></Link>
+        <Link to={PATHS.EDIT_RECEIPTS + "/" + props.receipt_id}><FontAwesomeIcon className={styles['dashboard__receipt-icon']} icon={faEdit}/></Link>
         <div><FontAwesomeIcon className={styles['dashboard__receipt-icon']} icon={faTrash}/></div>
       </div>
     </article>

@@ -8,4 +8,5 @@ export const PATHS = {
   CURRENCIES: '/currencies',
   DASHBOARD: '/dashboard',
   MARKETPLACES: '/marketplaces',
+  EDIT_RECEIPTS: '/edit-receipts'
 }

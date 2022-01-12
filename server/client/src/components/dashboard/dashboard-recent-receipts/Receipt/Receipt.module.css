@@ -1,14 +1,14 @@
 .dashboard__receipt {
     display: grid;
     align-items: center;
-    grid-template-columns: 1fr 2fr 9em 8em 200px;
+    grid-template-columns: 10em 20em 9em 8em 1fr;
     column-gap: .2em;
     padding: .4em .8em;
     border: 1px solid #90C3D0;
     border-radius: 4px;
     margin-bottom: 0.4em;
     font-size: .8em;
-    font-weight: 300;
+    color: #1A4E5B;
 }
 
 .dashboard__receipt > :nth-child(1) span {
@@ -16,6 +16,7 @@
     border-radius: 1em;
     font-size: .8em;
     background-color: gray;
+    border: 1px solid rgb(100, 93, 93);
     color: white;
 }
 
@@ -32,16 +33,16 @@
     text-align: right;
 }
 
-.dashboard__receipt > :nth-child(5) {
-    margin-left: 80px;
+.dashboard__receipt > :nth-child(5) > * {
+    margin-left: 1em;
 }
 
 .dashboard__receipt-actions {
     display: flex;
-    justify-content: space-evenly;
+    justify-content: flex-end;
+    text-align: right;
 }
 
 .dashboard__receipt-icon {
     font-size: 20px;
-    color: #1A4E5B;
 }

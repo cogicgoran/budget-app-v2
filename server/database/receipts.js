@@ -16,11 +16,12 @@ function getLatestReceipts(res) {
  INNER JOIN articles AS a ON r.id = a.receipt_id 
  INNER JOIN marketplaces as m ON m.id = r.marketplace_id 
  INNER JOIN categories as c ON c.id = a.category_id
- WHERE adddate(receipt_date,90) > current_timestamp();`
+ WHERE adddate(receipt_date,90) > current_timestamp() ORDER BY receipt_date DESC;`
   dbConn.query(sql, function(err, results, fields) {
     if (err) {
         res.status(500).json({error:"error"});
     }else {
+      console.log(results);
         res.json(results);
     }
   });

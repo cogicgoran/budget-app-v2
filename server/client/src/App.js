@@ -45,6 +45,7 @@ function App() {
           <Route path={PATHS.CURRENCIES} element={<Currencies />} />
           <Route path={PATHS.DASHBOARD} element={<Dashboard />} />
           <Route path={PATHS.MARKETPLACES} element={<Marketplaces />} />
+          <Route path={PATHS.EDIT_RECEIPTS + '/:ReceiptId'} element={<ViewReceipt onAddReceipt={addReceiptHandler}/>} />
           <Route path='*' element={<Navigate replace to={PATHS.HOME} />}/>
         </Routes>
       </Router>

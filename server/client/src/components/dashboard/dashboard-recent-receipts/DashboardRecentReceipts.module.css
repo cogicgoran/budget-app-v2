@@ -1,14 +1,16 @@
 .dashboard-recent {
     min-height: 300px;
     padding: .4em;
-    background-color: #F5FDFF;
+    background-color: white;
 }
 
 .dashboard-recent h2 {
     padding: 0 1em;
     margin: 0;
+    margin-bottom: .5em;
     font-size: 1em;
-    font-weight: 300;
+    font-weight: 400;
+    color: #0A1F24;
 }
 
 .dashboard-recent__controls {
