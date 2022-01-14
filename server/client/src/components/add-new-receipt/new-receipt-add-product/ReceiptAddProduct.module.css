@@ -11,13 +11,13 @@
   z-index: 11;
   background-color: white;
   color: #1A4E5B;
-  font-size: .9em;
+  font-size: 14px;
 }
 
 .new-product h4 {
   margin-top: 0;
   font-weight: normal;
-  font-size: 1.1em;
+  font-size: 18px;
   text-align: center;
 }
 
@@ -36,8 +36,10 @@
 
 .new-product-input {
   display: grid;
-  grid-template-columns: 8em 13em;
-  margin-bottom: .1em;
+  align-items: center;
+  grid-template-columns: 14ch 30ch;
+  column-gap: 2ch;
+  margin-bottom: .2em;
 }
 
 .new-product-input input {
@@ -50,12 +52,12 @@
   display: flex;
   justify-content: center;
   gap: 4em;
-  font-size: .6em;
+  font-size: 10px;
 }
 
 .new-product__controls button {
+  padding: .3em 1em;
   min-width: 16ch;
-  padding: .3em 2em;
   border-radius: 1em;
   cursor: pointer;
 }
@@ -69,3 +71,17 @@
   background-color: #FAD9D5;
   border: 1px solid #AE4132;
 }
+
+.new-product__add-article-btn.disabled {
+  cursor: not-allowed;
+  background-color: #D5E8F4;
+  border-color: #B9E0A5;
+}
+/* If no valid data is set, ADD button is disabled (BG color #d5e8d4, border #b9e0a5 and cursor not-allowed) */
+
+/* margin-top: 1em;
+  padding: .3em 1em;
+  background-color: #B1DDF0;
+  border: 1px solid #10739E;
+  border-radius: 1em;
+  font-size: 10px; */

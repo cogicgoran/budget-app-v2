@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import styles from './ReceiptAddProduct.module.css';
 import { isValidArticle } from './ReceiptAddProduct.validator';
 
@@ -11,6 +11,7 @@ const NEW_ARTICLE_DEFAULT = {
 
 function ReceiptAddProduct(props) {
   const [ article, setArticle] = useState(NEW_ARTICLE_DEFAULT);
+  const [isProductValid, setIsProductValid] = useState(false);
 
 
   function clickHandler() {
@@ -22,7 +23,9 @@ function ReceiptAddProduct(props) {
       });
       // setArticle(NEW_ARTICLE_DEFAULT);
       props.onCancel();
-    };
+    } else {
+      setIsProductValid(false);
+    }
   };
 
   function changeHandler(e) {
@@ -33,6 +36,21 @@ function ReceiptAddProduct(props) {
       };
     });
   };
+
+  useEffect(() => {
+    const timerId = setTimeout(() => {
+      if (isValidArticle(article)) {
+        setIsProductValid(true);
+      } else {
+        setIsProductValid(false);
+      }
+    }, 300);
+    return () => {
+      clearTimeout(timerId);
+    }
+  },[article])
+
+  const addButtonClasses = isProductValid ? styles['new-product__add-article-btn'] : styles['new-product__add-article-btn'] + " " + styles.disabled;
 
   return (
     <div className={styles['new-product']}>
@@ -59,7 +77,7 @@ function ReceiptAddProduct(props) {
 
         <div className={styles['new-product__controls']}>
           <button className={styles['new-product__cancel-btn']} type='button' onClick={props.onCancel}>CANCEL</button>
-          <button className={styles['new-product__add-article-btn']} type='button' onClick={clickHandler}>ADD</button>
+          <button className={addButtonClasses} type='button' onClick={clickHandler}>ADD</button>
         </div>
       </div>
     </div>

@@ -10,7 +10,6 @@ export function isValidArticle( article ) {
     && articleCategory.length > 0
     && articlePrice !== ""
     && articlePrice.length > 0
-    && articlePrice.length < 12
     && !Number.isNaN(artNumber)
     && artNumber > 0
      ) {
