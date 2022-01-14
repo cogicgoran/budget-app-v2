@@ -10,7 +10,7 @@ import Backdrop from 'components/UI/backdrop/Backdrop';
 import { useNavigate } from 'react-router-dom';
 import { PATHS } from 'App.constants';
 import { isReceiptInfoValid } from './AddNewReceipt.validator';
-
+import { useTranslation } from 'react-i18next';
 
 const DEFAULT_RECEIPT_INFO = {
   marketplace:"",
@@ -19,10 +19,15 @@ const DEFAULT_RECEIPT_INFO = {
 };
 
 function AddNewReceipt() {
+  const { t } = useTranslation();
   const [articles, setArticles] = useState([]);
   const [receiptInfo, setReceiptInfo] = useState(DEFAULT_RECEIPT_INFO);
   const [showModal, setShowModal] = useState(false);
   const navigate = useNavigate();
+
+  const textAddProduct = t('addProduct');
+  const textFinish = t('finish');
+  // const textNewReceipt = t('newReceipt');
 
   const totalPrice = articles.reduce((acc,article) =>  acc + article.price, 0);
 
@@ -71,9 +76,9 @@ function AddNewReceipt() {
           <ReceiptProductList onRemoveArticle={removeArticleAtIndex} articleList={articles} total={totalPrice} currency={receiptInfo.currency}/>
           {showModal && ReactDOM.createPortal( <Backdrop onCancel={() => setShowModal(false)}/>, document.getElementById('backdrop-root'))}
           {showModal && ReactDOM.createPortal( <ReceiptAddProduct currency={receiptInfo.currency} onAddArticle={addArticleHandler} onCancel={() => setShowModal(false)}/>, document.getElementById('overlay-root'))}
-          <button className={styles['new-receipt__add-product']} type='button' onClick={() => setShowModal(true)}>+ ADD PRODUCT</button>
+          <button className={styles['new-receipt__add-product']} type='button' onClick={() => setShowModal(true)}>+ {textAddProduct}</button>
           <div className={styles['new-receipt-actions']}>
-            <button className={styles['new-receipt-finish-btn']} type='submit'>FINISH</button>
+            <button className={styles['new-receipt-finish-btn']} type='submit'>{textFinish}</button>
           </div>
         </form>
       </div>

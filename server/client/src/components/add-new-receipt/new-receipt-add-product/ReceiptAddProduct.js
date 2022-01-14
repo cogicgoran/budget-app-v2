@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import styles from './ReceiptAddProduct.module.css';
 import { isValidArticle } from './ReceiptAddProduct.validator';
+import { useTranslation } from 'react-i18next';
 
 const NEW_ARTICLE_DEFAULT = {
   name:"",
@@ -10,9 +11,16 @@ const NEW_ARTICLE_DEFAULT = {
 };
 
 function ReceiptAddProduct(props) {
+  const { t } = useTranslation();
   const [ article, setArticle] = useState(NEW_ARTICLE_DEFAULT);
   const [isProductValid, setIsProductValid] = useState(false);
 
+  const textPrice = t('price');
+  const textAddProduct = t('addProduct');
+  const textProductName = t('productName');
+  const textCategory = t('category');
+  const textAdd = t('add');
+  const textCancel = t('cancel');
 
   function clickHandler() {
     if (isValidArticle(article)) {
@@ -55,18 +63,18 @@ function ReceiptAddProduct(props) {
   return (
     <div className={styles['new-product']}>
       <div>
-        <h4>ADD PRODUCT</h4>
+        <h4>{textAddProduct}</h4>
         <div>
           <div className={styles['new-product-input']}>
-            <label htmlFor="product-name">Product Name:</label>
+            <label htmlFor="product-name">{textProductName}:</label>
             <input type="text" id='product-name' name='name' placeholder='Name...' value={article.name} onChange={changeHandler}/>
           </div>
           <div className={styles['new-product-input']}>
-            <label htmlFor="product-category">Category:</label>
+            <label htmlFor="product-category">{textCategory}:</label>
             <input type="text" id='product-category' name='category' placeholder='Category...' value={article.category} onChange={changeHandler}/>
           </div>
           <div className={styles['new-product-input']}>
-            <label htmlFor="product-price">Price:</label>
+            <label htmlFor="product-price">{textPrice}:</label>
             <input type="text" id='product-price' name='price' value={article.price} placeholder='Price...' onChange={changeHandler}/>
           </div>
           {/* <div className={styles['new-product-input']}>
@@ -76,8 +84,8 @@ function ReceiptAddProduct(props) {
         </div>
 
         <div className={styles['new-product__controls']}>
-          <button className={styles['new-product__cancel-btn']} type='button' onClick={props.onCancel}>CANCEL</button>
-          <button className={addButtonClasses} type='button' onClick={clickHandler}>ADD</button>
+          <button className={styles['new-product__cancel-btn']} type='button' onClick={props.onCancel}>{textCancel}</button>
+          <button className={addButtonClasses} type='button' onClick={clickHandler}>{textAdd}</button>
         </div>
       </div>
     </div>
