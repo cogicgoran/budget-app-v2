@@ -1,0 +1,12 @@
+.marketplaces {
+  text-align: center;
+}
+
+.new-marketplace__show-btn {
+  margin-top: 1em;
+  padding: .3em 1em;
+  background-color: #B1DDF0;
+  border: 1px solid #10739E;
+  border-radius: 1em;
+  font-size: .6em;
+}

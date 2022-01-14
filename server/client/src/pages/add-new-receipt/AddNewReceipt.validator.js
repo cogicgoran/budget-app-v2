@@ -1,9 +1,12 @@
 export function isReceiptInfoValid(info) {
-  const {'date-day': dateDay, 'date-month':dateMonth, 'date-year':dateYear,
-   'date-hour':dateHour, 'date-minute': dateMinute} = info;
-  const string = [dateMonth, dateDay, dateYear].join("/") + " " + [dateHour,dateMinute].join(":");
-  const date = new Date(string);
-  if (date instanceof Date && isFinite(date)) {
+  const { marketplace, date, currency} = info;
+  if ( typeof marketplace === 'string' 
+  && typeof date === 'string' 
+  && typeof currency === 'string'
+  && marketplace.length > 0
+  && date.length > 0
+  && currency.length > 0
+  && isFinite(new Date(date))) {
     return true;
   }
   return false;

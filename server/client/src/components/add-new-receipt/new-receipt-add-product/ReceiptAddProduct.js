@@ -6,7 +6,7 @@ const NEW_ARTICLE_DEFAULT = {
   name:"",
   category:"",
   price:"",
-  amount:""
+  // amount:""
 };
 
 function ReceiptAddProduct(props) {
@@ -18,13 +18,12 @@ function ReceiptAddProduct(props) {
       props.onAddArticle({
         name: article.name.trim(),
         category: article.category.trim(),
-        price: article.price.trim()
+        price: Number(article.price.trim())
       });
-      setArticle(NEW_ARTICLE_DEFAULT);
-      return true;
-    }
-    return false;
-  }
+      // setArticle(NEW_ARTICLE_DEFAULT);
+      props.onCancel();
+    };
+  };
 
   function changeHandler(e) {
     setArticle(prevState => {
@@ -49,16 +48,16 @@ function ReceiptAddProduct(props) {
             <input type="text" id='product-category' name='category' placeholder='Category...' value={article.category} onChange={changeHandler}/>
           </div>
           <div className={styles['new-product-input']}>
-            <label htmlFor="product-price">Unit Price:</label>
-            <input type="text" id='product-price' name='price' value={article.price} placeholder='Unit price...' onChange={changeHandler}/>
+            <label htmlFor="product-price">Price:</label>
+            <input type="text" id='product-price' name='price' value={article.price} placeholder='Price...' onChange={changeHandler}/>
           </div>
-          <div className={styles['new-product-input']}>
+          {/* <div className={styles['new-product-input']}>
             <label htmlFor="product-amount">Amount:</label>
             <input type="number" id='product-amount' name='amount' value={article.amount} placeholder='Amount...' onChange={changeHandler}/>
-          </div>
+          </div> */}
         </div>
 
-        <div className={styles['new-product__controls']} onClick={clickHandler}>
+        <div className={styles['new-product__controls']}>
           <button className={styles['new-product__cancel-btn']} type='button' onClick={props.onCancel}>CANCEL</button>
           <button className={styles['new-product__add-article-btn']} type='button' onClick={clickHandler}>ADD</button>
         </div>

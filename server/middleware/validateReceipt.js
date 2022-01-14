@@ -1,34 +1,34 @@
+const { countInsertedCategories } = require("../database/receipts");
+
 function validateReceipt(req, res, next) {
-  const {info, receipt} = req.body;
+  const {info, articles} = req.body;
 
-  if (!receipt instanceof Array) return res.status(400).send("Receipt must be array type");
+  if (!articles instanceof Array) return res.status(400).send("Receipt must be array type");
 
-  const string = [info['date-month'], info['date-day'], info['date-year']].join("/") + " " + [info['date-hour'],info['date-minute'],"00"].join(":");
-  const date = new Date(string);
+  const date = new Date(info.date);
 
-  const isReceiptValid = receipt.every(article => {
+  const isReceiptValid = articles.every(article => {
     const articleName = article.name.trim();
     const articleCategory = article.category.trim();
-    const articlePrice = article.price.trim();
-    const artNumber = Number(articlePrice);
   
     if (articleName != "" 
-    && articleName.length > 2
+    && articleName.length > 0
     && articleCategory != ""
     && articleCategory.length > 0
-    && articlePrice != ""
-    && articlePrice.length > 0
-    && articlePrice.length < 12
-    && !Number.isNaN(artNumber)
-    && artNumber > 0
     ) return true;
     return false;
   });
 
   if (!isReceiptValid) return res.status(400).send("INVALID RECEIPT");
 
+
   if (date instanceof Date && isFinite(date)) {
-    req.body.date = [info['date-year'], info['date-month'], info['date-day']].join("/") + " " + [info['date-hour'],info['date-minute'],"00"].join(":");
+    const realdate= date.toISOString().slice(0,-5).replace("T", " ");
+    req.body.date = realdate;
+    req.body.marketplace = info.marketplace;
+    req.body.currency = info.currency;
+    req.body.price = articles.reduce((acc,article) => acc + Number(article.price),0)
+
     return next();
   };
 
@@ -36,4 +36,16 @@ function validateReceipt(req, res, next) {
 
 };
 
-module.exports = validateReceipt;
+
+async function checkArticles(req, res, next) {
+  const articles = req.body.articles;
+  const categories = [];
+  articles.forEach(article => {
+    if (!categories.includes(article.category.toUpperCase())) {
+      categories.push(article.category.toUpperCase());
+    };
+  });
+  return countInsertedCategories(res ,next,categories, categories.length);
+}
+
+module.exports = {validateReceipt,checkArticles};

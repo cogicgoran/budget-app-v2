@@ -16,11 +16,11 @@ function ReceiptProductList(props) {
         </thead>
         <tbody>
           {props.articleList.map( (article, index) => {
-            return <ReceiptProduct onEditInit={props.onEditInit} editIndex={props.editIndex} onRemoveArticle={props.onRemoveArticle} key={index} name={article.name} category={article.category} price={article.price} id={index}/>;
+            return <ReceiptProduct key={index} onRemoveArticle={props.onRemoveArticle} {...article} id={index}/>;
           })}
         </tbody>
       </table>
-      <span className={styles['new-receipt-total']}>500 {props.currency}</span>
+      <span className={styles['new-receipt-total']}>{props.total.toFixed(2)} {props.currency}</span>
     </div>
   );
 };

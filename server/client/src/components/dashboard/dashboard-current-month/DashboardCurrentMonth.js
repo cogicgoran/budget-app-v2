@@ -11,7 +11,6 @@ function DashboardCurrentMonth() {
 
     if ( categories.length > 0) {
         display = categories.map(category => {
-            console.log(category);
             return <CategoryReceipt key={category.category_name} {...category}/>;
         });
     } else {
@@ -31,7 +30,6 @@ function DashboardCurrentMonth() {
             
             const data = await response.json();
             const [categories, total] = handleIncomingArticles(data);
-            console.log(total, categories);
             setTotal(total);
             setCategories(categories);
             // setReceipts(handleIncomingArticles(data));

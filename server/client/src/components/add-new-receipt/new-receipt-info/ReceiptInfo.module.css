@@ -8,7 +8,9 @@
   grid-template-columns: 9em 14em;
 }
 
-.receipt-wrapper input {
+.receipt-wrapper input,
+.receipt-wrapper select,
+.receipt-wrapper label {
   padding: .1em .2em;
   background-color: white;
 }
@@ -20,7 +22,6 @@
 }
 
 .receipt-date-wrapper input{
-  text-align: center;
   width: 4em;
 }
 

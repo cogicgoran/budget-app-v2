@@ -3,7 +3,7 @@ const path = require('path');
 const cors = require('cors');
 const bodyParser = require('body-parser');
 
-const validateReceipt = require("./middleware/validateReceipt");
+const {validateReceipt, checkArticles} = require("./middleware/validateReceipt");
 const validateCurrency = require("./middleware/validateCurrency");
 const validateMarketplace = require("./middleware/validateMarketplace");
 const { getAllReceipts, getLatestReceipts, getReceiptById, getMonthReceipts, insertReceipt, updateReceipt } = require("./database/receipts");
@@ -35,9 +35,9 @@ app.get('/api/receipts/:receiptId', function(req, res) {
   getReceiptById(res, receiptId);
 });
 
-app.post('/api/receipts', validateReceipt, function (req, res) {
-  const jsonString = JSON.stringify(req.body.receipt);
-  insertReceipt(res, req.body, jsonString)
+app.post('/api/receipts', validateReceipt, checkArticles, function (req, res) {
+  console.log("main");
+  insertReceipt(res, req.body);
 }); 
 
 app.put('/api/receipts', validateReceipt, function (req, res) {

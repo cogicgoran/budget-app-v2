@@ -70,7 +70,9 @@ function ReceiptInfo(props) {
       <div className={styles['receipt-info-item']}>
         <label htmlFor='marketplace'>Marketplace:</label>
         
-        {marketplaces.length > 0 && <select name="marketplace" id="marketplace" value={props.value.marketplace} onChange={changeHandler}>{marketplaceDisplay}</select>}
+        {marketplaces.length > 0 && <select name="marketplace" id="marketplace" value={props.value.marketplace} onChange={changeHandler}>
+          <option hidden  value="">CHOOSE</option>
+          {marketplaceDisplay}</select>}
         {marketplaces.length === 0 && <span>There are no marketplaces found in the database. You can add one <Link to={PATHS.MARKETPLACES}><i>here</i></Link></span> }
       </div>
       
@@ -81,7 +83,9 @@ function ReceiptInfo(props) {
 
       <div className={styles['receipt-info-item']}>
         <label htmlFor='currency'>Currency:</label>
-        {currencies.length > 0 && <select name="currency" id="currency" value={props.value.currency} onChange={changeHandler}>{currencyDisplay}</select>}
+        {currencies.length > 0 && <select name="currency" id="currency" value={props.value.currency} onChange={changeHandler}>
+          <option hidden  value="">CHOOSE</option>
+          {currencyDisplay}</select>}
         {currencies.length === 0 && <span>There are no currencies found in the database. You can add one <Link to={PATHS.CURRENCIES}><i>here</i></Link></span>  }
       </div>
     </div>

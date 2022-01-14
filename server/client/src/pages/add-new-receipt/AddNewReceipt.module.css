@@ -16,9 +16,11 @@
   color: #90C3D0;
 }
 
-.new-receipt input {
+.new-receipt input,
+.new-receipt select {
   border: 1px solid #90C3D0;
 }
+
 
 .new-receipt__add-product {
   margin-top: 1em;

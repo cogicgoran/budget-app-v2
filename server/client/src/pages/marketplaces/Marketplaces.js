@@ -1,49 +1,20 @@
 import React, { useState } from 'react';
+import styles from './Marketplaces.module.css';
 
-const DEFAULT_MARKETPLACE = {name:"", address:""};
+import MarketplaceList from 'components/marketplaces/marketplace-list/MarketplaceList';
+import NewMarketplace from 'components/marketplaces/new-marketplace/NewMarketplace';
+import Backdrop from 'components/UI/backdrop/Backdrop';
+import ReactDOM from 'react-dom';
 
 function Marketplaces() {
-  const [shop, setShop] = useState(DEFAULT_MARKETPLACE);
+    const [ showModal, setShowModal] = useState(false);
 
-  function changeHandler(e) {
-    setShop(prevState => {
-      return {
-        ...prevState,
-        [e.target.name]:e.target.value
-      }
-    });
-  };
-
-  async function submitHandler() {
-    if (shop.name && shop.name.length > 0 && shop.address && shop.address.length > 0) {
-      const shopData = {name:shop.name, address:shop.address};
-      const response = await fetch("http://localhost:8000/api/marketplaces",{
-        method:"POST",
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(shopData)
-      });
-      console.log(response);
-    };
-  };
-
-  return (
-    <div>
-      <h3>ADD NEW MARKETPLACE</h3>
-      <form onSubmit={submitHandler}>
-        <div>
-          <label htmlFor="shop_name">Shop name:</label>
-          <input type="text" id='shop_name' name='name' placeholder='Name...' value={shop.name} onChange={changeHandler}/>
-        </div>
-        <div>
-          <label htmlFor="shop_address">Shop address:</label>
-          <input type="text" id='shop_address' name='address' placeholder='Address...' value={shop.address} onChange={changeHandler}/>
-        </div>
-        <div>
-          <button type='submit'>CONFIRM</button>
-        </div>
-      </form>
+    return (
+    <div className={styles.marketplaces}>
+      <MarketplaceList onNoMarketplaces={() => setShowModal(true)}/>
+      <button className={styles['new-marketplace__show-btn']} onClick={() => {setShowModal(true)}}>+ ADD MARKETPLACE</button>
+      {showModal && ReactDOM.createPortal( <Backdrop onCancel={() => setShowModal(false)}/>, document.getElementById('backdrop-root'))}
+      {showModal && ReactDOM.createPortal( <NewMarketplace onCancel={() => setShowModal(false)}/>, document.getElementById('overlay-root'))}
     </div>
   );
 };

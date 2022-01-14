@@ -1,4 +1,8 @@
 import React from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faTrashAlt } from '@fortawesome/free-regular-svg-icons';
+import styles from './ReceiptProduct.module.css';
+
 
 function ReceiptProduct(props) {
   function removeHandler() {
@@ -8,9 +12,9 @@ function ReceiptProduct(props) {
   return (
     <tr>
       <td>{props.name}</td>
-      <td>{props.category}</td>
-      <td>{props.price}</td>
-      <td onClick={removeHandler}>X</td>
+      <td><span>{props.category}</span></td>
+      <td>{props.price.toFixed(2)}</td>
+      <td onClick={removeHandler}><FontAwesomeIcon className={styles['receipt-product-icon']} icon={faTrashAlt}/></td>
     </tr>
   );
 };

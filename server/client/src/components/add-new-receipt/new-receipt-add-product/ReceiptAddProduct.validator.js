@@ -5,7 +5,7 @@ export function isValidArticle( article ) {
   const artNumber = Number(articlePrice);
 
     if (articleName !== "" 
-    && articleName.length > 2
+    && articleName.length > 0
     && articleCategory !== ""
     && articleCategory.length > 0
     && articlePrice !== ""
