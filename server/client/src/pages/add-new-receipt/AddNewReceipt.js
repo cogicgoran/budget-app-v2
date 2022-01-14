@@ -18,7 +18,7 @@ const DEFAULT_RECEIPT_INFO = {
   currency:""
 };
 
-function AddNewReceipt(props) {
+function AddNewReceipt() {
   const [articles, setArticles] = useState([]);
   const [receiptInfo, setReceiptInfo] = useState(DEFAULT_RECEIPT_INFO);
   const [showModal, setShowModal] = useState(false);

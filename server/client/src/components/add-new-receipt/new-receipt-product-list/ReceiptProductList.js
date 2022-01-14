@@ -16,7 +16,7 @@ function ReceiptProductList(props) {
         </thead>
         <tbody>
           {props.articleList.map( (article, index) => {
-            return <ReceiptProduct key={index} onRemoveArticle={props.onRemoveArticle} {...article} id={index}/>;
+            return <ReceiptProduct key={index} onRemoveArticle={props.onRemoveArticle} {...article} id={index} currency={props.currency}/>;
           })}
         </tbody>
       </table>

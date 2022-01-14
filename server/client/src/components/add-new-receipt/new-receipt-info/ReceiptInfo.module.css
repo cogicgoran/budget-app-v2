@@ -5,29 +5,34 @@
 
 .receipt-wrapper > div {
   display: grid;
-  grid-template-columns: 9em 14em;
+  grid-template-columns: 12ch 24ch;
+  column-gap: 2ch;
+  align-items: center;
+  font-size: 16px;
 }
 
 .receipt-wrapper input,
 .receipt-wrapper select,
-.receipt-wrapper label {
-  padding: .1em .2em;
+.receipt-wrapper label,
+.receipt-wrapper option {
   background-color: white;
+  color: #1A4E5B;
+  text-overflow: ellipsis;
+  font-size: 14px;
 }
 
-.receipt-date-wrapper {
-  display: flex;
-  justify-content: center;
-  gap: .2em;
+.receipt-wrapper input,
+.receipt-wrapper select,
+.receipt-wrapper option {
+  cursor: pointer;
+  padding: 2px 3px;
 }
 
-.receipt-date-wrapper input{
-  width: 4em;
+.receipt-wrapper input[type="datetime-local"] {
+  padding: 0 6px;
 }
 
-.receipt-date-wrapper input:nth-of-type(4){
-  margin-left: 2em;
-}
+
 
 .receipt-info-item {
   margin-bottom: .2em;

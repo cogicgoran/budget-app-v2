@@ -57,21 +57,11 @@ function ReceiptInfo(props) {
 
   return (
     <div className={styles['receipt-wrapper']}>
-      {/* <div className={styles['receipt-info-item']}>
-        <label htmlFor="shop-name">Shop Name:</label>
-        <input type="text" name="name" id='shop-name' placeholder='Name...' value={props.value.name} onChange={changeHandler}/>
-      </div>
-
-      <div className={styles['receipt-info-item']}>
-        <label htmlFor="shop-address">Shop Address:</label>
-        <input type="text" name="address" id='shop-address' placeholder='Address...' value={props.value.address} onChange={changeHandler}/>
-      </div> */}
-
       <div className={styles['receipt-info-item']}>
         <label htmlFor='marketplace'>Marketplace:</label>
         
         {marketplaces.length > 0 && <select name="marketplace" id="marketplace" value={props.value.marketplace} onChange={changeHandler}>
-          <option hidden  value="">CHOOSE</option>
+          <option hidden  value="">Choose</option>
           {marketplaceDisplay}</select>}
         {marketplaces.length === 0 && <span>There are no marketplaces found in the database. You can add one <Link to={PATHS.MARKETPLACES}><i>here</i></Link></span> }
       </div>
@@ -84,7 +74,7 @@ function ReceiptInfo(props) {
       <div className={styles['receipt-info-item']}>
         <label htmlFor='currency'>Currency:</label>
         {currencies.length > 0 && <select name="currency" id="currency" value={props.value.currency} onChange={changeHandler}>
-          <option hidden  value="">CHOOSE</option>
+          <option hidden  value="">Choose</option>
           {currencyDisplay}</select>}
         {currencies.length === 0 && <span>There are no currencies found in the database. You can add one <Link to={PATHS.CURRENCIES}><i>here</i></Link></span>  }
       </div>

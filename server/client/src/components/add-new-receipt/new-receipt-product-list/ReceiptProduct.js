@@ -13,7 +13,7 @@ function ReceiptProduct(props) {
     <tr>
       <td>{props.name}</td>
       <td><span>{props.category}</span></td>
-      <td>{props.price.toFixed(2)}</td>
+      <td>{props.price.toFixed(2)} {props.currency}</td>
       <td onClick={removeHandler}><FontAwesomeIcon className={styles['receipt-product-icon']} icon={faTrashAlt}/></td>
     </tr>
   );

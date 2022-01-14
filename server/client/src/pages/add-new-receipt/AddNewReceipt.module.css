@@ -3,12 +3,15 @@
 }
 
 .new-receipt {
-  background-color: white;
+  padding: 0 30px 20px 30px;
+  background-color: #F5FDFF;
   color: #1A4E5B;
 }
 
 .new-receipt h3{
   text-align: center;
+  font-size: 18px;
+  font-weight: normal;
 }
 
 .new-receipt input::placeholder {
@@ -28,14 +31,23 @@
   background-color: #B1DDF0;
   border: 1px solid #10739E;
   border-radius: 1em;
-  font-size: .6em;
+  font-size: 10px;
 }
 
 .new-receipt-finish-btn {
   padding: 0.3em 2.5em;
   border: 1px solid #2D7600;
   border-radius: 1em;
-  font-size: 0.6em;
+  font-size: 10px;
   color: white;
   background-color: #60A917;
 }
+
+/* padding: 0 1em;
+  border-radius: 1em;
+  font-size: 10px;
+  background-color: #BAC8D3;
+  border: 1px solid rgb(100, 93, 93);
+  text-align: right;
+  min-width: 8ch;
+  text-transform: uppercase; */
