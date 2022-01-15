@@ -11,11 +11,10 @@
   font-size: 16px;
 }
 
+.receipt-wrapper label,
 .receipt-wrapper input,
 .receipt-wrapper select,
-.receipt-wrapper label,
 .receipt-wrapper option {
-  background-color: white;
   color: #1A4E5B;
   text-overflow: ellipsis;
   font-size: 14px;
@@ -26,6 +25,7 @@
 .receipt-wrapper option {
   cursor: pointer;
   padding: 2px 3px;
+  background-color: white;
 }
 
 .receipt-wrapper input[type="datetime-local"] {

@@ -9,9 +9,14 @@
   padding: 1em;
   width: 400px;
   z-index: 11;
-  background-color: white;
+  background-color: #F5FDFF;
   color: #1A4E5B;
   font-size: 14px;
+}
+
+.new-product__controls button,
+.new-product h4 {
+  text-transform: uppercase;
 }
 
 .new-product h4 {
@@ -74,14 +79,7 @@
 
 .new-product__add-article-btn.disabled {
   cursor: not-allowed;
-  background-color: #D5E8F4;
+  background-color: #D5E8D4;
   border-color: #B9E0A5;
+  color: white;
 }
-/* If no valid data is set, ADD button is disabled (BG color #d5e8d4, border #b9e0a5 and cursor not-allowed) */
-
-/* margin-top: 1em;
-  padding: .3em 1em;
-  background-color: #B1DDF0;
-  border: 1px solid #10739E;
-  border-radius: 1em;
-  font-size: 10px; */

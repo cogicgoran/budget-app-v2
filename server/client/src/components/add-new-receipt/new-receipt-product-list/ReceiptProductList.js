@@ -1,16 +1,22 @@
 import React from 'react';
 import styles from './ReceiptProductList.module.css';
 import ReceiptProduct from './ReceiptProduct';
+import { useTranslation } from 'react-i18next';
 
 function ReceiptProductList(props) {
+  const { t } = useTranslation();
+  const textProductName = t('productName');
+  const textCategory = t('category');
+  const textPrice = t('price');
+
   return (
     <div>
       <table className={styles['new-receipt-table']}>
         <thead>
           <tr>
-            <th>Product Name</th>
-            <th>Category</th>
-            <th>Price</th>
+            <th>{textProductName}</th>
+            <th>{textCategory}</th>
+            <th>{textPrice}</th>
             <th></th>
           </tr>
         </thead>
