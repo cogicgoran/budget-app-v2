@@ -15,12 +15,13 @@ function ReceiptAddProduct(props) {
   const [ article, setArticle] = useState(NEW_ARTICLE_DEFAULT);
   const [isProductValid, setIsProductValid] = useState(false);
 
-  const textPrice = t('price');
-  const textAddProduct = t('addProduct');
-  const textProductName = t('productName');
-  const textCategory = t('category');
   const textAdd = t('add');
+  const textAddProduct = t('addProduct');
+  const textCategory = t('category');
   const textCancel = t('cancel');
+  const textName = t('name');
+  const textPrice = t('price');
+  const textProductName = t('productName');
 
   function clickHandler() {
     if (isValidArticle(article)) {
@@ -67,15 +68,15 @@ function ReceiptAddProduct(props) {
         <div>
           <div className={styles['new-product-input']}>
             <label htmlFor="product-name">{textProductName}:</label>
-            <input type="text" id='product-name' name='name' placeholder='Name...' value={article.name} onChange={changeHandler}/>
+            <input type="text" id='product-name' name='name' placeholder={`${textName}...`} value={article.name} onChange={changeHandler}/>
           </div>
           <div className={styles['new-product-input']}>
             <label htmlFor="product-category">{textCategory}:</label>
-            <input type="text" id='product-category' name='category' placeholder='Category...' value={article.category} onChange={changeHandler}/>
+            <input type="text" id='product-category' name='category' placeholder={`${textCategory}...`} value={article.category} onChange={changeHandler}/>
           </div>
           <div className={styles['new-product-input']}>
             <label htmlFor="product-price">{textPrice}:</label>
-            <input type="text" id='product-price' name='price' value={article.price} placeholder='Price...' onChange={changeHandler}/>
+            <input type="text" id='product-price' name='price' value={article.price} placeholder={`${textPrice}...`}onChange={changeHandler}/>
           </div>
           {/* <div className={styles['new-product-input']}>
             <label htmlFor="product-amount">Amount:</label>

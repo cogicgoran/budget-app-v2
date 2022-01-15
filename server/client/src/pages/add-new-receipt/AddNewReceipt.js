@@ -27,7 +27,7 @@ function AddNewReceipt() {
 
   const textAddProduct = t('addProduct');
   const textFinish = t('finish');
-  // const textNewReceipt = t('newReceipt');
+  const textNewReceipt = t('newReceipt');
 
   const totalPrice = articles.reduce((acc,article) =>  acc + article.price, 0);
 
@@ -69,7 +69,7 @@ function AddNewReceipt() {
 
   return (
     <div className={styles['new-receipt']}>
-      <h3>NEW RECEIPT</h3>
+      <h3>{textNewReceipt}</h3>
       <div>
         <form className={styles['new-receipt-content-wrapper']} onSubmit={submitHandler}>
           <ReceiptInfo value={receiptInfo} onChangeValue={setReceiptInfo}/>

@@ -8,6 +8,7 @@
 
 .dashboard-current-month__header {
     text-align: right;
+    text-transform: uppercase;
 }
 
 .dashboard-current-month__total {

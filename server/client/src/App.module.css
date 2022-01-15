@@ -5,3 +5,7 @@
     min-height: 100vh;
     background-color: #E0F9FF;
 }
+
+.app-language {
+    text-align: right;
+}

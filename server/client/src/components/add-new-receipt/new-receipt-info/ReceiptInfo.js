@@ -2,10 +2,17 @@ import React, { useEffect, useState } from 'react';
 import styles from './ReceiptInfo.module.css';
 import { PATHS } from 'App.constants';
 import { Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 
 function ReceiptInfo(props) {
+  const { t } = useTranslation();
   const [currencies, setCurrencies] = useState([]);
   const [marketplaces, setMarketplaces] = useState([]);
+
+  const textMarketplace = t('marketplace');
+  const textDate = t('date');
+  const textCurrency = t('currency');
+  const textChoose = t('choose');
 
   function changeHandler(e) {
     props.onChangeValue(prevState => {
@@ -58,23 +65,23 @@ function ReceiptInfo(props) {
   return (
     <div className={styles['receipt-wrapper']}>
       <div className={styles['receipt-info-item']}>
-        <label htmlFor='marketplace'>Marketplace:</label>
+        <label htmlFor='marketplace'>{textMarketplace}:</label>
         
         {marketplaces.length > 0 && <select name="marketplace" id="marketplace" value={props.value.marketplace} onChange={changeHandler}>
-          <option hidden  value="">Choose</option>
+          <option hidden  value="">{textChoose}</option>
           {marketplaceDisplay}</select>}
         {marketplaces.length === 0 && <span>There are no marketplaces found in the database. You can add one <Link to={PATHS.MARKETPLACES}><i>here</i></Link></span> }
       </div>
       
       <div className={styles['receipt-info-item']}>
-        <label htmlFor='date'>Date:</label>
+        <label htmlFor='date'>{textDate}:</label>
         <input type="datetime-local" name='date' id='date' value={props.value.date} onChange={changeHandler}/>
       </div>
 
       <div className={styles['receipt-info-item']}>
-        <label htmlFor='currency'>Currency:</label>
+        <label htmlFor='currency'>{textCurrency}:</label>
         {currencies.length > 0 && <select name="currency" id="currency" value={props.value.currency} onChange={changeHandler}>
-          <option hidden  value="">Choose</option>
+          <option hidden  value="">{textChoose}</option>
           {currencyDisplay}</select>}
         {currencies.length === 0 && <span>There are no currencies found in the database. You can add one <Link to={PATHS.CURRENCIES}><i>here</i></Link></span>  }
       </div>

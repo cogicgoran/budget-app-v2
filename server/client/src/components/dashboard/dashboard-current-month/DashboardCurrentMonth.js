@@ -2,10 +2,15 @@ import React, { useEffect, useState } from 'react'
 import styles from './DashboardCurrentMonth.module.css';
 import { handleIncomingArticles } from './DashboardCurrentMonth.functions';
 import CategoryReceipt from './category-receipt/CategoryReceipt';
+import { useTranslation } from 'react-i18next';
+import { Trans } from 'react-i18next';
 
 function DashboardCurrentMonth() {
+    const { t } = useTranslation();
     const [total, setTotal] = useState(0);
     const [categories, setCategories] = useState([]);
+
+    const textCurrentMonth = <Trans components={{br:<br/>}}>currentMonth</Trans>
 
     var display;
 
@@ -41,7 +46,7 @@ function DashboardCurrentMonth() {
 
     return (
         <div className={styles['dashboard-current-month']}>
-            <div className={styles['dashboard-current-month__header']}><span>CURRENT <br /> MONTH</span></div>
+            <div className={styles['dashboard-current-month__header']}><span>{textCurrentMonth}</span></div>
             <div className={styles['dashboard-current-month__total']}><span>{total} <br /> RSD</span></div>
             <div className={styles['dashboard-current-month__categories']}>{display}</div>
         </div>

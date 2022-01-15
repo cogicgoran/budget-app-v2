@@ -43,3 +43,16 @@ export function getFilteredItems(array, filterValues) {
     };
   }
 };
+
+export function getPreferedLanguage() {
+  const cookiesSplit = document.cookie.split("; ");
+  const cookies = {};
+
+  cookiesSplit.forEach(cookie => {
+    const array = cookie.split("=");
+    const key = array[0];
+    const value = array[1];
+    cookies[key] = value;
+  });
+  return cookies.language;
+}
