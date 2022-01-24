@@ -83,3 +83,11 @@
   border-color: #B9E0A5;
   color: white;
 }
+
+.new-product-input.invalid label {
+  color: red;
+}
+
+.new-product-input.invalid input {
+  border-color: red;
+}

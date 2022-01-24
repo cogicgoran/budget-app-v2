@@ -13,6 +13,7 @@ import Categories from 'pages/categories/Categories';
 import Currencies from 'pages/currencies/Currencies';
 import Dashboard from 'pages/dashboard/Dashboard';
 import Marketplaces from 'pages/marketplaces/Marketplaces';
+import './config/firebase-config';
 
 import i18next from 'i18next';
 import { initReactI18next } from 'react-i18next';
