@@ -1,56 +1,55 @@
-import React, { useEffect, useState } from 'react'
-import styles from './DashboardCurrentMonth.module.css';
-import { handleIncomingArticles } from './DashboardCurrentMonth.functions';
-import CategoryReceipt from './category-receipt/CategoryReceipt';
-import { useTranslation } from 'react-i18next';
-import { Trans } from 'react-i18next';
+import React from "react";
+import styles from "./DashboardCurrentMonth.module.css";
+import { handleIncomingArticles } from "./DashboardCurrentMonth.functions";
+import CategoryReceipt from "./category-receipt/CategoryReceipt";
+import { useTranslation } from "react-i18next";
+import { Trans } from "react-i18next";
+import { useFetch } from "hooks/useFetch";
 
 function DashboardCurrentMonth() {
-    const { t } = useTranslation();
-    const [total, setTotal] = useState(0);
-    const [categories, setCategories] = useState([]);
+  const { isLoading, data, error } = useFetch(
+    "/api/receipts-current-month",
+    "GET"
+  );
 
-    const textCurrentMonth = <Trans components={{br:<br/>}}>currentMonth</Trans>
+  var [categories, total] = data ? handleIncomingArticles(data) : [null, null];
+  const { t } = useTranslation();
 
-    var display;
+  const textCurrentMonth = (
+    <Trans components={{ br: <br /> }}>currentMonth</Trans>
+  );
 
-    if ( categories.length > 0) {
-        display = categories.map(category => {
-            return <CategoryReceipt key={category.category_name} {...category}/>;
-        });
-    } else {
-        display = "No cats";
-    }
+  var display;
 
-    useEffect(() => {
-        // setIsLoading(true);
-        // setIsDataSet(false);
-        async function fetchReceipts(){
-            const response = await fetch("http://localhost:8000/api/receipts-current-month",{
-              method:"GET",
-              headers: {
-                'Content-Type': 'application/json'
-              }
-            });
-            
-            const data = await response.json();
-            const [categories, total] = handleIncomingArticles(data);
-            setTotal(total);
-            setCategories(categories);
-            // setReceipts(handleIncomingArticles(data));
-            // setIsDataSet(true);
-            // setIsLoading(false);
-          };
-          fetchReceipts();
-    }, []);
+  if (categories && categories.length > 0) {
+    display = categories.map((category) => {
+      return <CategoryReceipt key={category.category_name} {...category} />;
+    });
+  } else {
+    display = "No cats";
+  }
 
-    return (
-        <div className={styles['dashboard-current-month']}>
-            <div className={styles['dashboard-current-month__header']}><span>{textCurrentMonth}</span></div>
-            <div className={styles['dashboard-current-month__total']}><span>{total} <br /> RSD</span></div>
-            <div className={styles['dashboard-current-month__categories']}>{display}</div>
-        </div>
-    )
+  return (
+    <div className={styles["dashboard-current-month"]}>
+      <div className={styles["dashboard-current-month__header"]}>
+        <span>{textCurrentMonth}</span>
+      </div>
+      {isLoading && <div>Loading...</div>}
+      {!isLoading && !error && (
+        <>
+          <div className={styles["dashboard-current-month__total"]}>
+            <span>
+              {total} <br /> RSD
+            </span>
+          </div>
+          <div className={styles["dashboard-current-month__categories"]}>
+            {display}
+          </div>
+        </>
+      )}
+      {!isLoading && error && <div>{error.message}</div>}
+    </div>
+  );
 }
 
-export default DashboardCurrentMonth
+export default DashboardCurrentMonth;

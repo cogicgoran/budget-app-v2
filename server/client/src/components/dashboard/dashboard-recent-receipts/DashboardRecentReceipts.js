@@ -6,6 +6,7 @@ import { PATHS } from 'App.constants';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFileLines } from '@fortawesome/free-solid-svg-icons';
 import { useTranslation } from 'react-i18next';
+import useFetch from 'hooks/useFetch';
 
 import Receipt from './Receipt/Receipt';
 
