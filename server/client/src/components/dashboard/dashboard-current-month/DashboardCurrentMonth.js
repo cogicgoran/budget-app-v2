@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useMemo } from "react";
 import styles from "./DashboardCurrentMonth.module.css";
 import { handleIncomingArticles } from "./DashboardCurrentMonth.functions";
 import CategoryReceipt from "./category-receipt/CategoryReceipt";
@@ -8,11 +8,13 @@ import { useFetch } from "hooks/useFetch";
 
 function DashboardCurrentMonth() {
   const { isLoading, data, error } = useFetch(
-    "/api/receipts-current-month",
+    "http://localhost:8000/api/receipts-current-month",
     "GET"
   );
 
-  var [categories, total] = data ? handleIncomingArticles(data) : [null, null];
+  var [categories, total] = useMemo(() => {
+    return data ? handleIncomingArticles(data) : [null, null]
+  }, [data]);
   const { t } = useTranslation();
 
   const textCurrentMonth = (
