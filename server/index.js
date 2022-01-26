@@ -36,7 +36,6 @@ app.get('/api/receipts/:receiptId', function(req, res) {
 });
 
 app.post('/api/receipts', validateReceipt, checkArticles, function (req, res) {
-  console.log("main");
   insertReceipt(res, req.body);
 }); 
 

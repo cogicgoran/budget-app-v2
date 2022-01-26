@@ -1,9 +1,10 @@
-import React, { useMemo } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import styles from './ReceiptInfo.module.css';
 import { PATHS } from 'App.constants';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import { useFetch } from 'hooks/useFetch';
+import { useHttp } from 'hooks/useHttp';
+
 
 function ReceiptInfo(props) {
   const { t } = useTranslation();
@@ -11,12 +12,47 @@ function ReceiptInfo(props) {
   const textDate = t('date');
   const textCurrency = t('currency');
   const textChoose = t('choose');
-
-  const {isLoading: currencyIsLoading, data: currencyData, error: currencyError} = useFetch("http://localhost:8000/api/currencies", "GET");
-  const {isLoading: marketplaceIsLoading, data: marketplaceData, error: marketplaceError} = useFetch("http://localhost:8000/api/marketplaces", "GET");
+  const [currencyData, setCurrencyData] = useState(null);
+  const [marketplaceData, setMarketplaceData] = useState(null);
+  
+  const {isLoading: currencyIsLoading, error: currencyError, fetchTask: fetchCurrencies} = useHttp();
+  const {isLoading: marketplaceIsLoading, error: marketplaceError, fetchTask: fetchMarketplaces} = useHttp();
+  
+  const currencyRequestConfig = {
+    url:"http://localhost:8000/api/currencies",
+    method: "GET"
+  }
+  
+  const marketplaceRequestConfig = {
+    url:"http://localhost:8000/api/marketplaces",
+    method: "GET"
+  }
+  
+  useEffect(() => {
+    fetchCurrencies(currencyRequestConfig, handleCurrencyDataResponse);
+  }, []);
+  
+  useEffect(() => {
+    fetchMarketplaces(marketplaceRequestConfig, handleMarketplaceDataResponse);
+  }, []);
   
   const currencies = useMemo(() => currencyData && currencyData.length > 0 ? currencyData : null, [currencyData]);
   const marketplaces = useMemo(() => marketplaceData && marketplaceData.length > 0 ? marketplaceData : null, [marketplaceData]);
+  
+  const currencyDisplay = useMemo(() => {
+    return currencies ? currencies.map(currency => <option value={currency.code}>{currency.code}</option>) : null
+  },[currencies]);
+  
+  const marketplaceDisplay = useMemo(() => {
+    return marketplaces ? marketplaces.map(marketplace => <option value={marketplace.id}>{marketplace.name} {marketplace.address}</option>) : null;
+  }, [marketplaces]);
+
+  function handleCurrencyDataResponse(response){
+    setCurrencyData(response.data);
+  }
+  function handleMarketplaceDataResponse(response){
+    setMarketplaceData(response.data);
+  }
 
   function changeHandler(e) {
     props.onChangeValue(prevState => {
@@ -26,14 +62,6 @@ function ReceiptInfo(props) {
       }
     });
   };
-
-  const currencyDisplay = useMemo(() => {
-    return currencies ? currencies.map(currency => <option value={currency.code}>{currency.code}</option>) : null
-  },[currencies]);
-
-  const marketplaceDisplay = useMemo(() => {
-    return marketplaces ? marketplaces.map(marketplace => <option value={marketplace.id}>{marketplace.name} {marketplace.address}</option>) : null;
-  }, [marketplaces]);
 
   return (
     <div className={styles['receipt-wrapper']}>

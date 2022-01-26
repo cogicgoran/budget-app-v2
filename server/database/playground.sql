@@ -50,5 +50,6 @@ INNER JOIN categories AS c on a.category_id = c.id;
 SELECT COUNT(id) FROM categories WHERE name IN ('FRUITS', 'GROCERIES');
 
 SELECT * FROM articles;
+SELECT * FROM currencies;
 SELECT * FROM receipts;
 SELECT * FROM marketplaces;

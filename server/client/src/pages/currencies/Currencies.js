@@ -1,80 +1,111 @@
-import React, { useEffect, useState } from 'react';
-import PageTitle from 'components/helper/PageTitle';
-import MainCard from 'components/UI/MainCard';
-import { useNavigate } from 'react-router-dom';
-import { PATHS } from 'App.constants';
-
-const ERROR_DEFAULT = {isError: false, message: ""}
+import React, { useEffect, useState } from "react";
+import PageTitle from "components/helper/PageTitle";
+import MainCard from "components/UI/MainCard";
+import { useNavigate } from "react-router-dom";
+import { useHttp } from "hooks/useHttp";
+import { Formik, Form, Field } from "formik";
+import * as Yup from "yup";
+import { PATHS } from "App.constants";
 
 function Currencies() {
-  const [currencyList, setCurrencyList] = useState([]);
-  const [currencyValue, setCurrencyValue] = useState("");
-  const [error, setError] = useState(ERROR_DEFAULT);
+  const {
+    isLoading: currencyIsLoading,
+    error: currencyError,
+    fetchTask: getCurrencies,
+  } = useHttp();
+  const {
+    isLoading: currencyPostIsLoading,
+    error: currencyPostError,
+    fetchTask: postCurrencies,
+  } = useHttp();
+  const [isPostingCurrency, setIsPostingCurrency] = useState(false);
+  const [currencies, setCurrencies] = useState(null);
   const navigate = useNavigate();
 
-  function changeHandler(e) {
-    setCurrencyValue(e.target.value);
+  const getCurrencyRequestConfig = {
+    url: "http://localhost:8000/api/currencies",
+    method: "GET",
   };
 
+  const validationSchema = Yup.object().shape({
+    currency: Yup.string()
+      .min(3, "Must be exactly 3 characters")
+      .max(3, "Must be exactly 3 characters")
+      .required("Required!"),
+  });
+
   useEffect(() => {
-    async function fetchData () {
-      const response = await fetch('http://localhost:8000/api/currencies',{
-        method:'GET',
-        headers: {
-          'Content-Type': "application/json",
-        }
-      });
-      const data = await response.json();
-      setCurrencyList(data);
+    getCurrencies(getCurrencyRequestConfig, handleGetCurrenciesResponse);
+  }, []);
+
+  function handlePostCurrencyResponse() {
+    navigate(PATHS.HOME);
+  }
+
+  function handleSubmit(values) {
+    const postCurrencyRequestConfig = {
+      url: "http://localhost:8000/api/currencies",
+      method: "POST",
+      data: { currency: values.currency },
     };
+    setIsPostingCurrency(true);
+    postCurrencies(postCurrencyRequestConfig, handlePostCurrencyResponse);
+  }
 
-    fetchData();
-  },[]);
-  
-  async function submitHandler(e) {
-    e.preventDefault();
-    const value = currencyValue.trim();
-    if ( value.length === 3 && ( /^[A-Z]+[A-Z]$/.test(value) || /^[a-z]+[a-z]$/.test(value) )) {
-      var jsonBody = JSON.stringify({ currency : value});
-
-      const response = await fetch('http://localhost:8000/api/currencies',{
-        method:'POST',
-        headers: {
-          'Content-Type': "application/json",
-        },
-        body: jsonBody
-      });
-
-      if (response.status === 200) {
-        navigate(PATHS.HOME);
-      }
-      const data = await response.json();
-      console.log(data);
-    } else {
-      setError({isError: true, message:<p>Currency must be 3 characters long<br/>Either all capital or no capital letter allowed(A-Z)</p>})
-    }
+  function handleGetCurrenciesResponse(response) {
+    setCurrencies(response.data);
   }
 
   return (
     <div>
-      <PageTitle title="Currencies"/>
+      <PageTitle title="Currencies" />
       <MainCard>
-        <div >
-          {currencyList.length !== 0 
-          ? currencyList.map(currency => {
-            return <span>{currency.code}</span>
-          }) 
-          : <span>No currencies found!</span> }
+        <div>
+          {currencyIsLoading && <div>Fetching currencies...</div>}
+          {!currencyIsLoading && currencyError && (
+            <div>{currencyError.message}</div>
+          )}
+          {!currencyIsLoading &&
+            !currencyError &&
+            currencies &&
+            currencies.length > 0 &&
+            currencies.map((currency) => {
+              return <div>{currency.code}</div>;
+            })}
+          {!currencyIsLoading &&
+            !currencyError &&
+            currencies &&
+            currencies.length === 0 && <div>No currencies found!</div>}
         </div>
-        {error.isError && error.message }
-        <form onSubmit={submitHandler}>
-          <label htmlFor="currency">Currency code:</label>
-          <input required type="text" id='currency' name='currency' placeholder='eg. EUR / eur' value={currencyValue} onChange={changeHandler}/>
-          <button type='submit'>Add Currency</button>
-        </form>
+        {isPostingCurrency && currencyPostIsLoading && <div>Loading...</div>}
+        {isPostingCurrency && !currencyPostIsLoading && currencyPostError && (
+          <div>{currencyPostError.message}</div>
+        )}
+        {isPostingCurrency && !currencyPostIsLoading && !currencyPostError && (
+          <div>Successfully added currency</div>
+        )}
+        <Formik
+          initialValues={{ currency: "" }}
+          validationSchema={validationSchema}
+          onSubmit={handleSubmit}
+        >
+          <Form>
+            <div>
+              <label htmlFor="currency">Currency:</label>
+              <Field
+                id="currency"
+                name="currency"
+                placeholder="Currency..."
+              ></Field>
+            </div>
+            <div>
+              <button type="submit">Add Currency</button>
+            </div>
+          </Form>
+        </Formik>
       </MainCard>
     </div>
   );
-};
+}
 
 export default Currencies;

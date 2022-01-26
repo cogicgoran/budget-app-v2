@@ -21,6 +21,8 @@ function ReceiptAddProduct(props) {
       category: values.category.trim(),
       price: Number(values.price.trim())
     });
+
+    props.onCancel();
   };
 
   const inputClass = styles['new-product-input'];

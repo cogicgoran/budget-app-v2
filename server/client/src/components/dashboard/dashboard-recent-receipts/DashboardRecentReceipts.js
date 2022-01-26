@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import styles from './DashboardRecentReceipts.module.css';
 import { handleIncomingArticles } from './DashboardRecentReceipts.functions';
 import { Link } from 'react-router-dom';
@@ -6,21 +6,35 @@ import { PATHS } from 'App.constants';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFileLines } from '@fortawesome/free-solid-svg-icons';
 import { useTranslation } from 'react-i18next';
-import { useFetch } from 'hooks/useFetch';
+import { useHttp } from 'hooks/useHttp';
 
 import Receipt from './Receipt/Receipt';
 
 function DashboardRecentReceipts() {
     const { t } = useTranslation();
-    const { isLoading, data, error} = useFetch("http://localhost:8000/api/receipts-latest", "GET");
-    const receipts = useMemo(() => {
-        return data ? handleIncomingArticles(data) : null;
-    },[data])
-
     const textRecentReceipts = t('recentReceipts');
     const textSeeMore = t('seeMore');
     const textAddNew = t('addNew');
     const textNoReceipts = t('noReceipts');
+    const [data, setData] = useState(null);
+    const { isLoading, error, fetchTask} = useHttp();
+    
+    const receiptsRequestConfig = {
+        url:"http://localhost:8000/api/receipts-latest",
+        method:"GET"
+    }
+
+    useEffect(() => {
+        fetchTask(receiptsRequestConfig, handleReceiptsResponse);
+    }, []);
+
+    function handleReceiptsResponse(response){
+        setData(response.data);
+    }
+
+    const receipts = useMemo(() => {
+        return data ? handleIncomingArticles(data) : null;
+    },[data])
 
     var dataResponse;
     if ( receipts && receipts.length > 0) {
@@ -42,7 +56,6 @@ function DashboardRecentReceipts() {
                     <Link to={PATHS.VIEW_RECEIPTS}><button type='button'>{textSeeMore}</button></Link>
                     <Link to={PATHS.NEW_RECEIPTS}><button type='button'>{textAddNew}</button></Link>
                 </div>
-                
             </div>
         </div>
     );

@@ -1,28 +1,34 @@
-import React, { useMemo } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import styles from "./DashboardCurrentMonth.module.css";
 import { handleIncomingArticles } from "./DashboardCurrentMonth.functions";
 import CategoryReceipt from "./category-receipt/CategoryReceipt";
-import { useTranslation } from "react-i18next";
 import { Trans } from "react-i18next";
-import { useFetch } from "hooks/useFetch";
+import { useHttp } from "hooks/useHttp";
+
 
 function DashboardCurrentMonth() {
-  const { isLoading, data, error } = useFetch(
-    "http://localhost:8000/api/receipts-current-month",
-    "GET"
-  );
+  const [receipts, setReceipts] = useState(null);
+  const {isLoading, error, fetchTask} = useHttp();
+  
+  const receiptsRequestConfig = {
+    url:"http://localhost:8000/api/receipts-current-month",
+    method: "GET"
+  };
+  
+  useEffect(() => {
+    fetchTask(receiptsRequestConfig, handleReceiptsResponse);
+  }, []);
 
   var [categories, total] = useMemo(() => {
-    return data ? handleIncomingArticles(data) : [null, null]
-  }, [data]);
-  const { t } = useTranslation();
-
+    return receipts ? handleIncomingArticles(receipts) : [null, null]
+  }, [receipts]);
+  
   const textCurrentMonth = (
     <Trans components={{ br: <br /> }}>currentMonth</Trans>
   );
-
+    
   var display;
-
+  
   if (categories && categories.length > 0) {
     display = categories.map((category) => {
       return <CategoryReceipt key={category.category_name} {...category} />;
@@ -30,6 +36,10 @@ function DashboardCurrentMonth() {
   } else {
     display = "No cats";
   }
+
+  function handleReceiptsResponse(response) {
+    setReceipts(response.data);
+  };
 
   return (
     <div className={styles["dashboard-current-month"]}>
