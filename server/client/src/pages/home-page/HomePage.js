@@ -14,6 +14,7 @@ function HomePage() {
       <HomeBox pathTo={PATHS.PRODUCTS}>View Products</HomeBox>
       <HomeBox pathTo={PATHS.CURRENCIES}>Currencies</HomeBox>
       <HomeBox pathTo={PATHS.MARKETPLACES}>Marketplaces</HomeBox>
+      <HomeBox pathTo={PATHS.SIGN_IN}>Sign In</HomeBox>
     </div>
   );
 };

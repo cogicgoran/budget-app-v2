@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import styles from './App.module.css';
 import Header from './components/header/Header';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+
 import HomePage from 'pages/home-page/HomePage';
 import { PATHS } from 'App.constants';
 import AddNewReceipt from 'pages/add-new-receipt/AddNewReceipt';
@@ -13,7 +14,8 @@ import Categories from 'pages/categories/Categories';
 import Currencies from 'pages/currencies/Currencies';
 import Dashboard from 'pages/dashboard/Dashboard';
 import Marketplaces from 'pages/marketplaces/Marketplaces';
-import './config/firebase-config';
+import SignInSignUp from 'pages/sign-in-sign-up/SignInSignUp';
+import AuthProvider from 'context/AuthContext';
 
 import i18next from 'i18next';
 import { initReactI18next } from 'react-i18next';
@@ -54,10 +56,11 @@ i18next
   function languageChangeHandler(event) {
     i18next.changeLanguage(event.target.value);
     document.cookie = `language=${event.target.value}; expires=Tue, 19 Jan 2038 03:14:07 UTC`;
-    
   }
 
   return (
+      <Router>
+        <AuthProvider>
       <div className={styles["app-container"]}>
         <div className={styles["app-language"]}>
           <select name="language" id="" defaultValue={prefLanguage} onChange={languageChangeHandler}>
@@ -65,7 +68,6 @@ i18next
             <option value="fr">FRA</option>
           </select>
         </div>
-      <Router>
         <Header />
         <Routes>
           <Route path={PATHS.HOME} element={<HomePage/>} />
@@ -80,11 +82,13 @@ i18next
           <Route path={PATHS.CURRENCIES} element={<Currencies />} />
           <Route path={PATHS.DASHBOARD} element={<Dashboard />} />
           <Route path={PATHS.MARKETPLACES} element={<Marketplaces />} />
+          <Route path={PATHS.SIGN_IN} element={<SignInSignUp />} />
           <Route path={PATHS.EDIT_RECEIPTS + '/:ReceiptId'} element={<ViewReceipt onAddReceipt={addReceiptHandler}/>} />
           <Route path='*' element={<Navigate replace to={PATHS.HOME} />}/>
         </Routes>
-      </Router>
     </div>
+    </AuthProvider>
+      </Router>
   );
 };
 

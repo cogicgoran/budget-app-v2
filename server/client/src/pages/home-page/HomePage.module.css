@@ -3,7 +3,7 @@
   grid-template-columns: repeat(6, 1fr);
   grid-template-areas: 
     'view view dashboard dashboard new new'
-    'products products . . currency currency'
+    'products products sign-up sign-up currency currency'
     'cat cat stats stats marketplace marketplace';
   text-align: center;
 }
@@ -109,6 +109,17 @@
 }
 
 .home-wrapper > *:nth-child(8):hover {
+  background-color: #b95790;
+  border-color: #8a3466;
+}
+
+.home-wrapper > *:nth-child(9) {
+  grid-area: sign-up;
+  background-color: #f797cf;
+  border-color: #b95790;
+}
+
+.home-wrapper > *:nth-child(9):hover {
   background-color: #b95790;
   border-color: #8a3466;
 }
