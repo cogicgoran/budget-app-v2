@@ -1,0 +1,10 @@
+.display-user-logged {
+  position: absolute;
+  top: 40px;
+  right: 16px;
+}
+
+.display-user-logged svg {
+  color: #1A4E5B;
+  font-size: 30px;
+}

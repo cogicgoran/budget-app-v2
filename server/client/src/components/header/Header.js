@@ -3,6 +3,7 @@ import styles from './Header.module.css';
 import { Link } from 'react-router-dom';
 import { PATHS } from 'App.constants';
 import { useAuth } from 'context/AuthContext';
+import UserLoggedDisplay from './UserLoggedDisplay';
 
 function Header() {
     const { currentUser } = useAuth();
@@ -11,7 +12,7 @@ function Header() {
         <Link to={PATHS.HOME}>
             <header className={styles.header}>
                 <h1 className={styles['header__title']}>AragoK Budget App</h1>
-                {currentUser && <p>Logged in as: {currentUser.email}</p> }
+                {currentUser && <UserLoggedDisplay />}
             </header>
         </Link>
     )

@@ -5,6 +5,8 @@ import { validationSignInSchema } from './SignInSignUp.validation';
 import { Formik, Form, Field } from 'formik';
 import styles from './SignInSignUp.module.css';
 import { signInWithGoogle, signInWithFacebook } from 'config/firebase-config';
+import { SVGGoogle, SVGFacebook } from 'svg/svg';
+
 
 function SignIn(props) {
   const { currentUser } = useAuth();
@@ -45,31 +47,30 @@ function SignIn(props) {
   const inputErrorClass = [styles['form__input-wrapper'],styles['invalid']].join(" ");
 
   return (
-    <div>
+    <div className={styles['form-container']}>
       <Formik initialValues={{email:"", password:""}}  validationSchema={validationSignInSchema} onSubmit={handleSignIn}>
         {({touched, errors}) => (
           <Form className={styles['sign-in-form']}>
-            <h3>Sign In</h3>
           <div className={touched.email && errors.email ? inputErrorClass : inputClass}>
-            <label htmlFor="sign-in-email">E-mail:</label>
-            <Field id="sign-in-email" name="email"></Field>
+            <Field id="sign-in-email" name="email" placeholder="Email..." />
           </div>
           <div className={touched.password && errors.password ? inputErrorClass : inputClass}>
-            <label htmlFor="sign-in-password">Password:</label>
-            <Field type="password" id="sign-in-password" name="password"></Field>
+            <Field type="password" id="sign-in-password" name="password" placeholder="Mos de passe..." />
           </div>
-          <div className='form__controls'>
-            <button disabled={isLoading} type='submit'>LOG IN</button>
+          <div className={styles['form__controls']}>
+            <button disabled={isLoading} type='submit'>Sign in</button>
           </div>
-          {/* {isFetched && !isLoading && error && <div>{error.message}</div> } */}
         </Form>)}
       </Formik>
       <div>
-        <button onClick={handleSignInWithGoogle}>Sign In with Google</button>
-        <button onClick={handleSignInWithFacebook}>Sign In with Facebook</button>
+        Or
+      </div>
+      <div className={styles["login-via-service-wrapper"]}>
+        <button className={styles["login-via-service-btn"]} onClick={handleSignInWithGoogle}><SVGGoogle/><span>Sign in with Google</span></button>
+        <button className={styles["login-via-service-btn"]} onClick={handleSignInWithFacebook}><SVGFacebook/><span>Sign in with Facebook</span></button>
       </div>
       <div>
-       Dont have an account? <button onClick={() => {props.onToggleForm(prevState => !prevState)}}>Sign Up</button>
+       Dont have an account? <button onClick={() => {props.onToggleForm(prevState => !prevState)}}>Sign Up Here</button>
       </div>
     </div>
   );

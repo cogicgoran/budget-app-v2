@@ -1,5 +1,6 @@
 import React from 'react';
 import { logOut } from 'config/firebase-config';
+import styles from './SignInSignUp.module.css';
 
 function LogOut() {
   async function handleLogout(){
@@ -11,7 +12,7 @@ function LogOut() {
   }
 
   return (
-    <div>
+    <div className={styles['form-container']}>
       <button type='button' onClick={handleLogout}>LOG OUT</button>
     </div>
   );

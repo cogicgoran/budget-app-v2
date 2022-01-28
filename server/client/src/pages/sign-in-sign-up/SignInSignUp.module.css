@@ -1,3 +1,7 @@
+.sign-up-in-container {
+  background-color: white;
+}
+
 .form__input-wrapper {
   margin: 0 auto;
   width: max-content;
@@ -41,14 +45,4 @@
   background-color: #D5E8D4;
   border-color: #B9E0A5;
   color: white;
-}
-
-
-form {
-  font-size: .9rem;
-  margin: 1rem auto;
-  padding: 1em;
-  border-radius: 1em;
-  max-width: 500px;
-  background-color: lightblue;
 }

@@ -60,6 +60,7 @@ app.post('/api/currencies', validateCurrency, function (req, res) {
   insertCurrency(res, req.body.currency);
 }); 
 
+
 app.get('*', function (req, res) {
   res.redirect('/');
 });

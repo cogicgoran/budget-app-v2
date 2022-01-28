@@ -11,7 +11,7 @@ function SignInSignUp() {
   const [ toggleSignUp, setToggleSignUp] = useState(false);
 
   return (
-    <div>
+    <div className={styles['sign-up-in-container']}>
       {currentUser && <LogOut /> }
       {!currentUser && !toggleSignUp && <SignIn onToggleForm={() => setToggleSignUp(prevState => !prevState)} />}
       {!currentUser && toggleSignUp && <SignUp onToggleForm={() => setToggleSignUp(prevState => !prevState)}/>}

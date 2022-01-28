@@ -1,6 +1,7 @@
 .header {
   padding: 2em 0;
   background-color:#E0F9FF;
+  position: relative;
 }
 
 .header__title {
