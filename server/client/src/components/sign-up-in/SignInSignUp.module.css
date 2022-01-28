@@ -7,7 +7,7 @@
   font-size: .9rem
 }
 
-form {
+.form-container form {
   margin: 1rem auto;
   border-radius: 1em;
 }
@@ -29,7 +29,7 @@ form {
   border-color: red;
 }
 
-form button {
+.form-container form button {
   margin-top: 1rem;
   width: 100%;
   padding: .3em 1em;

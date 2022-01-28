@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import styles from './App.module.css';
 import Header from './components/header/Header';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+import WithAuth from 'components/hoc/WithAuth';
 
 import HomePage from 'pages/home-page/HomePage';
 import { PATHS } from 'App.constants';
@@ -72,18 +73,28 @@ i18next
         <Routes>
           <Route path={PATHS.HOME} element={<HomePage/>} />
           <Route path={PATHS.VIEW_RECEIPTS}>
-            <Route path="" element={<ViewReceipts receipts={receipts}/>} />
-            <Route path=":ReceiptId" element={<ViewReceipt onAddReceipt={addReceiptHandler}/>} />
+            <Route path="" element={<WithAuth component={ViewReceipts} componentProps={{receipts}}/>} />
+            <Route path=":ReceiptId" element={<WithAuth component={ViewReceipt} componentProps={{onAddReceipt:addReceiptHandler}}/>} />
           </Route>
-          <Route path={PATHS.NEW_RECEIPTS} element={<AddNewReceipt onAddReceipt={addReceiptHandler} />} />
-          <Route path={PATHS.STATISTICS} element={<Statistics />} />
+
+          <Route path={PATHS.NEW_RECEIPTS} element={<WithAuth component={AddNewReceipt} componentProps={{onAddReceipt:addReceiptHandler}}/>} />
+          {/* <Route path={PATHS.NEW_RECEIPTS} element={<AddNewReceipt onAddReceipt={addReceiptHandler} /> */}
+          <Route path={PATHS.STATISTICS} element={<WithAuth component={Statistics}/>} />
+          <Route path={PATHS.PRODUCTS} element={<WithAuth component={Products}/>} />
+          <Route path={PATHS.CATEGORIES} element={<WithAuth component={Categories}/>} />
+          <Route path={PATHS.CURRENCIES} element={<WithAuth component={Currencies}/>} />
+          <Route path={PATHS.DASHBOARD} element={<WithAuth component={Dashboard}/>} />
+          <Route path={PATHS.MARKETPLACES} element={<WithAuth component={Marketplaces}/>} />
+          <Route path={PATHS.EDIT_RECEIPTS} element={<WithAuth component={ViewReceipt} componentProps={{onAddReceipt:addReceiptHandler}}/>} />
+          <Route path={PATHS.SIGN_IN} element={<SignInSignUp />} />
+
+          {/* <Route path={PATHS.STATISTICS} element={<Statistics />} />
           <Route path={PATHS.PRODUCTS} element={<Products />} />
           <Route path={PATHS.CATEGORIES} element={<Categories />} />
           <Route path={PATHS.CURRENCIES} element={<Currencies />} />
           <Route path={PATHS.DASHBOARD} element={<Dashboard />} />
-          <Route path={PATHS.MARKETPLACES} element={<Marketplaces />} />
-          <Route path={PATHS.SIGN_IN} element={<SignInSignUp />} />
-          <Route path={PATHS.EDIT_RECEIPTS + '/:ReceiptId'} element={<ViewReceipt onAddReceipt={addReceiptHandler}/>} />
+          <Route path={PATHS.MARKETPLACES} element={<Marketplaces />} /> */}
+          {/* <Route path={PATHS.EDIT_RECEIPTS + '/:ReceiptId'} element={<ViewReceipt onAddReceipt={addReceiptHandler}/>} /> */}
           <Route path='*' element={<Navigate replace to={PATHS.HOME} />}/>
         </Routes>
     </div>
