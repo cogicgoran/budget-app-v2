@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import ReactDOM  from 'react-dom';
 import styles from './AddNewReceipt.module.css';
-import { useUnauthenticatedRedirect } from 'hooks/use-redirect/useAuthRedirect';
 
 import ReceiptInfo from 'components/add-new-receipt/new-receipt-info/ReceiptInfo';
 import ReceiptProductList from 'components/add-new-receipt/new-receipt-product-list/ReceiptProductList';
@@ -20,7 +19,7 @@ const DEFAULT_RECEIPT_INFO = {
 };
 
 function AddNewReceipt() {
-  useUnauthenticatedRedirect();
+  // useUnauthenticatedRedirect();
   const { t } = useTranslation();
   const [articles, setArticles] = useState([]);
   const [receiptInfo, setReceiptInfo] = useState(DEFAULT_RECEIPT_INFO);

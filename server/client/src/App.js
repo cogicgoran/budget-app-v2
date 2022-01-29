@@ -3,6 +3,7 @@ import styles from './App.module.css';
 import Header from './components/header/Header';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import WithAuth from 'components/hoc/WithAuth';
+import WithoutAuth from 'components/hoc/WithoutAuth';
 
 import HomePage from 'pages/home-page/HomePage';
 import { PATHS } from 'App.constants';
@@ -86,8 +87,7 @@ i18next
           <Route path={PATHS.DASHBOARD} element={<WithAuth component={Dashboard}/>} />
           <Route path={PATHS.MARKETPLACES} element={<WithAuth component={Marketplaces}/>} />
           <Route path={PATHS.EDIT_RECEIPTS} element={<WithAuth component={ViewReceipt} componentProps={{onAddReceipt:addReceiptHandler}}/>} />
-          <Route path={PATHS.SIGN_IN} element={<SignInSignUp />} />
-
+          <Route path={PATHS.SIGN_IN} element={<WithoutAuth component={SignInSignUp}/>} />
           {/* <Route path={PATHS.STATISTICS} element={<Statistics />} />
           <Route path={PATHS.PRODUCTS} element={<Products />} />
           <Route path={PATHS.CATEGORIES} element={<Categories />} />
