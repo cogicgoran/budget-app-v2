@@ -47,7 +47,7 @@ function ReceiptAddProduct(props) {
           {({ errors, touched}) => (
           <Form>
             <div className={touched.name && errors.name ? inputErrorClass : inputClass}>
-              <label htmlFor="name">{textName}</label>
+              <label htmlFor="name">{textName}:</label>
               <Field id="name" name="name" placeholder={`${textName}...`}></Field>
             </div>
             <div className={touched.category && errors.category ? inputErrorClass : inputClass}>
@@ -55,7 +55,7 @@ function ReceiptAddProduct(props) {
               <Field id="category" name="category" placeholder={`${textCategory}...`}></Field>
             </div>
             <div className={touched.price && errors.price ? inputErrorClass : inputClass}>
-              <label htmlFor="price">{textPrice}</label>
+              <label htmlFor="price">{textPrice}:</label>
               <Field id="price" name="price" placeholder={`${textPrice}...`}></Field>
             </div>
             <div className={styles['new-product__controls']}>

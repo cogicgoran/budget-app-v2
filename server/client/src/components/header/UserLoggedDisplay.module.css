@@ -2,9 +2,50 @@
   position: absolute;
   top: 40px;
   right: 16px;
+  padding: .2rem;
 }
 
-.display-user-logged svg {
+.display-user-logged > div:first-child {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: .2rem;
   color: #1A4E5B;
+}
+
+.display-user-icon {
   font-size: 30px;
+}
+
+.display-user-arrow {
+  font-size: 12px;
+}
+
+.display-user-dropdown {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  border: 1px solid #90C3D0;
+  padding: .2rem .1rem;
+  border-radius: .2rem;
+  width: 130px;
+  background-color: white;
+  color: #1A4E5B;
+  font-size: .8rem;
+}
+
+.display-user-dropdown > * {
+  padding: 0 .2rem;
+}
+
+.display-user-dropdown > *:hover {
+  background-color: #E0F9FF;
+}
+
+.display-user-logged .display-user-dropdown {
+  display: none;
+}
+
+.display-user-logged:hover .display-user-dropdown {
+  display: block;
 }

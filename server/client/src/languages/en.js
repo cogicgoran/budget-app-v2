@@ -9,17 +9,22 @@ const english = {
   currency: "Currency",
   currentMonth: "Current <br/> Month",
   date: "Date",
+  email: "Email",
   finish: "Finish",
   marketplace: "Marketplace",
   name: "Name",
   newReceipt: "New Receipt",
+  noReceipts:"There are no receipts in the last 90 days",
+  or: "Or",
+  password: "Password",
   price: "Price",
   productName:"Product Name",
   recentReceipts:"Recent Receipts",
   seeMore:"See More",
   shopAddress:"Shop Address",
   shopName:"Shop Name",
-  noReceipts:"There are no receipts in the last 90 days"
+  signIn:"Sign in",
+  signInWith:"Sign in with"
 }
 
 export default english;

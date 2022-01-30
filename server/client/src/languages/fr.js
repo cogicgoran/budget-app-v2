@@ -9,17 +9,22 @@ const french = {
   currency: "Devise",
   currentMonth: "Mois <br/> en Cours",
   date: "DAtte",
+  email: "Email",
   finish: "Finir",
   marketplace: "Marché",
   name: "Nom",
   newReceipt: "Nouveau Reçu",
+  noReceipts:"Il y a pas de reçus au cours des 90 derniers jours",
+  or: "Ou",
+  password: "Mot de passe",
   price: "Prix",
   productName:"Nom du Produit",
   recentReceipts:"Reçus Récents",
   seeMore:"Voir Plus",
   shopAddress:"Adresse de la Boutique",
   shopName:"Nom de la Boutique",
-  noReceipts:"Il y a pas de reçus au cours des 90 derniers jours"
+  signIn:"Se connecter",
+  signInWith:"Se connecter avec"
 }
 
 export default french;

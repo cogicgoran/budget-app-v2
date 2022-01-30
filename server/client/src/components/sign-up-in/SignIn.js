@@ -6,11 +6,20 @@ import { Formik, Form, Field } from 'formik';
 import styles from './SignInSignUp.module.css';
 import { signInWithGoogle, signInWithFacebook } from 'config/firebase-config';
 import { SVGGoogle, SVGFacebook } from 'svg/svg';
+import { useTranslation } from 'react-i18next';
 
 
 function SignIn(props) {
+  const { t } = useTranslation();
   const { currentUser } = useAuth();
   const [ isLoading, setIsLoading] = useState(false);
+
+  const textEmail = t('email');
+  const textPassword = t('password');
+  const textOr = t('or');
+  const textSignIn = t('signIn');
+  const textSignInWith = t('signInWith');
+
 
   async function handleSignIn(values){
     if( currentUser ) {
@@ -52,22 +61,22 @@ function SignIn(props) {
         {({touched, errors}) => (
           <Form className={styles['sign-in-form']}>
           <div className={touched.email && errors.email ? inputErrorClass : inputClass}>
-            <Field id="sign-in-email" name="email" placeholder="Email..." />
+            <Field id="sign-in-email" name="email" placeholder={`${textEmail}...`} />
           </div>
           <div className={touched.password && errors.password ? inputErrorClass : inputClass}>
-            <Field type="password" id="sign-in-password" name="password" placeholder="Mos de passe..." />
+            <Field type="password" id="sign-in-password" name="password" placeholder={`${textPassword}...`} />
           </div>
           <div className={styles['form__controls']}>
-            <button disabled={isLoading} type='submit'>Sign in</button>
+            <button disabled={isLoading} type='submit'>{textSignIn}</button>
           </div>
         </Form>)}
       </Formik>
       <div>
-        Or
+        {textOr}
       </div>
       <div className={styles["login-via-service-wrapper"]}>
-        <button className={styles["login-via-service-btn"]} onClick={handleSignInWithGoogle}><SVGGoogle/><span>Sign in with Google</span></button>
-        <button className={styles["login-via-service-btn"]} onClick={handleSignInWithFacebook}><SVGFacebook/><span>Sign in with Facebook</span></button>
+        <button className={styles["login-via-service-btn"]} onClick={handleSignInWithGoogle}><SVGGoogle/><span>{textSignInWith} Google</span></button>
+        <button className={styles["login-via-service-btn"]} onClick={handleSignInWithFacebook}><SVGFacebook/><span>{textSignInWith} Facebook</span></button>
       </div>
       <div>
        Dont have an account? <button onClick={() => {props.onToggleForm(prevState => !prevState)}}>Sign Up Here</button>
