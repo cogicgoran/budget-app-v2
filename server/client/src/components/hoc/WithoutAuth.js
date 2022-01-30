@@ -6,7 +6,7 @@ import { PATHS } from 'App.constants';
 function WithoutAuth(props) {
   const { currentUser } = useAuth();
   if(currentUser) {
-    return <Navigate to={PATHS.HOME} />
+    return <Navigate to={PATHS.DASHBOARD} />
   }else {
     return <props.component {...props.componentProps} />
   }
