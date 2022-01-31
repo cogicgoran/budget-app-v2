@@ -13,15 +13,21 @@ export function useAuth(){
 export default function AuthProvider(props) {
   const [currentUser, setCurrentUser] = useState(null);
   const navigate = useNavigate();
+  const [pending, setPending] = useState(true);
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
       setCurrentUser(user);
+      setPending(false);
       if (user) navigate(PATHS.HOME);
     });
 
     return unsubscribe;
   }, []);
+
+  if (pending) {
+    return <div>Pending authentication...</div>
+  }
 
   return (
     <AuthContext.Provider value={{currentUser}}>

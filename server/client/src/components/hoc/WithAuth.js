@@ -5,6 +5,7 @@ import { PATHS } from 'App.constants';
 
 function WithAuth(props) {
   const { currentUser } = useAuth();
+  console.log(currentUser);
   if(!currentUser) {
     return <Navigate to={PATHS.SIGN_IN} />
   }else {
