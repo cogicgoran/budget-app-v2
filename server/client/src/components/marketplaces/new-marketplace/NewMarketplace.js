@@ -32,7 +32,7 @@ function NewMarketplace(props) {
         });
         navigate(PATHS.HOME);
       }catch(error) {
-        console.log(error);
+        alert(error.message)
       }
     };
   };

@@ -36,7 +36,6 @@ function SignIn(props) {
   async function handleSignInWithGoogle(){
     try {
       const result = await signInWithGoogle();
-      console.log(result);
     } catch (error) {
       alert("error logging with google account");
     }
@@ -45,9 +44,7 @@ function SignIn(props) {
   async function handleSignInWithFacebook(){
     try {
       const result = await signInWithFacebook();
-      console.log(result);
     } catch (error) {
-      console.log(error);
       alert("error logging with facebook account");
     }
   }
