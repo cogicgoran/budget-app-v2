@@ -11,15 +11,6 @@
     color: #1A4E5B;
 }
 
-.dashboard__receipt > :nth-child(1) span {
-    padding: 0.2em 1em;
-    border-radius: 1em;
-    font-size: .8em;
-    background-color: gray;
-    border: 1px solid rgb(100, 93, 93);
-    color: white;
-}
-
 .dashboard__receipt > :nth-child(4) {
     color: #660000;
     text-align: right;

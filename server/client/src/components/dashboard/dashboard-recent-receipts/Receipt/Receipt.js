@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEye, faTrashAlt } from '@fortawesome/free-regular-svg-icons';
 import { faPenToSquare } from '@fortawesome/free-solid-svg-icons';
+import CategorySmallDisplay from './CategorySmallDisplay';
 
 import styles from './Receipt.module.css';
 
@@ -14,7 +15,7 @@ function Receipt(props) {
 
   return (
     <article className={styles['dashboard__receipt']}>
-      <div><span>{props['mostSpentCategory'].catName}</span></div>
+      <CategorySmallDisplay category={props['mostSpentCategory'].catName} />
       <div>{props['shop_name']}</div>
       <div>{weekday[date.getDay()]}, {date.toLocaleDateString("en-GB",{day:"numeric" , month:"short", year: "numeric"})}</div>
       <div>{props['receipt_price']} {props['currency']}</div>

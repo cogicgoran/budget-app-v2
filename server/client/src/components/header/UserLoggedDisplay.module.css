@@ -3,6 +3,7 @@
   top: 40px;
   right: 16px;
   padding: .2rem;
+  z-index: 3;
 }
 
 .display-user-logged > div:first-child {
@@ -32,6 +33,7 @@
   background-color: white;
   color: #1A4E5B;
   font-size: .8rem;
+  display: block;
 }
 
 .display-user-dropdown > * {
@@ -42,10 +44,11 @@
   background-color: #E0F9FF;
 }
 
-.display-user-logged .display-user-dropdown {
-  display: none;
-}
-
-.display-user-logged:hover .display-user-dropdown {
-  display: block;
+.dropdown-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 2;
 }
