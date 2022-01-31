@@ -24,15 +24,15 @@ function UserLoggedDisplay() {
   }
 
   return (
-    <div>
+    <div onClick={(event) => {event.preventDefault()}}>
       <div
         className={styles["display-user-logged"]}
-        onClick={handleDropdownClick}
       >
-        <div>
+        <div onClick={handleDropdownClick}>
           <FontAwesomeIcon
             className={styles["display-user-icon"]}
             icon={faCircleUser}
+            
           />
           <FontAwesomeIcon
             className={styles["display-user-arrow"]}
