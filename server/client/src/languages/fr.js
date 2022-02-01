@@ -2,6 +2,7 @@ const french = {
   add: "Ajouter",
   addNew: "Ajouter un Nouveau",
   addProduct: "Ajouter un Produit",
+  alreadyHaveAnAccount:"Vous avez déjà un compte?",
   cancel: "Annuler",
   categories: "Catégories",
   category: "Catégorie",
@@ -9,8 +10,10 @@ const french = {
   currency: "Devise",
   currentMonth: "Mois <br/> en Cours",
   date: "DAtte",
+  dontHaveAnAccount:"Vous n'avez pas de compte?",
   email: "Email",
   finish: "Finir",
+  logout: "Se déconnecter",
   marketplace: "Marché",
   name: "Nom",
   newReceipt: "Nouveau Reçu",
@@ -24,7 +27,10 @@ const french = {
   shopAddress:"Adresse de la Boutique",
   shopName:"Nom de la Boutique",
   signIn:"Se connecter",
-  signInWith:"Se connecter avec"
+  signInHere:"Se connecter ici",
+  signInWith:"Se connecter avec",
+  signUp:"S'inscrire",
+  signUpHere:"S'inscrire ici"
 }
 
 export default french;

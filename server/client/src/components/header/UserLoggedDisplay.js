@@ -1,13 +1,17 @@
 import React, { useState } from "react";
 import { logOut } from "config/firebase-config";
-
+import { useTranslation } from "react-i18next";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCircleUser } from "@fortawesome/free-solid-svg-icons";
 import { faChevronDown } from "@fortawesome/free-solid-svg-icons";
 import styles from "./UserLoggedDisplay.module.css";
 
+
 function UserLoggedDisplay() {
   const [showDropdown, setShowDropdown] = useState(false);
+  const { t } = useTranslation();
+
+  const textLogout = t('logout')
 
   async function handleLogout() {
     try {
@@ -41,7 +45,7 @@ function UserLoggedDisplay() {
         </div>
         {showDropdown && (
           <div className={styles["display-user-dropdown"]}>
-            <div onClick={handleLogout}>Logout</div>
+            <div onClick={handleLogout}>{textLogout}</div>
           </div>
         )}
       </div>

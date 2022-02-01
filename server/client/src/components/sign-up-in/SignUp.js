@@ -5,10 +5,18 @@ import { validationSignUpSchema } from './SignInSignUp.validation';
 import { Formik, Form, Field } from 'formik';
 import styles from './SignInSignUp.module.css';
 import ErrorInput from 'components/UI/error-input/ErrorInput';
+import { useTranslation } from 'react-i18next';
 
 function SignUp(props) {
   const { currentUser } = useAuth();
   const [ isLoading, setIsLoading ] = useState(false);
+  const { t } = useTranslation();
+
+  const textAlreadyHaveAnAccount = t('alreadyHaveAnAccount');
+  const textSignInHere  = t('signInHere');
+  const textSignUp  = t('signUp');
+  const textPassword = t('password');
+  const textEmail = t('email');
 
   async function handleSignUp(values){
     if( currentUser ) {
@@ -31,24 +39,24 @@ function SignUp(props) {
         {({touched, errors}) => (
           <Form className={styles['sign-up-form']}>
           <div className={touched.email && errors.email ? inputErrorClass : inputClass}>
-            <Field id="sign-up-email" name="email" placeholder="example@example.com"></Field>
+            <Field id="sign-up-email" name="email" placeholder={`${textEmail}...`}></Field>
             {errors.email && touched.email && <ErrorInput errorMessage={errors.email}/>}
           </div>
           <div className={touched.password && errors.password ? inputErrorClass : inputClass}>
-            <Field type="password" id="sign-up-password" name="password" placeholder="Password..."></Field>
+            <Field type="password" id="sign-up-password" name="password" placeholder={`${textPassword}...`}></Field>
             {errors.password && touched.password && <ErrorInput errorMessage={errors.password}/>}
           </div>
           <div className={touched.passwordConfirm && errors.passwordConfirm ? inputErrorClass : inputClass}>
-            <Field type="password" id="passwordConfirm" name="passwordConfirm" placeholder="Password..."></Field>
+            <Field type="password" id="passwordConfirm" name="passwordConfirm" placeholder={`${textPassword}...`}></Field>
             {errors.passwordConfirm && touched.passwordConfirm && <ErrorInput errorMessage={errors.passwordConfirm}/>}
           </div>
           <div className='form__controls'>
-            <button disabled={isLoading} type='submit'>Sign up</button>
+            <button disabled={isLoading} type='submit'>{textSignUp}</button>
           </div>
         </Form>)}
       </Formik>
         <div>
-          Already have an account? <button onClick={props.onToggleForm}>Sign In Here</button>
+          {textAlreadyHaveAnAccount} <button onClick={props.onToggleForm}>{textSignInHere}</button>
         </div>
     </div>
   );

@@ -4,6 +4,7 @@
   right: 16px;
   padding: .2rem;
   z-index: 3;
+  cursor: default;
 }
 
 .display-user-logged > div:first-child {
@@ -16,10 +17,12 @@
 
 .display-user-icon {
   font-size: 30px;
+  cursor: pointer;
 }
 
 .display-user-arrow {
   font-size: 12px;
+  cursor: pointer;
 }
 
 .display-user-dropdown {
@@ -38,6 +41,7 @@
 
 .display-user-dropdown > * {
   padding: 0 .2rem;
+  cursor: pointer;
 }
 
 .display-user-dropdown > *:hover {
@@ -51,4 +55,5 @@
   width: 100vw;
   height: 100vh;
   z-index: 2;
+  cursor: default;
 }

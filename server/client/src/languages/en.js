@@ -2,6 +2,7 @@ const english = {
   add: "Add",
   addNew: "Add New",
   addProduct: "Add Product",
+  alreadyHaveAnAccount:"Already have an account?",
   cancel: "Cancel",
   categories: "Categories",
   category: "Category",
@@ -9,8 +10,10 @@ const english = {
   currency: "Currency",
   currentMonth: "Current <br/> Month",
   date: "Date",
+  dontHaveAnAccount:"Don't have an account?",
   email: "Email",
   finish: "Finish",
+  logout: "Logout",
   marketplace: "Marketplace",
   name: "Name",
   newReceipt: "New Receipt",
@@ -24,7 +27,10 @@ const english = {
   shopAddress:"Shop Address",
   shopName:"Shop Name",
   signIn:"Sign in",
-  signInWith:"Sign in with"
+  signInHere:"Sign in here",
+  signInWith:"Sign in with",
+  signUp:"Sign up",
+  signUpHere:"Sign up here"
 }
 
 export default english;

@@ -19,6 +19,8 @@ function SignIn(props) {
   const textOr = t('or');
   const textSignIn = t('signIn');
   const textSignInWith = t('signInWith');
+  const textDontHaveAnAccount = t('dontHaveAnAccount');
+  const textSignUpHere = t('signUpHere');
 
 
   async function handleSignIn(values){
@@ -35,7 +37,7 @@ function SignIn(props) {
 
   async function handleSignInWithGoogle(){
     try {
-      const result = await signInWithGoogle();
+      await signInWithGoogle();
     } catch (error) {
       alert("error logging with google account");
     }
@@ -43,7 +45,7 @@ function SignIn(props) {
 
   async function handleSignInWithFacebook(){
     try {
-      const result = await signInWithFacebook();
+      await signInWithFacebook();
     } catch (error) {
       alert("error logging with facebook account");
     }
@@ -76,7 +78,7 @@ function SignIn(props) {
         <button className={styles["login-via-service-btn"]} onClick={handleSignInWithFacebook}><SVGFacebook/><span>{textSignInWith} Facebook</span></button>
       </div>
       <div>
-       Dont have an account? <button onClick={() => {props.onToggleForm(prevState => !prevState)}}>Sign Up Here</button>
+      {textDontHaveAnAccount} <br /> <button onClick={() => {props.onToggleForm(prevState => !prevState)}}>{textSignUpHere}</button>
       </div>
     </div>
   );
