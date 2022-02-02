@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import styles from "./App.module.css";
 import Header from "./components/header/Header";
 import {
@@ -29,6 +29,7 @@ import translationsEn from "./languages/en";
 import translationsFr from "./languages/fr";
 
 import Toast from "components/toast/Toast";
+import Categories from "pages/categories/Categories";
 
 const prefLanguage = getPreferedLanguage() || "en";
 i18next.use(initReactI18next).init({
@@ -127,6 +128,10 @@ function App() {
                   }
                 />
               </Route>
+              <Route
+                path={PATHS.CATEGORIES}
+                element={<WithAuth component={Categories} />}
+              />
               <Route
                 path="*"
                 element={<Navigate replace to={redirectRoute} />}

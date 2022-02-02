@@ -1,0 +1,12 @@
+.add-category-container {
+  position: fixed;
+  top: 10%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 400px;
+  z-index: 11;
+}
+
+
+
+

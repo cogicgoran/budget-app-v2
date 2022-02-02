@@ -150,4 +150,51 @@ const categoryStyleSheet = {
   },
 };
 
+export const categoryColors = [
+  {color:"#EB6383", borderColor:"#CB4363"},
+  {color:"#FFE9C5", borderColor:"#DFC9A5"},
+  {color:"#FA9191", borderColor:"#DA7171"},
+  {color:"#B4F2E1", borderColor:"#94D2B1"},
+  {color:"#E7B2A5", borderColor:"#C79285"},
+  {color:"#F1935C", borderColor:"#D1734C"},
+  {color:"#BA6B57", borderColor:"#9A4B47"},
+  {color:"#30475E", borderColor:"#20374E"},
+  {color:"#EEF9BF", borderColor:"#BED99F"},
+  {color:"#A7E9AF", borderColor:"#87C98F"},
+  {color:"#75B79E", borderColor:"#55977E"},
+  {color:"#6A8CAF", borderColor:"#5A6C8F"},
+  {color:"#85603F", borderColor:"#65502F"},
+  {color:"#9E7540", borderColor:"#7E5530"},
+  {color:"#BD9354", borderColor:"#9D7344"},
+  {color:"#E3D18A", borderColor:"#C3B16A"},
+  {color:"#F39189", borderColor:"#D37169"},
+  {color:"#BB8082", borderColor:"#9B6062"},
+  {color:"#6E7582", borderColor:"#5E5562"},
+  {color:"#046582", borderColor:"#005562"},
+];
+
+export const categoryIcons = [
+  fontAwesomeSolidIcons.faAppleAlt,
+  fontAwesomeSolidIcons.faBaby,
+  fontAwesomeSolidIcons.faBabyCarriage,
+  fontAwesomeSolidIcons.faBook,
+  fontAwesomeSolidIcons.faCarrot,
+  fontAwesomeSolidIcons.faCar,
+  fontAwesomeSolidIcons.faCat,
+  fontAwesomeSolidIcons.faCocktail,
+  fontAwesomeSolidIcons.faFutbol,
+  fontAwesomeSolidIcons.faHeadSideMask,
+  fontAwesomeSolidIcons.faHeadphones,
+  fontAwesomeSolidIcons.faHeart,
+  fontAwesomeSolidIcons.faHome,
+  fontAwesomeSolidIcons.faIceCream,
+  fontAwesomeSolidIcons.faLemon,
+  fontAwesomeSolidIcons.faKitMedical,
+  fontAwesomeSolidIcons.faPaw,
+  fontAwesomeSolidIcons.faFootball,
+  fontAwesomeSolidIcons.faCartShopping,
+  fontAwesomeSolidIcons.faTelevision,
+  fontAwesomeSolidIcons.faQuestion,
+];
+
 export default categoryStyleSheet;

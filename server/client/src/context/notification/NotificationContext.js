@@ -20,7 +20,6 @@ export default function NotificationProvider(props) {
   },[list, setList, createNotification]);
 
   useEffect(() => {
-    console.log("is executing");
     if ( list.length > 0 ) {
       var timerID = setTimeout(() => {
         list.splice(0,1);

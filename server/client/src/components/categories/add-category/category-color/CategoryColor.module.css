@@ -1,0 +1,44 @@
+.category__color-select {
+  margin-bottom: 40px;
+  padding: 1rem;
+  background-color: #f5fdff;
+}
+
+.color-slider {
+  width: 188px;
+  margin: 0 auto;
+}
+
+.add-category__controls {
+  margin-top: 3em;
+  display: flex;
+  justify-content: center;
+  gap: 4em;
+  font-size: 10px;
+}
+
+.add-category__controls button {
+  text-transform: uppercase;
+  padding: .3em 1em;
+  min-width: 16ch;
+  border-radius: 1em;
+  cursor: pointer;
+}
+
+.add-category__cancel {
+  background-color: #FAD9D5;
+  border: 1px solid #AE4132;
+}
+
+.add-category__confirm {
+  background-color: #60A917;
+  border: 1px solid #2D7600;
+}
+
+.add-category__title {
+  color: #1A4E5B;
+  font-size: 1rem;
+  font-weight: 400;
+  text-align: center;
+  text-transform: uppercase;
+}

@@ -1,8 +1,8 @@
 .app-container {
     max-width: 900px;
     margin: 0 auto;
-    border-radius: 8px;
     min-height: 100vh;
+    border: 1px solid #90C3D0;
     background-color: #E0F9FF;
 }
 
