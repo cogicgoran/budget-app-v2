@@ -4,7 +4,7 @@ import categoryStyleSheet from 'helper/categoriesObject.const';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 function CategorySmallDisplay({ category }) {
-  const catInfo = categoryStyleSheet[category.toLowerCase()] || categoryStyleSheet.unknown;
+  const catInfo = categoryStyleSheet[category.toLowerCase()] || categoryStyleSheet[20];
   return (
     <div>
       <span style={{backgroundColor:catInfo.color, borderColor:catInfo.border}} className={styles["category-small"]}>{<FontAwesomeIcon icon={catInfo.icon}/>}{category}</span>
