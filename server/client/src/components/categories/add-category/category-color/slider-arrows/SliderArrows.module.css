@@ -1,0 +1,20 @@
+.slider-arrow-prev {
+  left: -24px;
+}
+
+.slider-arrow-next {
+  right: -24px;
+}
+
+.slider-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  opacity: 0.8;
+  cursor: pointer;
+  transition: opacity 200ms;
+}
+
+.slider-arrow:hover {
+  opacity: 1;
+}

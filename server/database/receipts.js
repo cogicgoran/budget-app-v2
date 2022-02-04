@@ -78,17 +78,12 @@ function updateReceipt(res, body, jsonString) {
 }
 
 function countInsertedCategories(res, next,categories, categoriesLength) {
-  console.log([...categories]);
   const query = `SELECT COUNT(id) AS count FROM categories WHERE name IN (${dbConn.escape(categories)});`
-  console.log("query:", query);
   dbConn.query(query, function(err, results, fields) {
     if (err) {
-      console.log("err");
       return res.status(500).send("SERVER ERROR");
     }else {
-      console.log("rsponse:",results[0].count);
       if (categoriesLength == results[0].count){
-        console.log("callling next");
         return next();
       } else {
         return res.status(400).json("INVALID CATEGORIES");

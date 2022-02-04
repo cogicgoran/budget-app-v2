@@ -140,14 +140,7 @@ const categoryStyleSheet = {
     color: "#046582",
     border: "#025572",
     textColor: "#222222",
-  },
-  unknown: {
-    category: "UNKNOWN",
-    icon: fontAwesomeSolidIcons.faQuestion,
-    color: "#999999",
-    border: "#777777",
-    textColor: "#222222",
-  },
+  }
 };
 
 export const categoryColors = [
@@ -194,7 +187,6 @@ export const categoryIcons = [
   fontAwesomeSolidIcons.faFootball,
   fontAwesomeSolidIcons.faCartShopping,
   fontAwesomeSolidIcons.faTelevision,
-  fontAwesomeSolidIcons.faQuestion,
 ];
 
 export default categoryStyleSheet;
