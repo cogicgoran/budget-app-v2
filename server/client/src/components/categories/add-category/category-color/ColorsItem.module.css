@@ -1,11 +1,3 @@
-.color-item-container {
-display: flex;
-align-items: center;
-height: 74px;
-}
-
 .color-item {
-  box-sizing: content-box;
-  height: 70px;
-  width: 100%;
+  /* box-sizing: content-box; */
 }

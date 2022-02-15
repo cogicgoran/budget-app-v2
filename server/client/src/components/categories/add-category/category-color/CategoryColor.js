@@ -1,59 +1,41 @@
-import React, {useState, useCallback} from 'react';
-import CategoryShowcase from '../category-showcase/CategoryShowcase';
-import ColorItem from './ColorsItem';
-import Slider from 'react-slick';
-import { categoryColors } from 'helper/categoriesObject.const';
-import styles from './CategoryColor.module.css';
-import { PrevArrow, NextArrow } from './slider-arrows/SliderArrows';
+import React from "react";
+import CategoryShowcase from "../category-showcase/CategoryShowcase";
+import ColorItem from "./ColorsItem";
+import { categoryColors } from "helper/categoriesObject.const";
+import styles from "./CategoryColor.module.css";
+import SliderColor from "./SliderColor";
 
 function CategoryColor(props) {
-  const getIndex = useCallback(function getIndexCallback(index) {
-    return (index + 4) % 20;
-  }, []);
-  const [currentIndex, setCurrentIndex] = useState(null);
-
-  function sliderChange(index) {
-    props.setCurrentColor(categoryColors[getIndex(index)].color);
-    setCurrentIndex(getIndex(index));
-  }
-
-  function initChange() {
-    props.setCurrentColor(categoryColors[getIndex(0)].color);
-    setCurrentIndex(getIndex(0));
-  }
-
-  const colorSliderOptions = {
-    infinite: true,
-    speed: 200,
-    slidesToShow: 9,
-    slidesToScroll: 1,
-    swipeToSlide: true,
-    afterChange: sliderChange,
-    onInit:initChange,
-    prevArrow: <PrevArrow />,
-    nextArrow: <NextArrow />,
-  };
 
   return (
     <div className={styles["category__color-select"]}>
-        <h3 className={styles["add-category__title"]}>Add Category</h3>
-        <CategoryShowcase icon={props.currentIcon} color={props.currentColor} />
-        <Slider className={styles["color-slider"]} {...colorSliderOptions}>
-          {categoryColors.map((colors, index) => (
-            <ColorItem key={index} {...colors} index={index} currentIndex={currentIndex}/>
-          ))}
-        </Slider>
-        <div className={styles["add-category__controls"]}>
-          <button
-            className={styles["add-category__cancel"]}
-            onClick={props.onCancel}
-          >
-            Cancel
-          </button>
-          <button className={styles["add-category__confirm"]}>Add</button>
-        </div>
+      <h3 className={styles["add-category__title"]}>Add Category</h3>
+      <CategoryShowcase icon={props.currentIcon} color={props.currentColor} />
+      <SliderColor currentColor={props.currentColor} setCurrentColor={props.setCurrentColor}>
+        {categoryColors.map((colors, index) => (
+          <ColorItem
+            key={index}
+            {...colors}
+          />
+        ))}
+        {categoryColors.map((colors, index) => (
+          <ColorItem
+            key={index + 20}
+            {...colors}
+          />
+        ))}
+      </SliderColor>
+      <div className={styles["add-category__controls"]}>
+        <button
+          className={styles["add-category__cancel"]}
+          onClick={props.onCancel}
+        >
+          Cancel
+        </button>
+        <button className={styles["add-category__confirm"]}>Add</button>
       </div>
+    </div>
   );
-};
+}
 
 export default CategoryColor;
