@@ -51,11 +51,11 @@ function CategoryIcon(props) {
   },[updateClasses,onInit]);
   
   return (
-    <div className={styles['category__icon-select']}>
+    <div className={`${styles['category__icon-select']} iconswiper`}>
 
       <Swiper className={styles['icon-slider']} {...swiperSettings}>
         {categoryIcons.map((icon,index) => {
-          return <SwiperSlide key={index}>{({isActive}) => (<IconItem color={props.currentColor} icon={icon} isActive={isActive}/>)}</SwiperSlide>
+          return <SwiperSlide key={index}>{({isActive}) => (<IconItem icon={icon} isActive={isActive}/>)}</SwiperSlide>
         })}
         <div className={`${styles['icon-slider__nav-prev']} ${styles['icon-slider__nav']}`} ref={prevRef}><PrevArrow /></div>
         <div className={`${styles['icon-slider__nav-next']} ${styles['icon-slider__nav']}`} ref={nextRef}><NextArrow /></div>

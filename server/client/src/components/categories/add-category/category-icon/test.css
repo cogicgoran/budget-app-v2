@@ -1,38 +1,38 @@
-.swiper-slide {
+.iconswiper .swiper-slide {
   width: 64px;
   height: 120px;
 }
 
-.swiper-slide-active {
+.iconswiper .swiper-slide-active {
   transform: translate(-18px, 4px);
 }
 
-.swiper-slide-prev {
+.iconswiper .swiper-slide-prev {
   transform: translateX(-16px);
   background-color: inherit;
 }
 
-.swiper-slide-prev-prev {
+.iconswiper .swiper-slide-prev-prev {
   transform: translateX(-8px);
   background-color: inherit;
 }
 
-.swiper-slide-prev-prev-prev {
+.iconswiper .swiper-slide-prev-prev-prev {
   transform: translateX(4px);
   background-color: inherit;
 }
 
-.swiper-slide-next {
+.iconswiper .swiper-slide-next {
   transform: translateX(16px);
   background-color: inherit;
 }
 
-.swiper-slide-next-next {
+.iconswiper .swiper-slide-next-next {
   transform: translateX(8px);
   background-color: inherit;
 }
 
-.swiper-slide-next-next-next {
+.iconswiper .swiper-slide-next-next-next {
   transform: translateX(-4px);
   background-color: inherit;
 }

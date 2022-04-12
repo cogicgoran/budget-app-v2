@@ -27,29 +27,6 @@
   flex-shrink: 0;;
 }
 
-.slider-color__prev {
-  left: 128px;
-}
-
-.slider-color__next {
-  right: 128px;
-}
-
-.slider-color__prev,
-.slider-color__next {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  cursor: pointer;
-  opacity: 0.7;
-  transition: opacity 200ms;
-}
-
-.slider-color__prev:hover,
-.slider-color__next:hover {
-  opacity: 1;
-}
-
 .color-center-item {
   border-width: 3px;
   border-style: solid;
