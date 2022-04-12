@@ -10,12 +10,12 @@ import { NextArrow, PrevArrow } from "./slider-arrows/SliderArrows";
 
 import './colors.css';
 
-function CategoryColor({ currentIcon, onCancel }) {
-  const { setColorIndex, categoryColorState } = useCategoryContext();
+function CategoryColor({ onCancel }) {
+  const { setColorIndex, categoryColorState, categoryIconState } = useCategoryContext();
   const prevRef = useRef(null);
   const nextRef = useRef(null);
   const time = useRef(0);
-  const THROTTLE_RATE = 40; // ms, 120 for medium performance, 300 for slow performace aproximately
+  const THROTTLE_RATE = 60; // ms, 120 for medium performance, 300 for slow performace aproximately
 
   function OnTouchMoveHandler() {
     let timeNow = Date.now();
@@ -47,11 +47,10 @@ function CategoryColor({ currentIcon, onCancel }) {
   return (
     <div className={styles["category__color-select"]}>
       <h3 className={styles["add-category__title"]}>Add Category</h3>
-      <CategoryShowcase icon={currentIcon} />
+      <CategoryShowcase icon={categoryIconState.value} />
       <div className="swiper-color-wraper" style={{ position: "relative" }}>
         <div
           style={{
-            pointerEvents: "none",
             position: "absolute",
             left: "50%",
             transform: "translate(-50%,-50%)",
@@ -64,6 +63,8 @@ function CategoryColor({ currentIcon, onCancel }) {
             borderColor: categoryColorState.value.borderColor,
             borderStyle: "solid",
             zIndex: "2",
+            pointerEvents:"none"
+            
           }}
         ></div>
           <div className="slider-color__prev" ref={prevRef}>
@@ -82,6 +83,7 @@ function CategoryColor({ currentIcon, onCancel }) {
           slidesPerView={7}
           centeredSlides={true}
           initialSlide={3}
+          // onTouchEnd={OnTouchEndHandler}
           onTouchMove={OnTouchMoveHandler}
           onSlideChange={setCurrentIndex}
           onInit={(swiper) => onInit(swiper)}

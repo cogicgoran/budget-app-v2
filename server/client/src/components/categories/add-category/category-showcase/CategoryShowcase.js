@@ -1,24 +1,27 @@
 import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import styles from "./CategoryShowcase.module.css";
+import "./CategoryShowcase.css";
 import { useCategoryContext } from "context/categories/CategoryContext";
 
 function CategoryShowcase({ icon }) {
   const { categoryColorState } = useCategoryContext();
   return (
     <div
-      style={{ borderColor: categoryColorState.value?.color }}
-      className={styles["category-showcase"]}
+      style={{ borderColor: categoryColorState.value?.borderColor }}
+      className="category-showcase"
     >
       <div
-        style={{ color: categoryColorState.value?.color }}
-        className={styles["category-showcase__image"]}
+        style={{ color: categoryColorState.value.color }}
+        className="category-showcase__image"
       >
         {icon && <FontAwesomeIcon icon={icon} />}
       </div>
       <div
-        style={{ backgroundColor: categoryColorState.value?.color }}
-        className={styles["category-showcase__name"]}
+        style={{
+          backgroundColor: categoryColorState.value?.color,
+          borderColor: categoryColorState.value?.borderColor,
+        }}
+        className="category-showcase__name"
       >
         TYPE HERE
       </div>

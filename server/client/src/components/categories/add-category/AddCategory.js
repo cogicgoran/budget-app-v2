@@ -8,18 +8,16 @@ import CategoryColor from "./category-color/CategoryColor";
 import CategoryIcon from "./category-icon/CategoryIcon";
 
 function AddCategory(props) {
-  const [currentIcon, setCurrentIcon] = useState(null);
-
   return (
     <CategoryContextProvider>
       <div className={styles["add-category-container"]}>
         <CategoryColor
-          currentIcon={currentIcon}
+          // currentIcon={currentIcon}
           onCancel={props.onCancel}
         />
         <CategoryIcon
-          currentIcon={currentIcon}
-          setCurrentIcon={setCurrentIcon}
+          // currentIcon={currentIcon}
+          // setCurrentIcon={setCurrentIcon}
         />
       </div>
     </CategoryContextProvider>

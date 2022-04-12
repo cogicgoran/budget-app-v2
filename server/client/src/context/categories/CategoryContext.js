@@ -1,10 +1,10 @@
 import { categoryColors, categoryIcons } from "helper/categoriesObject.const";
-import { useMemo, useCallback } from "react";
+import { useState, createContext, useContext } from "react";
 
-const { useState, createContext, useContext, useEffect } = require("react");
+const categoryLength = categoryColors.length;
+const iconsLength = categoryIcons.length;
 
 const CategoryContext = createContext();
-const categoryLength = categoryColors.length;
 
 function CategoryContextProvider({ children }) {
   const initColorState = {
@@ -18,25 +18,29 @@ function CategoryContextProvider({ children }) {
   const [categoryColorState, setCategoryColorState] = useState(initColorState);
   const [categoryIconState, setCategoryIconState] = useState(initIconState);
 
-  // const state = {
-  //   categoryColorState,
-  //   categoryIconState,
-  //   setColorIndex,
-  // };
-
-  const setColorIndex = useCallback((index) => {
+  const setColorIndex = (index) => {
     if (typeof index !== "number") return;
     const modIndex = index % categoryLength;
     setCategoryColorState({
       index: index,
       value: categoryColors[modIndex],
     });
-  })
+  };
+
+  const setIconIndex = (index) => {
+    if (typeof index !== "number") return;
+    const modIndex = index % iconsLength;
+    setCategoryIconState({
+      index: index,
+      value: categoryIcons[modIndex],
+    });
+  };
 
   const state = {
     categoryColorState,
     categoryIconState,
     setColorIndex,
+    setIconIndex,
   };
 
   return (
@@ -48,7 +52,6 @@ function CategoryContextProvider({ children }) {
 
 export function useCategoryContext() {
   const context = useContext(CategoryContext);
-
   if (context === undefined) {
     throw new Error("useCount must be used within a CountProvider");
   }
