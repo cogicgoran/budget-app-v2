@@ -1,5 +1,6 @@
 const french = {
   add: "Ajouter",
+  addCategory: "Ajouter une catégorie",
   addNew: "Ajouter un Nouveau",
   addProduct: "Ajouter un Produit",
   alreadyHaveAnAccount:"Vous avez déjà un compte?",
@@ -30,7 +31,8 @@ const french = {
   signInHere:"Se connecter ici",
   signInWith:"Se connecter avec",
   signUp:"S'inscrire",
-  signUpHere:"S'inscrire ici"
+  signUpHere:"S'inscrire ici",
+  typeHere:"Écrivez ici"
 }
 
 export default french;

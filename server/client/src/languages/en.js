@@ -1,5 +1,6 @@
 const english = {
   add: "Add",
+  addCategory: "Add Category",
   addNew: "Add New",
   addProduct: "Add Product",
   alreadyHaveAnAccount:"Already have an account?",
@@ -30,7 +31,8 @@ const english = {
   signInHere:"Sign in here",
   signInWith:"Sign in with",
   signUp:"Sign up",
-  signUpHere:"Sign up here"
+  signUpHere:"Sign up here",
+  typeHere:"Type here"
 }
 
 export default english;

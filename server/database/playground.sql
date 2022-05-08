@@ -33,8 +33,9 @@ VALUES (1, "Banana", 5, 1, "RSD", 30, 1, 30),
 	(7, "Zvaka", 4, 1, "RSD", 3, 1, 3),
 	(8, "Zvucnik", 1, 4, "RSD", 350, 1, 350),
 	(9, "Krompir", 4, 5, "RSD", 340, 1, 340);
-------------------------------------
+-- ----------------------------------
 --  get last 5
+
 SELECT r.id AS receipt_id, m.name AS shop_name, m.address AS shop_address, r.currency, r.receipt_date, r.total_price AS receipt_price, a.total_price AS articlePrice, c.name AS cat_name
  FROM ( SELECT * FROM receipts ORDER BY receipt_date DESC LIMIT 0,5 ) AS r 
 INNER JOIN articles AS a ON r.id = a.receipt_id 

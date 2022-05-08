@@ -18,4 +18,13 @@ async function registerUser(data){
   return result;
 }
 
-module.exports = {auth, registerUser};
+async function getUser(token) {
+  try {
+    const result = await auth.verifyIdToken(token);
+    return result;
+  } catch (error) {
+    // throw invalid token error
+  }
+}
+
+module.exports = {auth, registerUser, getUser};

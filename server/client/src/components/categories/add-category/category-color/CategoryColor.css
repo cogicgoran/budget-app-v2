@@ -1,3 +1,7 @@
+.category__color-select .category-showcase {
+  cursor: pointer;
+}
+
 .category__color-select {
   margin-bottom: 40px;
   padding: 1rem;

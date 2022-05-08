@@ -17,6 +17,8 @@ function CategoryContextProvider({ children }) {
   };
   const [categoryColorState, setCategoryColorState] = useState(initColorState);
   const [categoryIconState, setCategoryIconState] = useState(initIconState);
+  const [categoryValue, setCategoryValue] = useState("");
+  const [isIconCategoryToggled, setIsIconCategoryToggle] = useState(false);
 
   const setColorIndex = (index) => {
     if (typeof index !== "number") return;
@@ -41,6 +43,10 @@ function CategoryContextProvider({ children }) {
     categoryIconState,
     setColorIndex,
     setIconIndex,
+    isIconCategoryToggled,
+    setIsIconCategoryToggle,
+    categoryValue,
+    setCategoryValue
   };
 
   return (

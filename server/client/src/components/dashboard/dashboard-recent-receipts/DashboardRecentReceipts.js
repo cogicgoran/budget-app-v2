@@ -20,7 +20,7 @@ function DashboardRecentReceipts() {
     const { isLoading, error, fetchTask} = useHttp();
     
     const receiptsRequestConfig = {
-        url:"http://localhost:8000/api/receipts-latest",
+        url:"http://localhost:8000/api/receipts/latest",
         method:"GET"
     }
 

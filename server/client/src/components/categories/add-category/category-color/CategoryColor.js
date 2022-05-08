@@ -2,16 +2,21 @@ import React, { useRef, useCallback } from "react";
 import CategoryShowcase from "../category-showcase/CategoryShowcase";
 import ColorItem from "./ColorsItem";
 import { categoryColors } from "helper/categoriesObject.const";
-import styles from "./CategoryColor.module.css";
 import { Navigation } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { useCategoryContext } from "context/categories/CategoryContext";
 import { NextArrow, PrevArrow } from "./slider-arrows/SliderArrows";
 
 import './colors.css';
+import './CategoryColor.css';
+import { useTranslation } from "react-i18next";
 
-function CategoryColor({ onCancel }) {
-  const { setColorIndex, categoryColorState, categoryIconState } = useCategoryContext();
+function CategoryColor({ onCancel, onSubmit }) {
+  const { t } = useTranslation();
+  const textAdd = t('add');
+  const textAddCategory = t('addCategory');
+  const textCancel = t('cancel');
+  const { setColorIndex, categoryColorState, categoryIconState, setIsIconCategoryToggle } = useCategoryContext();
   const prevRef = useRef(null);
   const nextRef = useRef(null);
   const time = useRef(0);
@@ -45,9 +50,9 @@ function CategoryColor({ onCancel }) {
   }, []);
 
   return (
-    <div className={styles["category__color-select"]}>
-      <h3 className={styles["add-category__title"]}>Add Category</h3>
-      <CategoryShowcase icon={categoryIconState.value} />
+    <div className="category__color-select">
+      <h3 className="add-category__title">{textAddCategory}</h3>
+      <CategoryShowcase icon={categoryIconState.value} onClick={() => setIsIconCategoryToggle(prevState => !prevState)}  />
       <div className="swiper-color-wraper" style={{ position: "relative" }}>
         <div
           style={{
@@ -83,7 +88,6 @@ function CategoryColor({ onCancel }) {
           slidesPerView={7}
           centeredSlides={true}
           initialSlide={3}
-          // onTouchEnd={OnTouchEndHandler}
           onTouchMove={OnTouchMoveHandler}
           onSlideChange={setCurrentIndex}
           onInit={(swiper) => onInit(swiper)}
@@ -102,11 +106,11 @@ function CategoryColor({ onCancel }) {
           })}
         </Swiper>
       </div>
-      <div className={styles["add-category__controls"]}>
-        <button className={styles["add-category__cancel"]} onClick={onCancel}>
-          Cancel
+      <div className="add-category__controls">
+        <button className="add-category__cancel" onClick={onCancel}>
+          {textCancel}
         </button>
-        <button className={styles["add-category__confirm"]}>Add</button>
+        <button className="add-category__confirm" onClick={onSubmit}>{textAdd}</button>
       </div>
     </div>
   );

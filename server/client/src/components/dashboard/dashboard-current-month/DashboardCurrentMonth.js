@@ -11,7 +11,7 @@ function DashboardCurrentMonth() {
   const {isLoading, error, fetchTask} = useHttp();
   
   const receiptsRequestConfig = {
-    url:"http://localhost:8000/api/receipts-current-month",
+    url:"http://localhost:8000/api/receipts/current-month",
     method: "GET"
   };
   

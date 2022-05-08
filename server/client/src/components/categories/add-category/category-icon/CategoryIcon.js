@@ -43,7 +43,6 @@ function CategoryIcon(props) {
   function OnTouchEndHandler() {
     setIsMoving(false);
     setTimeout(() => {
-      console.log('called after 200');
       const wrapper = document.querySelector(".swiper-icon-initialized");
         const trackWrapperElementRect = wrapper.getBoundingClientRect();
         const { top, height, left, width } = trackWrapperElementRect;
