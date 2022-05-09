@@ -1,11 +1,11 @@
-import { faChevronRight, faChevronLeft } from "@fortawesome/free-solid-svg-icons";
+import { solid } from "@fortawesome/fontawesome-svg-core/import.macro";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 export function NextArrow() {
-  return <FontAwesomeIcon icon={faChevronRight}/>;
+  return <FontAwesomeIcon icon={solid('chevron-right')}/>;
 };
 
 export function PrevArrow() {
-  return <FontAwesomeIcon icon={faChevronLeft}/>;
+  return <FontAwesomeIcon icon={solid('chevron-left')}/>;
 };
 

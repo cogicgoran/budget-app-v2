@@ -2,6 +2,7 @@ import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTrashAlt } from '@fortawesome/free-regular-svg-icons';
 import styles from './MarketplaceItem.module.css';
+import { solid } from '@fortawesome/fontawesome-svg-core/import.macro';
 
 function MarketplaceItem(props) {
   return (
@@ -16,7 +17,7 @@ function MarketplaceItem(props) {
         {props.marketplace.address}
       </td>
       <td>
-        <FontAwesomeIcon className={styles['marketplace-list__item-icon']} icon={faTrashAlt}/>
+        <FontAwesomeIcon className={styles['marketplace-list__item-icon']} icon={solid('trash-alt')}/>
       </td>
     </tr>
   );

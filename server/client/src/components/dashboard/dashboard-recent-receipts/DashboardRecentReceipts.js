@@ -9,6 +9,7 @@ import { useTranslation } from 'react-i18next';
 import { useHttp } from 'hooks/useHttp';
 
 import Receipt from './Receipt/Receipt';
+import { solid } from '@fortawesome/fontawesome-svg-core/import.macro';
 
 function DashboardRecentReceipts() {
     const { t } = useTranslation();
@@ -42,7 +43,7 @@ function DashboardRecentReceipts() {
             return <Receipt key={receipt.receipt_id} {...receipt} />
         });
     } else {
-        dataResponse  = <div className={styles['dashboard_no-recent_results']}><FontAwesomeIcon className={styles['dashboard_no-recent_results-icon']} icon={faFileLines} /><span>{textNoReceipts}</span> </div>;
+        dataResponse  = <div className={styles['dashboard_no-recent_results']}><FontAwesomeIcon className={styles['dashboard_no-recent_results-icon']} icon={solid('file-lines')} /><span>{textNoReceipts}</span> </div>;
     };
 
     return (

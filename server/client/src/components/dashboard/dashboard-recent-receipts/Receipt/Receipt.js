@@ -7,6 +7,7 @@ import { faPenToSquare } from '@fortawesome/free-solid-svg-icons';
 import CategorySmallDisplay from './CategorySmallDisplay';
 
 import styles from './Receipt.module.css';
+import { solid } from '@fortawesome/fontawesome-svg-core/import.macro';
 
 const weekday = ["Sun","Mon","Tue","Wed","Thu","Fri","Sat"];
 
@@ -20,9 +21,9 @@ function Receipt(props) {
       <div>{weekday[date.getDay()]}, {date.toLocaleDateString("en-GB",{day:"numeric" , month:"short", year: "numeric"})}</div>
       <div>{props['receipt_price']} {props['currency']}</div>
       <div className={styles['dashboard__receipt-actions']}>
-        <Link to={PATHS.VIEW_RECEIPTS + "/" + props.receipt_id}><FontAwesomeIcon className={styles['dashboard__receipt-icon']} icon={faEye}/></Link>
-        <Link to={PATHS.EDIT_RECEIPTS + "/" + props.receipt_id}><FontAwesomeIcon className={styles['dashboard__receipt-icon']} icon={faPenToSquare}/></Link>
-        <div><FontAwesomeIcon className={styles['dashboard__receipt-icon']} icon={faTrashAlt}/></div>
+        <Link to={PATHS.VIEW_RECEIPTS + "/" + props.receipt_id}><FontAwesomeIcon className={styles['dashboard__receipt-icon']} icon={solid('eye')}/></Link>
+        <Link to={PATHS.EDIT_RECEIPTS + "/" + props.receipt_id}><FontAwesomeIcon className={styles['dashboard__receipt-icon']} icon={solid('pen-to-square')}/></Link>
+        <div><FontAwesomeIcon className={styles['dashboard__receipt-icon']} icon={solid('trash-alt')}/></div>
       </div>
     </article>
   );

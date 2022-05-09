@@ -5,6 +5,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCircleUser } from "@fortawesome/free-solid-svg-icons";
 import { faChevronDown } from "@fortawesome/free-solid-svg-icons";
 import styles from "./UserLoggedDisplay.module.css";
+import { solid } from "@fortawesome/fontawesome-svg-core/import.macro";
 
 
 function UserLoggedDisplay() {
@@ -35,12 +36,12 @@ function UserLoggedDisplay() {
         <div onClick={handleDropdownClick}>
           <FontAwesomeIcon
             className={styles["display-user-icon"]}
-            icon={faCircleUser}
+            icon={solid('circle-user')}
             
           />
           <FontAwesomeIcon
             className={styles["display-user-arrow"]}
-            icon={faChevronDown}
+            icon={solid('chevron-down')}
           />
         </div>
         {showDropdown && (

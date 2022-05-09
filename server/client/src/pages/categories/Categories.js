@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { useTranslation } from "react-i18next";
-import { faCirclePlus } from "@fortawesome/free-solid-svg-icons";
 import { createPortal } from "react-dom";
 import AddCategory from "components/categories/add-category/AddCategory";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
