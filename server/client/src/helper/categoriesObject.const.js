@@ -1,4 +1,5 @@
 import * as fontAwesomeSolidIcons from "@fortawesome/free-solid-svg-icons";
+import { solid, regular, brands } from '@fortawesome/fontawesome-svg-core/import.macro'
 
 const categoryStyleSheet = {
   food: {

@@ -12,9 +12,10 @@ class CategoryRepository {
   }
 
   insertCategory = async (data) => {
-    const { name, iconName, colorMain, colorBorder } = data;
+    const { name, icon_name, color_main, color_border } = data;
     const sql = 'INSERT INTO marketplaces (name, icon_name, color_main, color_border) VALUES ( ?, ?, ?, ?)';
-    const result = await this.dbConn.promise().query(sql, [name, iconName, colorMain, colorBorder]); // TODO: inject data to sql query
+    const result = await this.dbConn.promise().query(sql, [name, icon_name, color_main, color_border]); // TODO: inject data to sql query
+    console.log(result);
     return result[0];
   }
 }

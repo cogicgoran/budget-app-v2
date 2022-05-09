@@ -10,8 +10,8 @@ class CategoryService {
     return categories;
   }
 
-  insertCategory = async (body) => {
-    const result = await this.categoryRepository.insertCategory(body);
+  insertCategory = async (data) => {
+    const result = await this.categoryRepository.insertCategory(data);
     return result;
   }
 }

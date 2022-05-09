@@ -8,21 +8,45 @@ import {
 
 import CategoryColor from "./category-color/CategoryColor";
 import CategoryIcon from "./category-icon/CategoryIcon";
+import { useHttp } from "hooks/useHttp";
+import { ToastNotificationError } from "context/notification/NotificationClasses";
+import { useNotification } from "context/notification/NotificationContext";
 
 function AddCategory(props) {
   const { isIconCategoryToggled, categoryValue, categoryColorState, categoryIconState } = useCategoryContext();
+  const { error, fetchTask, isLoading } = useHttp();
+  const { createNotification } = useNotification();
 
-  const formSubmit = () => {
+  const formSubmit = async () => {
     const name = categoryValue;
-    const color = categoryColorState.value;
+    const color = categoryColorState.value.color;
+    const borderColor = categoryColorState.value.borderColor;
     const icon = categoryIconState.value;
+
+    console.log(icon);
 
     const formData = {
       name, color, icon
     }
     // TODO: VALIDATE INPUTS
-    console.log(formData);
-    props.onCancel();
+    fetchTask({
+      url:'http://localhost:8000/api/categories',
+      method: 'POST',
+      data: {
+        name,
+        icon_name: icon,
+        color_main: color,
+        color_border: borderColor
+      }
+    }, handleResponse)
+
+    function handleResponse(response) {
+      if(response.ok) {
+        props.onCancel()
+      } else {
+        createNotification(new ToastNotificationError('smth', 'else'))
+      }
+    }
   }
 
   return (

@@ -21,7 +21,8 @@
 }
 
 .category-wrapper {
-  border: 1px solid brown;
+  border-width: 2px;
+  border-style: solid;
   width: 100px;
 
   border-top-left-radius: 1rem;
@@ -32,7 +33,6 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  color: brown;
   height: 80px;
 }
 
@@ -47,8 +47,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: brown;
   color: white;
+  border-top: 2px solid;
   font-weight: 300;
   font-size: .6rem;
   padding: .1rem;

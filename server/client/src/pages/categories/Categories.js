@@ -1,55 +1,63 @@
 import React, { useState, useEffect } from "react";
-import styles from "./Categories.module.css";
 import { useTranslation } from "react-i18next";
 import { faCirclePlus } from "@fortawesome/free-solid-svg-icons";
 import { createPortal } from "react-dom";
 import AddCategory from "components/categories/add-category/AddCategory";
-import categoryStyleSheet from "helper/categoriesObject.const";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Backdrop from "components/UI/backdrop/Backdrop";
 import CategoryContextProvider from "context/categories/CategoryContext";
 import { useAuth } from "context/AuthContext";
-import axios from "axios";
+import  "./Categories.css";
+import { useHttp } from "hooks/useHttp";
+import * as fontAwesomeSolidIcons from "@fortawesome/free-solid-svg-icons";
+import { solid } from "@fortawesome/fontawesome-svg-core/import.macro";
 
 function Categories() {
   const { t } = useTranslation();
   const textCategories = t("categories");
   const [showModal, setShowModal] = useState(false);
   const { currentUser } = useAuth();
+  const [categories, setCategories] = useState(null);
   console.log(currentUser.accessToken);
+  const { isLoading, error, fetchTask } = useHttp();
+
+  console.log(categories);
 
   useEffect(() => {
     console.log("should be making the call");
-    const getCategories = async () => {
-      await axios.get('http://localhost:8000/api/categories', {
-        headers: {
-          'Authorization': `Bearer ${currentUser.accessToken}`
-        }
-      });
+    function handleData(response) {
+      setCategories(response.data);
     }
-    getCategories();
+
+    fetchTask(
+      {
+        url: "http://localhost:8000/api/categories",
+        headers: {
+          Authorization: `Bearer ${currentUser.accessToken}`,
+        },
+      },
+      handleData
+    );
   }, []);
 
   return (
-    <div className={styles.categories}>
+    <div className='categories'>
       <h2>{textCategories}</h2>
-      <div className={styles["category-container"]}>
-        <div className={styles["category-wrapper"]}>
-          <div className={styles["category__icon"]}>
-            <FontAwesomeIcon icon={categoryStyleSheet.food.icon} />
-          </div>
-          <div className={styles["category__name"]}>FOOD</div>
-        </div>
-        <div className={styles["category-wrapper"]}>
-          <div className={styles["category__icon"]}>
-            <FontAwesomeIcon icon={categoryStyleSheet[3].icon} />
-          </div>
-          <div className={styles["category__name"]}>FOOD</div>
-        </div>
+      <div className="category-container">
+        {categories && categories.map((category) => {
+          return (
+            <div style={{borderColor: category.color_border}} className="category-wrapper">
+              <div style={{color: category.color_main}} className="category__icon">
+                <FontAwesomeIcon icon={fontAwesomeSolidIcons[category.icon_name]} />
+              </div>
+              <div style={{backgroundColor: category.color_main, borderColor: category.color_border}} className="category__name">{category.name}</div>
+            </div>
+          );
+        })}
       </div>
-      <div className={styles["category-add-btn"]}>
+      <div className="category-add-btn">
         <FontAwesomeIcon
-          icon={faCirclePlus}
+          icon={solid("circle-plus")}
           onClick={() => {
             setShowModal(true);
           }}
