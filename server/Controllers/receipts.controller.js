@@ -91,23 +91,23 @@ class ReceiptsController {
 
   #getAllReceipts = async (req, res) => {
     const receipts = await this.receiptsService.getAllReceipts();
-    return receipts;
+    res.json(receipts)
   };
 
   #getLatestReceipts = async (req, res) => {
     const receipts = await this.receiptsService.getLatestReceipts();
-    return receipts;
+    res.json(receipts)
   };
 
   #getMonthReceipts = async (req, res) => {
     const receipts = await this.receiptsService.getMonthReceipts();
-    return receipts;
+    res.json(receipts)
   };
 
   #getReceiptById = async (req, res) => {
     const receiptId = req.params.receiptId;
     const receipt = await this.receiptsService.getReceiptById(receiptId);
-    return receipt;
+    res.json({receipt});
   };
 }
 

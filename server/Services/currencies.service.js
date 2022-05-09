@@ -1,4 +1,4 @@
-const currencyRepository = require('../Repositories/currencies.repository');
+const currencyRepository = require("../Repositories/currencies.repository");
 
 class CurrencyService {
   constructor(currencyRepository) {
@@ -6,22 +6,14 @@ class CurrencyService {
   }
 
   getAllCurrencies = async () => {
-    try {
-      const currencies = await this.currencyRepository.getAllCurrencies();
-      return currencies;
-    } catch (error) {
-      // FIX: handle error accordingly
-    }
-  }
+    const currencies = await this.currencyRepository.getAllCurrencies();
+    return currencies;
+  };
 
   insertCurrency = async (currency) => {
-    try {
-      const result = await this.currencyRepository.insertCurrency(currency);
-      return result;
-    } catch (error) {
-      // FIX: handle error accordingly
-    }
-  }
+    const result = await this.currencyRepository.insertCurrency(currency);
+    return result;
+  };
 }
 
-module.exports = new CurrencyService(currencyRepository)
+module.exports = new CurrencyService(currencyRepository);

@@ -8,13 +8,13 @@ INSERT INTO currencies ( code )
 	("RSD"),
 	("USD");
 -- ------------------------------------ 
-INSERT INTO categories ( id, name ) 
-VALUES (1, "FOOD"),
-	(2, "RESTAURANT"),
-	(3, "GAS"),
-	(4, "GROCERIES"),
-	(5, "FRUITS"),
-	(6, "OTHER");
+INSERT INTO categories ( id, name, icon_name, color_main, color_border ) 
+VALUES (1, "FOOD", "faAppleAlt", "#EB6383", "#CB4363"),
+	(2, "RESTAURANT", "faCocktail", "#E7B2A5", "#C79285"),
+	(3, "GAS", "faCar", "#EEF9BF", "#BED99F"),
+	(4, "GROCERIES", "faCartShopping", "#F39189", "#D37169"),
+	(5, "FRUITS", "faCarrot", "#6E7582", "#5E5562"),
+	(6, "OTHER", "faFootball", "#046582", "#005562");
 -- ------------------------------------ 
 INSERT INTO receipts ( id, marketplace_id, receipt_date, total_price, currency ) 
 VALUES (1, 1, "2022-01-02 21:00:00", 333, "RSD"),

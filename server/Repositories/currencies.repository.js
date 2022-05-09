@@ -7,23 +7,17 @@ class ReceiptsRepository {
 
   getAllCurrencies = async () => {
     const sql = `SELECT code FROM currencies`;
-    try {
-      const currencies = await this.dbConn.query(sql);
-      return currencies;
-    } catch (error) {
-      // FIX: handle error accordingly
-    }
+    const result = await this.dbConn.promise().query(sql);
+    return result[0];
   };
 
   insertCurrency = async (currency) => {
-    const sql = 'INSERT IGNORE INTO currencies ( code ) VALUES ( ? )'
-    try {
-      const result = await this.dbConn.query(sql, [currency.toUpperCase()]);
-      return result;
-    } catch (error) {
-      // FIX: handle error accordingly
-    }
-  }
+    const sql = "INSERT IGNORE INTO currencies ( code ) VALUES ( ? )";
+    const result = await this.dbConn
+      .promise()
+      .query(sql, [currency.toUpperCase()]);
+    return result[0];
+  };
 }
 
 module.exports = new ReceiptsRepository(dbConn);

@@ -5,11 +5,11 @@ const bodyParser = require('body-parser');
 
 class App {
   constructor(controllers, port) {
+    this.port = port;
     this.controllers = controllers
     this.app = express();
     this.#initializeMiddleware();
     this.#initializeControllers(controllers);
-    this.#listen(port);
   }
 
   #initializeMiddleware = () => {
@@ -24,8 +24,8 @@ class App {
     });
   }
 
-  #listen = (port) => {
-    this.app.listen(port, () => console.log(`Server listening on port ${port}`));
+  listen = () => {
+    this.app.listen(this.port, () => console.log(`Server listening on port ${this.port}`));
   }
 }
 
