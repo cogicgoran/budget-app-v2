@@ -8,8 +8,8 @@ import CategoryContextProvider from "context/categories/CategoryContext";
 import { useAuth } from "context/AuthContext";
 import  "./Categories.css";
 import { useHttp } from "hooks/useHttp";
-import * as fontAwesomeSolidIcons from "@fortawesome/free-solid-svg-icons";
 import { solid } from "@fortawesome/fontawesome-svg-core/import.macro";
+import { iconMapper } from "helper/categoriesObject.const";
 
 function Categories() {
   const { t } = useTranslation();
@@ -43,7 +43,7 @@ function Categories() {
           return (
             <div style={{borderColor: category.color_border}} className="category-wrapper">
               <div style={{color: category.color_main}} className="category__icon">
-                <FontAwesomeIcon icon={fontAwesomeSolidIcons[category.icon_name]} />
+                <FontAwesomeIcon icon={iconMapper[category.icon_name]} />
               </div>
               <div style={{backgroundColor: category.color_main, borderColor: category.color_border}} className="category__name">{category.name}</div>
             </div>
