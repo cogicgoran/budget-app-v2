@@ -1,5 +1,4 @@
 export function handleIncomingArticles(articles) {
-    console.log(articles);
   const cat = {};
   let total = 0;
   articles.forEach(result => {

@@ -14,9 +14,9 @@ import { useTranslation } from "react-i18next";
 import { useNotification } from "context/notification/NotificationContext";
 import {
   ToastNotificationError,
-  ToastNotificationWarning,
 } from "context/notification/NotificationClasses";
 import { useHttp } from "hooks/useHttp";
+import { InvalidReceiptWarningNotification } from './AddNewReceipt.helper';
 
 const DEFAULT_RECEIPT_INFO = {
   marketplace: "",
@@ -52,13 +52,8 @@ function AddNewReceipt() {
   async function submitHandler(e) {
     e.preventDefault();
     if (!(isReceiptInfoValid(receiptInfo) && articles.length > 0))
-      createNotification(
-        new ToastNotificationWarning(
-          "Invalid receipt",
-          "Make your you have added your articles correctly"
-        )
-      );
-      
+      return createNotification(new InvalidReceiptWarningNotification());
+
     const data = {
       info: receiptInfo,
       articles: articles,
@@ -77,8 +72,7 @@ function AddNewReceipt() {
       handleError
     );
 
-    function handleSuccess(response) {
-      console.log(response);
+    function handleSuccess() {
       setReceiptInfo(DEFAULT_RECEIPT_INFO);
       setArticles([]);
       navigate(PATHS.DASHBOARD);

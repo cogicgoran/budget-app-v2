@@ -14,7 +14,6 @@ async function registerUser(data){
     email:data.email,
     password:data.password
   });
-  console.log(JSON.stringify(result, null, 2));
   return result;
 }
 

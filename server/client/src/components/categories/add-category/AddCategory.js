@@ -23,21 +23,16 @@ function AddCategory(props) {
     const borderColor = categoryColorState.value.borderColor;
     const icon = categoryIconState.value;
 
-    console.log(icon);
-
     const formData = {
-      name, color, icon
+      name, icon_name: icon,
+      color_main: color,
+      color_border: borderColor
     }
     // TODO: VALIDATE INPUTS
     fetchTask({
       url:'http://localhost:8000/api/categories',
       method: 'POST',
-      data: {
-        name,
-        icon_name: icon,
-        color_main: color,
-        color_border: borderColor
-      }
+      data: formData
     }, handleResponse)
 
     function handleResponse(response) {

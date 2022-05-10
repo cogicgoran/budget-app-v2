@@ -21,14 +21,12 @@ class CategoryController {
       const categories = await this.categoryService.getAllCategories();
       res.json(categories);
     } catch (error) {
-      console.log(error);
-      // FIX: handle error accordingly
+      next(error);
     }
   }
 
   #validateCategory = (req, res, next) => {
     // TODO: add validation
-    console.log(req.body);
     const { name, icon_name, color_main, color_border } = req.body;
     if( name && icon_name && color_main && color_border ) {
       req.data = {
@@ -45,7 +43,7 @@ class CategoryController {
       const result = await this.categoryService.insertCategory(data);
       res.status(201);
     } catch (error) {
-      console.log(error);
+      next(error);
       // FIX: handle error accordingly
     }
   }

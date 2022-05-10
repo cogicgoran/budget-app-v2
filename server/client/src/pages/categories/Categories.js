@@ -17,13 +17,9 @@ function Categories() {
   const [showModal, setShowModal] = useState(false);
   const { currentUser } = useAuth();
   const [categories, setCategories] = useState(null);
-  console.log(currentUser.accessToken);
   const { isLoading, error, fetchTask } = useHttp();
 
-  console.log(categories);
-
   useEffect(() => {
-    console.log("should be making the call");
     function handleData(response) {
       setCategories(response.data);
     }
