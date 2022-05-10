@@ -17,7 +17,7 @@ class CurrencyController {
 
   #getAllCurrencies = async (req, res) => {
     const currencies = await this.currencyService.getAllCurrencies();
-    res.json({ currencies });
+    res.json( currencies );
   };
 
   #insertCurrency = async (req, res) => {

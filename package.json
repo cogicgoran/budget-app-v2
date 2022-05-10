@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "node server/index.js",
-    "start-build-client": "npm --prefix ./server/client run build && node server/index.js",
+    "build-complete": "npm --prefix ./server/client run build && node server/index.js",
     "dev": "nodemon server/index.js"
   },
   "repository": {

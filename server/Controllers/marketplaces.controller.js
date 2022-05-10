@@ -2,7 +2,7 @@ const express = require('express');
 const marketplaceService = require('../Services/marketplaces.service');
 
 class MarketplaceController {
-  #path = `/api/receipts`;
+  #path = `/api/marketplaces`;
   router = express.Router();
 
   // Dependancy injection?
@@ -47,7 +47,7 @@ class MarketplaceController {
   #getAllMarketplaces = async (req, res) => {
     try {
       const marketplaces = await this.marketplaceService.getAllMarketplaces();
-      res.json({ marketplaces });
+      res.json(marketplaces);
     } catch (error) {
       // FIX: handle error accordingly
     }

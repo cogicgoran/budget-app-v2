@@ -1,4 +1,5 @@
 const { dbConn } = require("../database/connection");
+const InvalidArticleCategoryException = require('../Exceptions/InvalidArticleCategoryException');
 
 class ReceiptsRepository {
   constructor(dbConn) {
@@ -62,10 +63,12 @@ class ReceiptsRepository {
   };
 
   countInsertedCategories = async (categories) => {
+    const categoriesLength = categories.length;
     const sql = `SELECT COUNT(id) AS count FROM categories WHERE name IN (${dbConn.escape(
       categories
     )});`;
     const result = await this.dbConn.promise().query(sql);
+    if(categoriesLength != result[0]) throw new InvalidArticleCategoryException() // TODO: create Exception
     return result[0];
   };
 }

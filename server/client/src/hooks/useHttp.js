@@ -5,7 +5,7 @@ export function useHttp() {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
 
-  async function fetchTask(config, applyData){
+  async function fetchTask(config, applyData, handleError){
     setIsLoading(true);
     setError(null);
 
@@ -18,11 +18,11 @@ export function useHttp() {
         timeout:5000,
       })
 
-
       applyData(response);
       setIsLoading(false);
       setError(null);
     }catch(error){
+      if (handleError) handleError(error);
       setError(error);
       setIsLoading(false);
     }

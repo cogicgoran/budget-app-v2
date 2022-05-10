@@ -1,4 +1,4 @@
-import * as fontAwesomeSolidIcons from "@fortawesome/free-solid-svg-icons";
+import { solid } from "@fortawesome/fontawesome-svg-core/import.macro";
 
 class ToastNotification {
   constructor(title,description){
@@ -15,7 +15,7 @@ class ToastNotification {
 export class ToastNotificationSuccess extends ToastNotification{
   constructor(title,description){
     super(title,description)
-    this.icon = fontAwesomeSolidIcons.faCheckCircle;
+    this.icon = solid('check-circle');
     this.backgroundColor = "#5CB85C";
   }
 }
@@ -23,7 +23,7 @@ export class ToastNotificationSuccess extends ToastNotification{
 export class ToastNotificationError extends ToastNotification{
   constructor(title,description){
     super(title,description)
-    this.icon = fontAwesomeSolidIcons.faX;
+    this.icon = solid('x');
     this.backgroundColor = "#D9534F";
   }
 }
@@ -31,7 +31,7 @@ export class ToastNotificationError extends ToastNotification{
 export class ToastNotificationInfo extends ToastNotification{
   constructor(title,description){
     super(title,description)
-    this.icon = fontAwesomeSolidIcons.faInfoCircle;
+    this.icon = solid('info-circle');
     this.backgroundColor = "#5BC0DE";
   }
 }
@@ -39,7 +39,7 @@ export class ToastNotificationInfo extends ToastNotification{
 export class ToastNotificationWarning extends ToastNotification{
   constructor(title,description){
     super(title,description)
-    this.icon = fontAwesomeSolidIcons.faWarning;
+    this.icon = solid('warning');
     this.backgroundColor = "#F0AD4E";
   }
 }

@@ -2,6 +2,7 @@ const express = require('express');
 const path = require('path');
 const cors = require('cors');
 const bodyParser = require('body-parser');
+const errorMiddleware = require('./Middleware/errorMiddleware');
 
 class App {
   constructor(controllers, port) {
@@ -10,6 +11,11 @@ class App {
     this.app = express();
     this.#initializeMiddleware();
     this.#initializeControllers(controllers);
+    this.#initializeErrorHandling();
+  }
+
+  #initializeErrorHandling = () => {
+    this.app.use(errorMiddleware);
   }
 
   #initializeMiddleware = () => {

@@ -36,8 +36,8 @@ function ReceiptInfo(props) {
     fetchMarketplaces(marketplaceRequestConfig, handleMarketplaceDataResponse);
   }, []);
   
-  const currencies = useMemo(() => currencyData && currencyData.length > 0 ? currencyData : null, [currencyData]);
-  const marketplaces = useMemo(() => marketplaceData && marketplaceData.length > 0 ? marketplaceData : null, [marketplaceData]);
+  const currencies = useMemo(() => (currencyData && currencyData.length > 0) ? currencyData : null, [currencyData]);
+  const marketplaces = useMemo(() => (marketplaceData && marketplaceData.length > 0) ? marketplaceData : null, [marketplaceData]);
   
   const currencyDisplay = useMemo(() => {
     return currencies ? currencies.map(currency => <option value={currency.code}>{currency.code}</option>) : null

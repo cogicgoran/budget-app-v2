@@ -1,5 +1,6 @@
 const express = require("express");
-const receiptsService = require('../Services/receipts.service');
+const HttpException = require("../Exceptions/httpException");
+const receiptsService = require("../Services/receipts.service");
 
 class ReceiptsController {
   #path = `/api/receipts`;
@@ -21,93 +22,68 @@ class ReceiptsController {
       this.#checkArticles,
       this.#insertReceipt
     );
-    this.router.put(
-      this.#path,
-      this.#validateReceipt,
-      this.#updateReceipt
-    );
+    this.router.put(this.#path, this.#validateReceipt, this.#updateReceipt);
   };
 
   #updateReceipt = async (req, res) => {
     const result = await this.receiptsService.updateReceipt(req.body);
     return result;
-  }
+  };
 
   #insertReceipt = async (req, res) => {
     const result = await this.receiptsService.insertReceipt(req.body);
     return result;
   };
 
-  #validateReceipt = async (req, res, next) => {
+  #validateReceipt = (req, res, next) => {
     const { info, articles } = req.body;
-
-    if (!articles instanceof Array)
-      return res.status(400).send("Receipt must be array type");
-
     const date = new Date(info.date);
+    if (!articles instanceof Array)
+      return next(new Error("InvalidReceiptTypeException")); // create exception
+    if (!this.receiptsService.isDateValid(date))
+      return next(new Error("InvalidDateException")); // create exception
+    if (!this.receiptsService.isReceiptValid(articles))
+      return next(new Error("InvalidReceiptException")); // create exception
 
-    const isReceiptValid = articles.every((article) => {
-      const articleName = article.name.trim();
-      const articleCategory = article.category.trim();
-
-      if (
-        articleName != "" &&
-        articleName.length > 0 &&
-        articleCategory != "" &&
-        articleCategory.length > 0
-      )
-        return true;
-      return false;
-    });
-
-    if (!isReceiptValid) return res.status(400).send("INVALID RECEIPT");
-
-    if (date instanceof Date && isFinite(date)) {
-      const realdate = date.toISOString().slice(0, -5).replace("T", " ");
-      req.body.date = realdate;
-      req.body.marketplace = info.marketplace;
-      req.body.currency = info.currency;
-      req.body.price = articles.reduce(
-        (acc, article) => acc + Number(article.price),
-        0
-      );
-
-      return next();
-    }
-
-    return res.status(400).send("INVALID DATE");
+    req.body.date = date.toISOString().slice(0, -5).replace("T", " ");
+    req.body.marketplace = info.marketplace;
+    req.body.currency = info.currency;
+    req.body.price = articles.reduce(
+      (acc, article) => acc + Number(article.price),
+      0
+    );
+    return next();
   };
 
-  #checkArticles = async (req, res) => {
-    const articles = req.body.articles;
-    const categories = [];
-    articles.forEach((article) => {
-      if (!categories.includes(article.category.toUpperCase())) {
-        categories.push(article.category.toUpperCase());
-      }
-    });
-    return countInsertedCategories(res, next, categories, categories.length);
+  #checkArticles = async (req, res, next) => {
+    const categories = this.receiptsService.getCategoriesFromArticles(req.body.articles);
+    try {
+      await this.receiptsService.countInsertedCategories(categories);
+      next();
+    } catch (error) {
+      next(error); 
+    }
   };
 
   #getAllReceipts = async (req, res) => {
     const receipts = await this.receiptsService.getAllReceipts();
-    res.json(receipts)
+    res.json(receipts);
   };
 
   #getLatestReceipts = async (req, res) => {
     const receipts = await this.receiptsService.getLatestReceipts();
-    res.json(receipts)
+    res.json(receipts);
   };
 
   #getMonthReceipts = async (req, res) => {
     const receipts = await this.receiptsService.getMonthReceipts();
-    res.json(receipts)
+    res.json(receipts);
   };
 
   #getReceiptById = async (req, res) => {
     const receiptId = req.params.receiptId;
     const receipt = await this.receiptsService.getReceiptById(receiptId);
-    res.json({receipt});
+    res.json({ receipt });
   };
 }
 

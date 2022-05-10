@@ -38,6 +38,44 @@ class ReceiptsService {
     );
     return result;
   };
+
+  countInsertedCategories = async (categories) => {
+    const result = await this.receiptsRepository.countInsertedCategories(
+      categories
+    );
+    return result;
+  };
+
+  getCategoriesFromArticles = (articles) => {
+    const categories = [];
+    articles.forEach((article) => {
+      if (!categories.includes(article.category.toUpperCase())) {
+        categories.push(article.category.toUpperCase());
+      }
+    });
+    return categories;
+  }
+
+  isReceiptValid = (articles) => {
+    return articles.every((article) => {
+      const articleName = article.name.trim();
+      const articleCategory = article.category.trim();
+
+      if (
+        articleName != "" &&
+        articleName.length > 0 &&
+        articleCategory != "" &&
+        articleCategory.length > 0
+      )
+        return true;
+      return false;
+    });
+  };
+
+  isDateValid = (date) => {
+    return date instanceof Date && isFinite(date);
+  }
+
 }
 
 module.exports = new ReceiptsService(receiptsRepository);
