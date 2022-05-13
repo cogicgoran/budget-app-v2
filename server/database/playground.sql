@@ -9,8 +9,8 @@ INSERT INTO currencies ( code )
 	("USD");
 -- ------------------------------------ 
 INSERT INTO categories ( id, name, icon_name, color_main, color_border ) 
-VALUES (1, "FOOD", "apple-alt", "#EB6383", "#CB4363"),
-	(2, "RESTAURANT", "coctail", "#E7B2A5", "#C79285"),
+VALUES (1, "FOOD", "apple-whole", "#EB6383", "#CB4363"),
+	(2, "RESTAURANT", "martini-glass-citrus", "#E7B2A5", "#C79285"),
 	(3, "GAS", "car", "#EEF9BF", "#BED99F"),
 	(4, "GROCERIES", "cart-shopping", "#F39189", "#D37169"),
 	(5, "FRUITS", "carrot", "#6E7582", "#5E5562"),

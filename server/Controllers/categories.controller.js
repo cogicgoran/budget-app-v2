@@ -1,6 +1,5 @@
-const { request } = require("express");
 const express = require("express");
-const categoryService = require('../Services/categories.service');
+const categoryService = require("../Services/categories.service");
 
 class CategoryController {
   #path = `/api/categories`;
@@ -23,30 +22,33 @@ class CategoryController {
     } catch (error) {
       next(error);
     }
-  }
+  };
 
   #validateCategory = (req, res, next) => {
     // TODO: add validation
     const { name, icon_name, color_main, color_border } = req.body;
-    if( name && icon_name && color_main && color_border ) {
+    if (name && icon_name && color_main && color_border) {
       req.data = {
-        name, icon_name, color_main, color_border
-      }
-      next();
+        name,
+        icon_name,
+        color_main,
+        color_border,
+      };
+      return next();
     }
-    next(new Error('Invalid Category Data'));
-  }
+    next(new Error("Invalid Category Data"));
+  };
 
-  #insertCategory = async (req, res) => {
+  #insertCategory = async (req, res, next) => {
     const data = req.data;
     try {
-      const result = await this.categoryService.insertCategory(data);
-      res.status(201);
+      const smth = await this.categoryService.insertCategory(data);
+      res.sendStatus(201);
     } catch (error) {
       next(error);
       // FIX: handle error accordingly
     }
-  }
+  };
 }
 
 module.exports = new CategoryController(categoryService);

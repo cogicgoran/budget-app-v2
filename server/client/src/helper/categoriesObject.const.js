@@ -10,6 +10,7 @@ import {
   faCat,
   faCocktail,
   faFootball,
+  faFutbol,
   faHeadphones,
   faHeadSideMask,
   faHeart,
@@ -211,25 +212,26 @@ export const categoryIcons = [
 ];
 
 export const iconMapper = {
-  "apple-alt": faAppleAlt,
+  "apple-whole": faAppleAlt,
   baby: faBaby,
   "baby-carriage": faBabyCarriage,
   book: faBook,
   carrot: faCarrot,
   car: faCar,
   cat: faCat,
-  cocktail: faCocktail,
+  futbol: faFutbol,
+  "martini-glass-citrus": faCocktail,
   "head-side-mask": faHeadSideMask,
   headphones: faHeadphones,
   heart: faHeart,
-  home: faHome,
+  house: faHome,
   "ice-cream": faIceCream,
   lemon: faLemon,
   "kit-medical": faKitMedical,
   paw: faPaw,
   football: faFootball,
   "cart-shopping": faCartShopping,
-  television: faTelevision,
+  tv: faTelevision,
 };
 
 export default categoryStyleSheet;

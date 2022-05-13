@@ -9,7 +9,7 @@ import {
 import CategoryColor from "./category-color/CategoryColor";
 import CategoryIcon from "./category-icon/CategoryIcon";
 import { useHttp } from "hooks/useHttp";
-import { ToastNotificationError } from "context/notification/NotificationClasses";
+import { ToastNotificationError, ToastNotificationSuccess } from "context/notification/NotificationClasses";
 import { useNotification } from "context/notification/NotificationContext";
 
 function AddCategory(props) {
@@ -36,8 +36,9 @@ function AddCategory(props) {
     }, handleResponse)
 
     function handleResponse(response) {
-      if(response.ok) {
-        props.onCancel()
+      if(response.status === 201) {
+        createNotification(new ToastNotificationSuccess('Success', 'Successfully added category'))
+        props.onAddCategory();
       } else {
         createNotification(new ToastNotificationError('smth', 'else'))
       }

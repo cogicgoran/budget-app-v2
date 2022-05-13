@@ -18,6 +18,8 @@ export function useHttp() {
         timeout:5000,
       })
 
+      console.log(`Sending ${config.method ? config.method : "GET"} request to ${config.url}`);
+
       applyData(response);
       setIsLoading(false);
       setError(null);
