@@ -1,3 +1,4 @@
+const CategoryAlreadyExistsException = require("../Exceptions/categories/CategoryAlreadyExistsException");
 const categoryRepository = require("../Repositories/categories.repository");
 
 class CategoryService {
@@ -17,7 +18,7 @@ class CategoryService {
 
   validateCategory = async (categoryDO) => {
     const existingCategory = await this.categoryRepository.getCategoryByName(categoryDO.name);
-    if (existingCategory.length !== 0) throw new Error(`Category with name '${categoryDO.name}' already exists`)
+    if (existingCategory.length !== 0) throw new CategoryAlreadyExistsException(categoryDO.name);
   }
 }
 
