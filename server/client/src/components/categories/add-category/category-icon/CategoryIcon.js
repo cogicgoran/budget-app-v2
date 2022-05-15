@@ -13,7 +13,7 @@ import { PrevArrow, NextArrow } from "./slider-arrows/SliderArrows";
 import { useCategoryContext } from "context/categories/CategoryContext";
 
 function CategoryIcon(props) {
-  const { setColorIndex, categoryColorState, categoryIconState, setIconIndex } =
+  const {  categoryIconState, setIconIndex } =
     useCategoryContext();
     const [isMoving, setIsMoving] = useState(false);
   const wrapperRef = useRef(null);
@@ -132,7 +132,7 @@ function CategoryIcon(props) {
 }
 
 function CategoryShowcaseTransparent({isMoving}) {
-  const { categoryColorState } = useCategoryContext();
+  const { categoryValue, categoryColorState } = useCategoryContext();
   return (
     <div
       style={{
@@ -149,7 +149,7 @@ function CategoryShowcaseTransparent({isMoving}) {
         borderColor:categoryColorState.value?.borderColor }}
         className="category-showcase-transparent__name"
       >
-        TYPE HERE
+        {categoryValue}
       </div>
     </div>
   );
