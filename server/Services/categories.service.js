@@ -11,15 +11,14 @@ class CategoryService {
   };
 
   insertCategory = async (data) => {
-    const dataDTO = {
-      name: data.name,
-      icon_name: data.icon_name.iconName,
-      color_main: data.color_main,
-      color_border: data.color_border,
-    };
-    const result = await this.categoryRepository.insertCategory(dataDTO);
+    const result = await this.categoryRepository.insertCategory(data);
     return result;
   };
+
+  validateCategory = async (categoryDO) => {
+    const existingCategory = await this.categoryRepository.getCategoryByName(categoryDO.name);
+    if (existingCategory.length !== 0) throw new Error(`Category with name '${categoryDO.name}' already exists`)
+  }
 }
 
 module.exports = new CategoryService(categoryRepository);

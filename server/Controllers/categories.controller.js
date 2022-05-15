@@ -1,4 +1,5 @@
 const express = require("express");
+const { CategoryDO } = require("../Model/categories.do");
 const categoryService = require("../Services/categories.service");
 
 class CategoryController {
@@ -24,25 +25,21 @@ class CategoryController {
     }
   };
 
-  #validateCategory = (req, res, next) => {
-    // TODO: add validation
-    const { name, icon_name, color_main, color_border } = req.body;
-    if (name && icon_name && color_main && color_border) {
-      req.data = {
-        name,
-        icon_name,
-        color_main,
-        color_border,
-      };
+  #validateCategory = async (req, res, next) => {
+    try {
+      const categoryDO = new CategoryDO(req.body);
+      await this.categoryService.validateCategory(categoryDO);
+      req.data = categoryDO;
       return next();
+    } catch (error) {
+      next(error);
     }
-    next(new Error("Invalid Category Data"));
   };
 
   #insertCategory = async (req, res, next) => {
-    const data = req.data;
+    const category = req.data;
     try {
-      const smth = await this.categoryService.insertCategory(data);
+      const smth = await this.categoryService.insertCategory(category);
       res.sendStatus(201);
     } catch (error) {
       next(error);

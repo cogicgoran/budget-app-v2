@@ -2,18 +2,24 @@ import React from "react";
 import styles from "./AddCategory.module.css";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import {
-  useCategoryContext,
-} from "context/categories/CategoryContext";
+import { useCategoryContext } from "context/categories/CategoryContext";
 
 import CategoryColor from "./category-color/CategoryColor";
 import CategoryIcon from "./category-icon/CategoryIcon";
 import { useHttp } from "hooks/useHttp";
-import { ToastNotificationError, ToastNotificationSuccess } from "context/notification/NotificationClasses";
+import {
+  ToastNotificationError,
+  ToastNotificationSuccess,
+} from "context/notification/NotificationClasses";
 import { useNotification } from "context/notification/NotificationContext";
 
 function AddCategory(props) {
-  const { isIconCategoryToggled, categoryValue, categoryColorState, categoryIconState } = useCategoryContext();
+  const {
+    isIconCategoryToggled,
+    categoryValue,
+    categoryColorState,
+    categoryIconState,
+  } = useCategoryContext();
   const { error, fetchTask, isLoading } = useHttp();
   const { createNotification } = useNotification();
 
@@ -24,26 +30,39 @@ function AddCategory(props) {
     const icon = categoryIconState.value;
 
     const formData = {
-      name, icon_name: icon,
+      name,
+      icon_name: icon,
       color_main: color,
-      color_border: borderColor
-    }
+      color_border: borderColor,
+    };
     // TODO: VALIDATE INPUTS
-    fetchTask({
-      url:'http://localhost:8000/api/categories',
-      method: 'POST',
-      data: formData
-    }, handleResponse)
+    fetchTask(
+      {
+        url: "http://localhost:8000/api/categories",
+        method: "POST",
+        data: formData,
+      },
+      handleResponseSuccess,
+      handleResponseError
+    );
 
-    function handleResponse(response) {
-      if(response.status === 201) {
-        createNotification(new ToastNotificationSuccess('Success', 'Successfully added category'))
-        props.onAddCategory();
-      } else {
-        createNotification(new ToastNotificationError('smth', 'else'))
-      }
+    function handleResponseSuccess() {
+      createNotification(
+        new ToastNotificationSuccess("Success", "Successfully added category")
+      );
+      props.onAddCategory();
     }
-  }
+
+    function handleResponseError(error) {
+      const myError = error.response?.data;
+      createNotification(
+        new ToastNotificationError(
+          `Error: ${myError ? myError.status : error.statusCode}`,
+          myError ? myError.message : error.message
+        )
+      );
+    }
+  };
 
   return (
     <div className={styles["add-category-container"]}>

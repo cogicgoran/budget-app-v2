@@ -12,9 +12,15 @@ class CategoryRepository {
   }
 
   insertCategory = async (data) => {
-    const { name, icon_name, color_main, color_border } = data;
+    const { name, iconName, colorMain, colorBorder } = data;
     const sql = 'INSERT INTO categories (name, icon_name, color_main, color_border) VALUES ( ?, ?, ?, ?)';
-    const result = await this.dbConn.promise().query(sql, [name, icon_name, color_main, color_border]);
+    const result = await this.dbConn.promise().query(sql, [name, iconName, colorMain, colorBorder]);
+    return result[0];
+  }
+
+  getCategoryByName = async (name) => {
+    const sql = 'SELECT * FROM categories WHERE name = ?';
+    const result = await this.dbConn.promise().query(sql, [name]);
     return result[0];
   }
 }
