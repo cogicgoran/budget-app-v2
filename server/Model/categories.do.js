@@ -1,3 +1,7 @@
+const InvalidCategoryColorBorder = require("../Exceptions/categories/InvalidCategoryColorBorder");
+const InvalidCategoryColorMain = require("../Exceptions/categories/InvalidCategoryColorMain");
+const InvalidCategoryIconException = require("../Exceptions/categories/InvalidCategoryIconException");
+const InvalidCategoryNameTypeException = require("../Exceptions/categories/InvalidCategoryNameTypeException");
 const { iconNames, categoryMainColors, categoryMainBorderColors } = require("../temp-helpers/categories");
 
 const isTypeString = (value) => {
@@ -20,26 +24,26 @@ class CategoryDO {
   }
   
   #validateName = (name) => {
-    if(!isTypeString(name)) throw new Error('Invalid name type');
-    if(name.length === 0 ) throw new Error('Invalid name length');
+    if(!isTypeString(name)) throw new InvalidCategoryNameTypeException();
+    if(name.length === 0 ) throw new InvalidCategoryNameTypeException();
     this.name = name;
   }
   
   #validateIconName = (iconName) => {
-    if(!isTypeString(iconName)) throw new Error('Invalid icon name type');
-    if(!iconNames.includes(iconName)) throw new Error('Invalid icon name');
+    if(!isTypeString(iconName)) throw new InvalidCategoryIconException();
+    if(!iconNames.includes(iconName)) throw new InvalidCategoryIconException();
     this.iconName = iconName;
   }
   
   #validateColorMain = (colorMain) => {
-    if(!isTypeString(colorMain)) throw new Error('Invalid main color type');
-    if(!categoryMainColors.includes(colorMain)) throw new Error('Invalid main color');
+    if(!isTypeString(colorMain)) throw new InvalidCategoryColorMain();
+    if(!categoryMainColors.includes(colorMain)) throw new InvalidCategoryColorMain();
     this.colorMain = colorMain;
   }
   
   #validateColorBorder = (colorBorder) => {
-    if(!isTypeString(colorBorder)) throw new Error('Invalid border color type');
-    if(!categoryMainBorderColors.includes(colorBorder)) throw new Error('Invalid border color');
+    if(!isTypeString(colorBorder)) throw new InvalidCategoryColorBorder();
+    if(!categoryMainBorderColors.includes(colorBorder)) throw new InvalidCategoryColorBorder();
     this.colorBorder = colorBorder;
   }
 }
